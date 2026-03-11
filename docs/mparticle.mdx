@@ -1,0 +1,40 @@
+---
+title: "mParticle"
+description: "Receive events from mParticle"
+---
+
+## Introduction
+
+mParticle is a popular choice for event instrumentation. If you are using mParticle, you can share your event data with Kubit in a couple of ways:
+
+1. By using mParticle's Snowflake integration to start forwarding all events to a Kubit Snowflake account.
+2. If you are already storing the mParticle event tables in Snowflake/BigQuery/Databricks you can also share them with Kubit following the corresponding [Direct Connect](doc:direct-connect) guide.
+
+## Snowflake integration steps
+
+1. Kubit will provide you with the Snowflake credentials for the destination.
+2. Follow the [mParticle setup steps](https://docs.mparticle.com/integrations/snowflake/data-warehouse/#mparticle-setup) to add the integration.
+3. By default, the integration begins loading current data into Snowflake from the time it is enabled.
+
+<Warning>
+  ### JSON ahead
+
+  mParticle dumps all the data into [a JSON column in a Snowflake table](https://docs.mparticle.com/integrations/snowflake/data-warehouse/#data-schema), so while the data is queryable, it is highly likely to require some modelling effort in order to achieve reasonable analytics performance over large datasets.
+</Warning>
+
+### Handling historical data
+
+You can work with your mParticle Customer Service Manager to load historical data.
+
+## Share already persisted tables using Secure Data Sharing
+
+If you already have modelled your events data into a data warehouse you can directly share that through [Direct Connect](doc:direct-connect). The benefit of this approach is that you have full control of your data model and no modeling needs to be done on the Kubit end.
+
+***
+
+What’s Next
+
+* [Integration Guide](/docs/integration-guide)
+* [Segment](/docs/segment)
+* [Snowplow](/docs/snowplow)
+* [RudderStack](/docs/rudderstack)

@@ -1,0 +1,79 @@
+---
+title: "ClickHouse"
+description: "Integrate via Direct Connect"
+---
+
+# Steps
+
+## 1. Create a User
+
+1. Go to the [SQL Console](https://clickhouse.com/docs/en/integrations/sql-clients/sql-console)
+2. [Create a user](https://clickhouse.com/docs/en/sql-reference/statements/create/user) named `KUBIT`. The Kubit team will generate and share a strong password which you should use to create the user.
+
+<CodeGroup>
+  ```bash bash
+  CREATE USER KUBIT IDENTIFIED WITH sha256_password BY '*****';
+  ```
+</CodeGroup>
+
+## 2. Create Roles
+
+1. [Create a role](https://clickhouse.com/docs/en/sql-reference/statements/create/role) named `KUBIT_R`
+   <CodeGroup>
+     ```bash bash
+     CREATE ROLE OR REPLACE KUBIT_R;
+     ```
+   </CodeGroup>
+2. Create a role named `KUBIT_W`
+   <CodeGroup>
+     ```bash bash
+     CREATE ROLE OR REPLACE KUBIT_W;
+     ```
+   </CodeGroup>
+
+## 3. Create a Database
+
+[Create a database](https://clickhouse.com/docs/en/sql-reference/statements/create/database) named `KUBIT_DB`
+
+<CodeGroup>
+  ```bash bash
+  CREATE DATABASE KUBIT_DB;
+  ```
+</CodeGroup>
+
+## 4. Grant Permissions
+
+1. [Grant](https://clickhouse.com/docs/en/sql-reference/statements/grant) `KUBIT_W` the permissions to read and write from `KUBIT_DB` database. This will allow us to create any auxiliary tables or views there
+
+<CodeGroup>
+  ```bash bash
+  GRANT SELECT,INSERT,ALTER,CREATE,DROP,TRUNCATE,SHOW,CLUSTER ON KUBIT_DB.* TO KUBIT_W;
+  ```
+</CodeGroup>
+
+2. Add read-only (SELECT) permissions to the `KUBIT_R` role to the intended tables/views and `KUBIT_DB`
+
+<CodeGroup>
+  ```bash bash
+  GRANT SELECT ON KUBIT_DB TO KUBIT_R;
+  GRANT SELECT ON table/view TO KUBIT_R;
+  ```
+</CodeGroup>
+
+## 5. Setup IP Whitelisting
+
+[Here](doc:kubit-ip-addresses)'s the list of Kubit's [IP addresses](https://clickhouse.com/docs/en/cloud/security/setting-ip-filters) to allow.
+
+![](/images/docs/2fff855-Screenshot_2024-06-18_at_17.52.39.png) ![](/images/docs/64f6b39-Screenshot_2024-06-18_at_17.54.17.png)
+
+<Check>
+  ### Best Practice
+
+  Create one more user, roles and service for development purposes in order to isolate the impact on the production environment and avoid accidents.
+</Check>
+
+***
+
+What’s Next
+
+* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)

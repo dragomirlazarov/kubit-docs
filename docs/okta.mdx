@@ -1,0 +1,120 @@
+---
+title: "Okta"
+description: "Set up SSO with Okta"
+---
+
+## Requirements
+
+* Your organization uses Okta for authentication.
+* You have an Admin role.
+
+## Just-in-Time (JIT) Provision
+
+With SAML integration, once a user is created on your end (optionally included in a group that has access to Kubit), that user can log in to Kubit immediately. The user profile information will also be automatically updated at every login time.
+
+When a user is deleted/deactivated on your end, they will lose access to Kubit immediately too. There is no offline communication required.
+
+## Configure SAML application
+
+### 1. Create a SAML application
+
+1. Navigate to the Okta admin portal.
+
+2. Click on **Applications** under the **Applications** tab.
+
+3. On the **Applications** screen click on **Create App Integration** button.
+
+4. On the **Create a new app integration** screen select **SAML 2.0**.
+
+   ![](/images/docs/3c64911-image.png)
+
+### 2. Configure app details
+
+1. On the step **1. General Settings** use `Kubit SAML` as **App name**.
+2. Download the Kubit logo from the provided Logo URL and upload it as **App logo**. Check the **Do not display application icon to users**.
+
+![](/images/docs/8b83faf-image.png)
+
+3. On the next step **2. Configure SAML** use the provided ACS URL as **Single sign-on URL** and Entity ID as **Audience URI (SP Entity ID)**.
+
+![](/images/docs/7d0c567-image.png)
+
+### 3. Attributes mapping
+
+1. On the same screen map **Attribute Statements** as follows:
+
+   | Name         | Value                                             |
+   | ------------ | ------------------------------------------------- |
+   | email        | user.email                                        |
+   | name         | `String.join(" ", user.firstName, user.lastName)` |
+   | given\_name  | user.firstName                                    |
+   | family\_name | user.lastName                                     |
+   | picture‍‍    | user.profileUrl                                   |
+
+   ![](/images/docs/fe3d854-image.png)
+
+2. **(Optional)** On the same screen map **Group Attribute Statements** as follows:
+
+| Name   | Filter                   |
+| ------ | ------------------------ |
+| groups | Matches regex: (group1\\ |
+
+![](/images/docs/3155613-image.png)
+
+<Info>
+  ### **Roles and Permissions**
+
+  You can manage permissions on the Kubit platform using your IdP groups by mapping the `groups` attribute. This step is mandatory for utilizing groups for permission management within the Kubit platform.
+</Info>
+
+3. You can skip the next screen **3. Feedback**.
+
+### 4. Share metadata URL with Kubit
+
+Once the app is created copy the **Metadata URL** and share it with Kubit Team.
+
+![](/images/docs/ebbde1c-image.png)
+
+### 5. Create Bookmark app
+
+Navigate back to the **Applications** screen.
+
+1. Click on **Browse App Catalog** and search for `Bookmark App`. While on the Bookmark App page click on **+ Add Integration** button.
+
+![](/images/docs/2924759-image.png) ![](/images/docs/b98d1e1-image.png)
+
+2. On the **Add Bookmark App** screen use `Kubit` as **Application label**. Use the provided Login URL as **URL**. Leave **Do not display application icon to users** unchecked.
+
+![](/images/docs/5bb2edf-image.png)
+
+3. Once the Bookmark App is created download the Kubit logo from the provided Logo URL and upload it.
+
+![](/images/docs/96e69e9-image.png)
+
+### 6. Test
+
+Once configured properly on both sides, please work with the Kubit Team to test the integration. You will be provided a test URL.
+
+### 7. Open Access
+
+<Info>
+  ### Assignments
+
+  Make sure to assign groups to both Kubit SAML and Kubit apps.
+</Info>
+
+[Assign Kubit App to specific users](https://help.okta.com/en-us/Content/Topics/users-groups-profiles/usgp-assign-apps.htm)
+
+## Reference
+
+[Auth0: SAML IdP Configuration Settings](https://auth0.com/docs/authenticate/protocols/saml/saml-identity-provider-configuration-settings?a=hrpgC1oy5h4KWqj8qwSEWfi3s572a1bF\&conn=plutotv-google)
+
+***
+
+What’s Next
+
+* [Integration Guide](/docs/integration-guide)
+* [Google Workspace](/docs/google-workspace)
+* [Azure Microsoft Entra ID (Active Directory)](/docs/azure-active-directory-ad)
+* [AWS IAM Identity Center](/docs/aws-iam-identity-center)
+* [Integrate Kubit with Slack](/docs/integrate-kubit-with-slack)

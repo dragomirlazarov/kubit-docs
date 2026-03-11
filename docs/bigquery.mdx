@@ -1,0 +1,40 @@
+---
+title: "BigQuery"
+description: "Share Dataset(s) with Kubit"
+---
+
+# Steps
+
+## 1. Obtain Service Account
+
+Kubit will create the service account for you and provide you with a **Kubit Service Account Email**, typically in the format of `<organization>@kubit-oauth.iam.gserviceaccount.com`
+
+## 2. Share Dataset(s)
+
+1. Go to the BigQuery console
+2. Select a dataset from `Resources`, then click `SHARE DATASET` near the right side of the window.
+
+![](/images/docs/f765e11-624a0f2405f1a929b86fd9a1_UDmfedYxdeRvDXwdTjplRyZbKGlhk9KE1ULDbw3yuKui3cKtAa36Na9R9yb2JbAS7rpTLqGREPbgwbyXxmVw3AD_TYTLB75wt6dL9GsEgy-mtXB4zaOaOvpQg-bvakOnPCFEDj8L.png "624a0f2405f1a929b86fd9a1_UDmfedYxdeRvDXwdTjplRyZbKGlhk9KE1ULDbw3yuKui3cKtAa36Na9R9yb2JbAS7rpTLqGREPbgwbyXxmVw3AD_TYTLB75wt6dL9GsEgy-mtXB4zaOaOvpQg-bvakOnPCFEDj8L.png")
+
+3. In the `Share dataset` panel, in the `Dataset permissions` tab, enter the previously created **Kubit Service Account Email** to the `Add members` field. Then select the role **BigQuery Data Viewer**, click `Add`, then click `DONE`.
+
+![](/images/docs/f11b5da-624a0f2481d5ed684c398c01_Q9IwIs6y_CDBJMGl5NMnDxi5iMq_WdYIw6bfAttqmRVD6qLEXsi73Rok_rs7LC1eodgZBaIseExJgT4DsX_4eYhTShAj1_7tP6Rn034C_XLpymWl2U90OnG2CAlqMOS4ietYwYhu.png "624a0f2481d5ed684c398c01_Q9IwIs6y_CDBJMGl5NMnDxi5iMq_WdYIw6bfAttqmRVD6qLEXsi73Rok_rs7LC1eodgZBaIseExJgT4DsX_4eYhTShAj1_7tP6Rn034C_XLpymWl2U90OnG2CAlqMOS4ietYwYhu.png")
+
+4. If you need to share multiple datasets from different GCP projects, just use the same Kubit Service Account Email when sharing every dataset.
+
+## 3. Share Project and Dataset IDs
+
+<Info>
+  ## Important
+
+  Please, share the following information with the Kubit team:
+
+  1. Project and Dataset IDs
+  2. Your dataset(s) [region and zone](https://docs.cloud.google.com/compute/docs/regions-zones) .
+</Info>
+
+***
+
+[Databricks](/docs/databricks)
+
+[Presto](/docs/presto)

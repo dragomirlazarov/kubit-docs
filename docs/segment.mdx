@@ -1,0 +1,43 @@
+---
+title: "Segment"
+description: "Receive events from Segment"
+---
+
+## Introduction
+
+Segment is a popular choice for event instrumentation. If you are using Segment, you can share your event data with Kubit in a couple of ways:
+
+1. By configuring a Segment destination to a Kubit Snowflake account.
+2. If you are already storing the Segment event tables in Snowflake/BigQuery/Databricks you can also share them with Kubit following the corresponding [Direct Connect](doc:direct-connect) guide.
+
+## Snowflake Destination integration steps
+
+1. Kubit will provide you with the Snowflake credentials for the destination.
+2. Follow the [Connect Snowflake to Segment steps](https://segment.com/docs/connections/storage/catalog/snowflake/#connect-snowflake-to-segment) to add the destination.
+3. Segment will start syncing the last 30 days worth of data for each shared table.
+
+<Info>
+  ### Data sync
+
+  Once you configure the Snowflake destination, the initial sync can take up to 48 hours. If you are on their business tier you can also [configure the sync schedule](https://segment.com/docs/connections/storage/warehouses/warehouse-syncs/#sync-frequency).
+</Info>
+
+### Handling historical data
+
+Optionally, to also share historical data you can use a Segment feature called [Replay](https://segment.com/docs/guides/what-is-replay/).
+
+## Share already persisted tables using Secure Data Sharing
+
+There is one caveat in this case and it is that Segment tends to create one table for each event type, sometimes resulting in hundreds of tables containing events. Here are a couple of solutions to consider:
+
+1. Perhaps not all events are needed for analytics? If that's the case you can only share the tables which contain the events you actually need with Kubit.
+2. An easy way to share all events is to share the aggregate event tables - [SCREENS](https://segment.com/docs/connections/spec/screen/), [PAGES](https://segment.com/docs/connections/spec/page/), and [TRACKS](https://segment.com/docs/connections/spec/track/), instead of the individual event tables.
+
+***
+
+What’s Next
+
+* [Braze](/docs/braze)
+* [Snowplow](/docs/snowplow)
+* [mParticle](/docs/mparticle)
+* [RudderStack](/docs/rudderstack)

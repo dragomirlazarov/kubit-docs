@@ -1,0 +1,120 @@
+---
+title: "MCP Server"
+description: "Seamlessly integrate Kubit's digital insights into your favorite AI tools and workflows. Ask analytics questions directly in Claude, ChatGPT, or Cursor conversations and get the same context-rich answers you would in Kubit."
+---
+
+Kubit MCP is a Model Context Protocol integration that allows AI development tools like Cursor and Claude to securely access Kubit's analytical capabilities through standardized MCP tools. By connecting an MCP-compatible IDE or assistant to Kubit, users can explore schemas, execute Reports, retrieve raw data and find existing Reports without leaving their development workflow.
+
+Kubit's MCP server exposes several tools that mirror common actions performed in the Kubit platform, enabling a highly productive, code-assisted analytics experience.
+
+## What the Kubit MCP Server Provides
+
+The Kubit MCP server includes a set of analytical tools that developers or analysts can use programmatically.
+
+**Available MCP Tools**
+
+* **getUserContext – Initialize User Context**
+
+  * Always the first call. Retrieves:
+
+    * User context
+    * Available schemas
+    * Active schema selection
+
+  * Parameters: Initialization details required by the Kubit application.
+
+* **getSchema – Explore Schema Details**
+
+  * Retrieves full metadata for a specific schema, including:
+
+    * Event definitions
+    * Properties
+    * Dimensions
+
+  * Parameters: Reference to the desired schema.
+
+* **createReport – Create and Execute Reports**
+
+  * Generates analytical queries and returns:
+
+    * A summary of results
+    * A link to the full report in the Kubit app
+    * A `formulaTemplateId` and `analysisId` for further editing
+
+  * Parameters: Arguments required by Kubit to generate a new report.
+
+* **getRawData – Export Raw Report Data**
+
+  * Exports CSV-like raw output from an existing report.
+  * Parameters: Reference to the previously generated report.
+
+* **searchKubit – Search Reports and Dashboards**
+
+  * Searches for reports or dashboards across your organization.
+  * Parameters: Query text suitable for locating Kubit assets.
+
+## Connecting Kubit MCP to Cursor
+
+Follow these steps to add the Kubit MCP server to Cursor (IDE):
+
+1. Open Settings → Tools & MCP.
+2. Select Add a Custom MCP Server.
+3. Paste the following JSON configuration:
+
+<CodeGroup>
+  ```bash bash
+  {
+    "mcpServers": {
+      "KubitMCP": {
+        "url": "https://mcp.kubit.ai/mcp",
+        "transport": "http-stream"
+      }
+    }
+  }
+  ```
+</CodeGroup>
+
+4. Create a project folder if prompted.
+5. Click Connect next to the MCP server.
+6. Enter your organization name (org: \<org name>).
+7. Complete the authentication and authorization steps.
+
+<Info>
+  Create a new project for the Kubit MCP server.
+</Info>
+
+You are now connected to the Kubit MCP server inside Cursor!
+
+## Connecting Kubit MCP to Claude
+
+1. Open Settings → Connectors.
+2. Select Add custom connector.
+3. Name the connector (for example, "Kubit MCP").
+4. For Remote MCP URL, enter: [https://mcp.kubit.ai/mcp](https://mcp.kubit.ai/mcp)
+5. Click Add.
+6. Enter your organization name (org: \<org name>).
+7. Complete the Kubit login and authorization process.
+
+You are now connected to Kubit MCP server inside Claude.
+
+## Additional Reference: GitHub Repository
+
+For developers who want to review the MCP server source code, configuration patterns, or contribution guidelines, the full repository is available here: [https://github.com/Kubit-AI/mcp-server](https://github.com/Kubit-AI/mcp-server)
+
+It includes documentation on:
+
+* Server architecture
+* API specifications
+* Development setup
+* Deployment considerations
+* Versioning and updates
+
+**Support**
+
+If you need help connecting your tooling, troubleshooting authentication, or using any of the MCP tools, please reach out to your Kubit CSM.
+
+***
+
+[Explain with Lumos](/docs/kubit-explain-with-ai)
+
+[Lumos AI Readiness & AI Data Dictionary](/docs/lumos-ai-readiness)

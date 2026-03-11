@@ -1,0 +1,95 @@
+---
+title: "Integrate Kubit with Slack"
+description: "Learn how to integrate Kubit with Slack for seamless notifications and alerts."
+---
+
+With Kubit's app for Slack, you can seamlessly integrate notifications and alerts into your workflow:
+
+* Receive alerts from [Scheduled Refreshes](doc:schedule-refreshes#what-is-a-schedule-in-kubit) for Reports and Dashboards.
+* Automatically unfurl charts and dashboards after a Scheduled Refresh completes.
+* Connect Kubit to specific Slack channels to receive notifications whenever your Scheduled Refresh completes.
+
+This feature is available to all Kubit users.
+
+## Connect Kubit to Slack
+
+Follow these steps to connect Kubit to your Slack workspace:
+
+1. Navigate to **Settings** (:gear:) from the side navigation and click **Preferences**
+
+![](/images/docs/9d17f4f495bb0ddb1373abc5e1874409f7c15484abc8195d93e1e0241709d83b-connect_kubit_to_slack_1.png)
+
+1. Click the **Connect to Slack** button under Slack Integration.
+
+2. In the Slack connection screen, select the workspace you want to connect to Kubit using the dropdown in the upper right corner. Click **Allow** to enable the integration.
+
+![](/images/docs/ac9a3d941e112698487b3431d692050e30b7d158a3afa39f4a88b627cbbbd9fb-connect_kubit_to_slack_2.png)
+
+1. Once you've allowed Kubit's app for Slack within your Slack workspace, you will be redirected to your Personal Settings page. You should now see an option to **Disconnect from Slack**, indicating a successful connection.
+
+> **Note:** Approval from the Slack workspace owner may be required to make the initial connection with Kubit's app for Slack.
+
+## Slack Workspace Approvals
+
+If your Slack workspace owner has disabled settings that allow members to enable applications, contact them to manage app approval.
+
+## Disconnecting the Slack Integration
+
+To disconnect your Kubit integration with Slack, click the **Disconnect from Slack** button.
+
+![](/images/docs/e102e4d30ad3504eb65fc4fac4b8da43ce1ed34074c38bd219306613502bebf4-Disconnect_from_slack.png)
+
+## Slack Channel Notifications
+
+Kubit offers the ability for Admin and Governor users to set notifications for certain events in slack channel of your choice.
+
+You can enable the Slack notifications by clicking on the "Setting" icon in "Comments" side bar in any Dashboard:
+
+![](/images/docs/0038a9314af78a012ca700909ad43d655f46c91daa8e746d04c4f64bdf55f057-Mar-04-2026_11-34-08.gif)
+
+You can enable under what conditions Slack to inform the participants in the given channel:
+
+* Dashboard comments
+* Report added or removed from dashboard
+* Dashboard or report has been manually refreshed
+* Dashboard permissions has been updated
+
+![](/images/docs/f15fe6e1d1ccbf779fb78e895c8c5daf92e22ccd60c954a78d51423e9b617a66-Screenshot_2026-03-04_at_11.23.55.png)
+
+The next time a Kubit users comments, refreshes a dashboard, removes/adds a report or change Dashboard permissions, users will receive a notification in the selected Slack channel.
+
+## Receiving Alerts in Slack
+
+Once Kubit and Slack are connected, you can select Slack channels to receive notifications when Scheduled Refreshes complete.
+
+To connect a scheduled refresh to Slack and begin receiving notifications:
+
+1. When creating a [Scheduled Refresh](https://docs.kubit.ai/docs/schedule-refreshes#how-to-create-a-schedule), fill in all necessary information like the schedule name, refresh frequency, and execution time. Below this, select the option to send alerts to Slack.
+
+![](/images/docs/87b2cf2bdf912320192581994236861296c3e90c962e6bacd8bcba2e87d06d48-receiving_alerts_in_slack.png)
+
+> **Warning:** If you do not see a dropdown list, first connect Kubit to Slack by clicking **Connect Slack to enable notifications**.
+
+1. Select the Slack channel for notifications. You can type the channel name to filter the list. Only one channel can be selected.
+
+2. Choose when you want to be notified. Learn more about notification options in this [article](https://docs.kubit.ai/docs/schedule-refreshes#how-to-create-a-schedule).
+
+3. Click **Create**! The next time your scheduled refresh executes, you will receive a notification in the selected Slack channel based on your notification preferences.
+
+## Getting Help with Kubit's app for Slack
+
+If you encounter any issues, please contact Kubit support at [\[email protected\]](/cdn-cgi/l/email-protection#295a5c5959465b5d69425c4b405d074840).
+
+## Privacy
+
+Review Kubit's Privacy Policy and GDPR Compliance:
+
+* [Kubit's Privacy Policy](https://kubit.ai/privacy-policy/)
+* [Kubit's GDPR Compliance Policy](https://kubit.ai/gdpr-compliance-policy/)
+
+***
+
+What’s Next
+
+* [Schedule Refreshes](/docs/schedule-refreshes)
+* [User Segmentation with Cohorts](/docs/user-segmentation-with-cohorts)

@@ -1,0 +1,65 @@
+---
+title: "Databricks"
+description: "Power Kubit with Delta Sharing"
+---
+
+# Introduction
+
+Databricks enables seamless data sharing with Kubit through its [Delta Sharing](https://docs.databricks.com/data-sharing/delta-sharing/index.html) feature.
+
+### Delta Sharing
+
+Delta Sharing is an open protocol developed by Databricks for secure data sharing across different organizations and platforms. As a Databricks user, you can act as a “data provider” to share data with external “data recipients.” This allows recipients to access the most current version of the shared data immediately.
+
+# Steps
+
+## Requirements
+
+To utilize Delta Sharing, ensure you have configured a [Databricks Metastore and Catalog](https://docs.databricks.com/data-governance/unity-catalog/index.html#the-unity-catalog-object-model).
+
+## 1. Configure Delta Share
+
+1. **Access Your Metastore**: Log into [your Databricks account](https://accounts.cloud.databricks.com/), select the metastore linked to your workspace, and enable Delta Sharing. Choose the token lifetime and organization name as needed. Note that Databricks to Databricks sharing does not require token authentication.
+
+   ![Metastore Configuration](/images/docs/372eac0-Screenshot_2022-11-09_at_14.29.01.png)
+
+2. **Navigate to Your Workspace**: In the `Data Science & Engineering` menu, go to the `Data` tab. Select the `Delta Sharing` sub-menu and click `New recipient`.
+
+   ![Workspace Navigation](/images/docs/aa2e451-Screenshot_2022-11-09_at_14.36.23.png)
+
+3. **Create a Recipient**: Fill in the form with the following details:
+
+   * **Name**: kubit
+   * **Sharing identifier**: Unique ID provided by the Kubit Team.
+
+   ![Recipient Creation](/images/docs/5c50468-Screenshot_2022-11-09_at_14.45.51.png)
+
+4. **Share Data**: Click `Share data` and enter:
+
+   * **Share name**: kubit
+
+   ![Share Data](/images/docs/77791f5-Screenshot_2022-11-09_at_14.47.15.png)
+
+5. **Manage Shares**: On the share management screen, click `Add recipient` and select the recipient created in step 3.
+
+   ![Manage Shares](/images/docs/fccee6d-Screenshot_2022-11-09_at_14.49.37.png)
+
+## 2. Add Data to the Share
+
+1. **Add Tables**: Select the tables to share with Kubit and click `Save`.
+
+   ![Add Tables](/images/docs/40f5182-Screenshot_2022-11-09_at_14.52.06.png)
+
+2. **Verify Recipients**: Ensure the Kubit recipient is listed under the `Recipients` tab.
+
+## 3. Verify Access
+
+Confirm access to the Delta Share with the Kubit team.
+
+For more details, refer to the [Databricks Delta Sharing documentation](https://docs.databricks.com/data-sharing/delta-sharing/index.html#how-does-an-admin-grant-recipient-access) or watch the ["Databricks Delta Sharing Demo"](https://www.youtube.com/watch?v=wRT1Vpbyy88).
+
+***
+
+[Snowflake](/docs/snowflake)
+
+[BigQuery](/docs/bigquery)

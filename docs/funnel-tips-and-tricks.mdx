@@ -1,0 +1,56 @@
+---
+title: "Funnel Tips and Tricks"
+description: "Unlock deeper insights with these funnel-building tips."
+---
+
+# Funnel Tips and Tricks
+
+Discover more ways to unlock insights with Funnel.
+
+## Duplicate Funnel Steps
+
+If you've created a complex funnel step and need to replicate it for a subsequent step, use the **Duplicate Step** option in the Step Options menu. After duplicating, you can make any necessary adjustments.
+
+![](/images/docs/8af1c4b5841dcea77c22973e861e1a7981eb89a7aa1496786d2ea682170811c5-duplicate_funnel_steps.gif)
+
+## Using Breakdown Groups Effectively
+
+When you use Breakdowns in Funnel, results are shown based on the Starting or Global value of that breakdown group across the steps. This is useful for understanding attribution or content that drives conversion. Consider how you want to compare these:
+
+* Compare Breakdown groups against each other, ensuring all users are in at least one group.
+* Compare each group and Overall, providing total conversion rates for all users. This is useful for establishing a baseline. Enable this by turning the Overall switch to "on" (it will show blue), revealing an Overall group alongside the Breakdown groups.
+
+![](/images/docs/e0fcc1d57ea47daca880273105e732650a7d1b7922a748dccd0145a6f805de05-using_breakdown_groups_effectivley.png)
+
+## Compare Conversion Rates Across Groups
+
+To compare conversion rates between multiple groups over time, select the most important breakdown groups to view side by side. Hide less valuable ones. Comparing against Overall helps measure improvements over baselines.
+
+![](/images/docs/3c5caecf892396c6f923a0d6e5d371b1487d797b4f07b4b0157ab44b10e53ba1-compare_conversino_rate_between_multiple_breakdown_groups.gif)
+
+## Re-order Steps with Drag-and-Drop
+
+In Kubit, you can drag and drop steps to reorder them as needed when building a funnel using a "Sequence" or "Exact" Order.
+
+![](/images/docs/043b4e204c345784883a77250c160ff6c02b7dcaf7e40ba71ea19cf1f464e6e8-reorder_steps_using_drag_and_drop.gif)
+
+## Extending the Time Window
+
+At the bottom of Funnel chart controls, you'll find a dropdown button with "Event" and a "+" option for day(s). Use this to extend the time range of your funnel, allowing for longer conversion windows. For example, to understand "Trial" to "Renewal," extend the time from the "Trial" event by a specified number of days.
+
+![](/images/docs/38058378473820f016ff1bef2b46f78034d30f24aa4ed2b11de55258411ecccb-Extending_the_time_window.png)
+
+Analyze this in Funnel using:
+
+* **Event**: Counts conversion from the date the user performed the first Step. Adding days extends the conversion window.
+* Example: Set Partition = None and add an Extending Time Window to group results by the starting step event date, looking for conversion steps until the end of the date range + the Extending Time Window.
+* **Install**: Shows users who installed your product during the selected time range.
+* Example: Set to Install and 0 days means they installed and performed Step 1 on the same day. Install with 30 means they installed and did Step 1 on days 0-30, etc.
+
+***
+
+What’s Next
+
+* [Funnel](/docs/funnel)
+* [Path](/docs/path)
+* [🎥 Funnel Training](/docs/funnel-training-video)

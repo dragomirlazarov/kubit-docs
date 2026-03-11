@@ -1,0 +1,86 @@
+---
+title: "Google Workspace"
+description: "Set up SSO with Google Workspace"
+---
+
+## Requirements
+
+* Your organization uses Google Workspace for authentication.
+* You have an Admin role.
+
+## Just-in-Time (JIT) Provision
+
+With SAML integration, once a user is created on your end (optionally included in a group that has access to Kubit), that user can log in to Kubit immediately. The user profile information will also be automatically updated at every login time.
+
+When a user is deleted/deactivated on your end, they will lose access to Kubit immediately too. There is no offline communication required.
+
+## Configure SAML app
+
+### 1. Open Google Workspace admin console
+
+Login into the Google Workspace admin console and navigate to [the Web and mobile apps screen under the Apps tab](https://admin.google.com/ac/apps/unified).
+
+### 2. Add a SAML app
+
+Click on the **Add app** menu and select **Add custom SAML app**.
+
+### 3. Configure app details
+
+On the **App details** screen name user `Kubit` as the App name. Download the Kubit logo from the provided Logo URL and upload it as an App icon.
+
+![](/images/docs/24468d1-image.png)
+
+### 4. Share the metadata file
+
+On the step screen (**Google Identity Provider details**) click on the **DOWNLOAD METADATA** button. Share the metadata file with Kubit Team.
+
+![](/images/docs/836dd5b-image.png)
+
+### 5. Service provider details
+
+On the next step(**Service provider details**) use the provided ACS URL and Entity ID from Kubit.
+
+![](/images/docs/62109bd-image.png)
+
+### 6. Attributes mapping
+
+On the next step(**Attributes**) map attributes as follows:
+
+| Google Directory attributes | App attributes |
+| --------------------------- | -------------- |
+| Primary email               | email          |
+| First name                  | given\_name    |
+| Last name                   | family\_name   |
+| First name                  | name           |
+
+![](/images/docs/b369802-image.png)
+
+<Info>
+  ### Roles and Permissions
+
+  You can manage permissions on the Kubit platform using your IdP groups by mapping the `groups` attribute. This step is mandatory for utilizing groups for permission management within the Kubit platform.
+</Info>
+
+### 7. Test
+
+Once configured properly on both sides, please work with the Kubit Team to test the integration. You will be provided a test URL.
+
+### 8. Open Access
+
+You may choose to turn on Kubit App to everyone, or a [specific group](https://support.google.com/a/answer/9050643)
+
+## IdP-Initiated Login
+
+Due to security concerns, Kubit doesn't support IdP-Initiated SSO. The user has to go to the Kubit website first to initiate the login (SP-Initiated).
+
+Clicking on the Kubit App logo on Google Workspace Dashboard would fail. We don't know a way to hide that logo.
+
+## References
+
+[Google: Setup your own SAML App](https://support.google.com/a/answer/6087519?hl=en)
+
+***
+
+[Single Sign-On (SSO)](/docs/single-sign-on-sso)
+
+[Okta](/docs/okta)

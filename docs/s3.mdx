@@ -1,0 +1,90 @@
+---
+title: "Data Replication via AWS S3"
+description: "Integration via AWS S3"
+---
+
+# S3 Storage Sharing
+
+If your raw data is stored in S3 buckets, instead of open direct access to your data warehouse, you can choose to share the S3 storage to Kubit.
+
+Kubit will provide the ID of a role used for accessing bucket data directly (without the need to assume your roles). All you need to do is to add the following statements to the S3 bucket policy (sample). For more details, please consult Kubit support team. ‍
+
+<CodeGroup>
+  ```bash bash
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": [
+          "arn: aws: s3:::<data bucket name>",
+          "arn: aws:53:::<data bucket name>/*"
+        ],
+        "Condition": {
+          "StringLike": {
+            "aws:userId": "«kubit role id>:*"
+          }
+        }
+      }
+    ]
+  }
+  ```
+</CodeGroup>
+
+<Warning>
+  ### Requester pays not supported
+
+  [Requester pays](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html) buckets require a special header to be passed around with each request. Currently, Snowflake does not provide a way to insert it. As a result, we do not support sharing with this option configured for the S3 bucket.
+</Warning>
+
+# Directory Structure
+
+* For parquet files, Snappy compression is recommended.
+* A Hive directory structure (directories organized by data indexes and partitions) is recommended to get the best performance. There are numerous libraries in each programming language to output this structure.
+* Directory pattern: `s3://<YOUR_BUCKET>/.../<TABLE_NAME>/<PARTITION_COLUMN_NAME>=<VALUE>/<PARTITION_COLUMN_NAME>=<VALUE>/`
+* Usually we suggest the following partition columns (in order): `event_date` (or `event_timestamp`), `event_name`. In such case, the directory would look like this: `s3://<YOUR_BUCKET>/.../<TABLE_NAME>/event_date=<DATE_VALUE>/event_name=<EVENT_NAME_VALUE>/1.parquet`
+
+## Automatic data ingestion
+
+There are two options to activate automated data ingestion.
+
+### Scheduled task
+
+Kubit team will configure a scheduled task which will trigger data ingestion at a regular time interval. You need to provide an estimated time window during which the data dump to S3 will finish on your end. The downside of this approach is that the dumping and loading jobs can go out of sync whenever the dumping job misses the estimated time window. Therefore, a better approach is to configure a S3 notification channel instead, as described below.
+
+### AWS S3 notifications
+
+AWS S3 has an option to send notification messages via AWS SQS on any file changes. Kubit team will deploy an AWS SQS queue upon request and provide access to hook your S3 bucket notification to that queue. You need to:
+
+1. Log into the Amazon S3 console.
+2. Configure an event notification for your S3 bucket. Complete the fields as follows:
+
+*General configuration*
+
+* Event name: `Auto-ingest Kubit`
+* Prefix: `folder_containing_data/`
+* Suffix: `.parquet`
+
+<Info>
+  ### Filtering data files
+
+  Please consider prefix and suffix selection carefully to limit the number of messages pushed to SQS. A high volume of notifications could negatively impact the data loading rate.
+</Info>
+
+*Event types*
+
+* Object creation: All object create events(`s3:ObjectCreated:*`)
+
+*Destination*
+
+* Destination: SQS queue
+* Specify SQS queue: Enter SQS queue ARN
+* SQS queue: `<kubit_sqs_arn>`
+
+***
+
+[Braze](/docs/braze)
+
+[Introduction to Data Modeler](/docs/introduction-to-data-modeler)

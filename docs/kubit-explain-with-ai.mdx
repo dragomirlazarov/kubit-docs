@@ -1,0 +1,103 @@
+---
+title: "Explain with Lumos"
+description: "Learn about Kubit's Explain feature powered by AI"
+---
+
+# Explain with AI
+
+Kubit is excited to launch it's new Explain with AI feature, designed to aid in the investigation and insight generation from reports you build in Kubit!
+
+Each report will allow you to Explain with AI using our new icon in the right hand panel. You will find it under the current Dictionary icon. Once a report is executed you can configure what response you want to generate with our AI and text will appear explaining those insights.
+
+You're able to copy the text generated and add it to whatever document you'd like, or add it to the Report to preserve the context. A Report with an Explain Summary will also be visible when added to a Dashboard.
+
+# How to use Explain with AI
+
+Here is a quick walkthrough on how to leverage our Explain with AI feature:
+
+* Build and Execute your report in Kubit
+* Once it's completed click the ✨ icon in the right hand panel to open Explain with AI
+* Select the information you want to receive in the response with our toggles
+* Click Start at the bottom of the panel
+* Review your results!
+
+![](/images/docs/377065d3987b25df235dd65fea7a1e9c6608eef1765a643d811051485f498c94-how_to_use_explain_with_AI.gif)
+
+# How to Interpret Errors
+
+It's not uncommon for our Explain with AI feature to respond with an error like the one shown below.
+
+This occurs when traffic to OpenAI is high or OpenAI is experiencing an issue. If you encounter this error please click 'Retry' to try again, or check [OpenAI's status](https://status.openai.com/) for any ongoing issues.
+
+![](/images/docs/47221a6d22b46d1abb64851127dba4bb8d01a39428058e9fa2955ccb71348dd8-Screenshot_2025-03-05_at_4.58.38_PM.png)
+
+# Implementation Process
+
+Kubit Lumos is available to all customers using our Enterprise and Growth platforms. Depending on how you're organization is implemented will determine how to implement Lumos.
+
+## Data Share Implementation
+
+* If your Kubit organization is leveraging **Data Share** as the method to access data Lumos will be implemented already, using Kubit's OpenAI account.
+* Each account is separate for every customer and your Kubit organization will have it's own OpenAI assistant.
+* You also have the option to connect Lumos to your own Open AI account via an API and Project Key.
+
+## Direct Connect Implementation
+
+* If your Kubit organization is leveraging **Direct Connect** as the method to access data Lumos must first be implemented using an Open AI account owned by your company.
+* You will input the Open AI Assistant API and model within our Admin Settings > Settings > AI Settings
+  * Input the Open AI Assistant API key and connect to your preferred model.
+
+# Frequently Asked Questions (FAQ)
+
+1. **What is the "Explain with AI" feature?**
+
+"Explain with AI" is Kubit's new AI-powered feature that provides automated insights and explanations for your reports. Using advanced AI models, it helps you understand key trends, anomalies, and recommendations based on your data.
+
+2. **How does "Explain with AI" work?**
+
+The feature leverages OpenAI’s Assistant API to analyze your reports. It considers the aggregate data, screenshot of your Report, and query definitions to generate insights. The AI provides executive summaries, key observations, statistical highlights, and recommendations.
+
+3. **What data is shared with "Explain with AI"?**
+
+The only data shared is the aggregated results visible on your report. No underlying data or raw rows are shared with OpenAI's Assistant API. We also share a screenshot of your report and a semantic description of the report definition.
+
+4. **Where can I access "Explain with AI"?**
+
+You can find the feature integrated within Kubit's reports. Simply select the "Explain with AI" option to receive an automated analysis of your data.
+
+5. **What kind of insights does "Explain with AI" provide?**
+
+* Executive Summary: A high-level overview of key trends and data fluctuations.
+* Key Insights: Trends, anomalies, and unexpected patterns.
+* Summary Statistics: Peak values, lowest values, and significant percentage changes.
+* Recommendations: Actionable suggestions to improve data interpretation and decision-making.
+
+6. **Can I customize the AI’s responses?**
+
+Yes, each customer can have a customized AI assistant persona. The AI can be tailored to provide insights relevant to your business needs and industry context.
+
+7. **Will "Explain with AI" remember past interactions?**
+
+Currently, the feature operates on a one-off basis per query and does not retain previous interactions. However, future updates may introduce persistent conversation threads for deeper analysis over time.
+
+8. **How accurate are the AI-generated insights?**
+
+The AI is trained on your dataset and provides data-driven insights with a high degree of accuracy. However, while it can highlight trends and provide recommendations, human validation is always encouraged for critical decision-making.
+
+9. **Is my data secure when using "Explain with AI"?**
+
+Yes, Kubit ensures that your data remains secure. The AI only processes the necessary context and does not retain sensitive or personally identifiable information.
+
+10. **Can I provide feedback on AI-generated explanations?**
+
+Absolutely! Your feedback helps us improve the feature. Please share your thoughts on the AI responses and suggest refinements to enhance the accuracy and relevance of insights.
+
+11. **Who should use "Explain with AI"?**
+
+This feature is ideal for analysts, product managers, and business users who want quick, actionable insights from their reports without manually analyzing large datasets.
+
+***
+
+[Lumos Cohort Creation](/docs/natural-language-cohort-creation)
+
+[MCP Server](/docs/mcp-server)

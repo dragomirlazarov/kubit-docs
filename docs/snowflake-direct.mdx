@@ -1,0 +1,109 @@
+---
+title: "Snowflake"
+description: "Integrate via Direct Connect"
+---
+
+# Steps
+
+## 1. Create a Role
+
+[Create a role](https://docs.snowflake.com/en/sql-reference/sql/create-role), name it `KUBIT`.
+
+<CodeGroup>
+  ```bash bash
+  CREATE ROLE KUBIT;
+  ```
+</CodeGroup>
+
+## 2. Generate a Key-pair
+
+Here's [Snowflake's full guide](https://docs.snowflake.com/en/user-guide/key-pair-auth#configuring-key-pair-authentication) for reference).
+
+```
+openssl genrsa 2048 | openssl pkcs8 -topk8 -v2 des3 -inform PEM -out rsa_key.p8
+openssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub
+```
+
+## 3. Create a User
+
+[Create a user](https://docs.snowflake.com/en/sql-reference/sql/create-user), name it `KUBIT` and set the public key you generated in the previous step.
+
+<CodeGroup>
+  ```bash bash
+  CREATE USER KUBIT RSA_PUBLIC_KEY ='MIIBIjANBgkqh...' DEFAULT_ROLE=KUBIT
+  ```
+</CodeGroup>
+
+## 4. Create a Database
+
+Kubit needs to create a very small auxiliary table to support some features.
+
+1. [Create a database](https://docs.snowflake.com/en/sql-reference/sql/create-database) called `KUBIT`.
+   <CodeGroup>
+     ```bash bash
+     CREATE DATABASE KUBIT;
+     ```
+   </CodeGroup>
+2. Make the `KUBIT` role [owner](https://docs.snowflake.com/en/sql-reference/sql/grant-ownership) of the `KUBIT` database. This will allow us to create and execute tasks that are only available to an owner role.
+   <CodeGroup>
+     ```bash bash
+     GRANT OWNERSHIP ON DATABASE KUBIT TO ROLE KUBIT;
+     ```
+   </CodeGroup>
+
+## 5. Create a Warehouse
+
+Create a [Data Warehouse](https://docs.snowflake.com/en/user-guide/warehouses-overview) called `KUBIT` (size depends on your data volume)
+
+Grant the `KUBIT` role the following [privileges](https://docs.snowflake.com/en/user-guide/security-access-control-privileges): `MONITOR | USAGE | OPERATE`
+
+<CodeGroup>
+  ```bash bash
+  CREATE OR REPLACE WAREHOUSE KUBIT WAREHOUSE_SIZE=... INITIALLY_SUSPENDED=TRUE;
+  GRANT MONITOR ON WAREHOUSE KUBIT TO ROLE KUBIT;
+  GRANT USAGE ON WAREHOUSE KUBIT TO ROLE KUBIT;
+  GRANT OPERATE ON WAREHOUSE KUBIT TO ROLE KUBIT;
+  ```
+</CodeGroup>
+
+## 6. Grant Access
+
+Add read-only ([SELECT on FUTURE](https://docs.snowflake.com/en/sql-reference/sql/grant-privilege#future-grants-on-database-or-schema-objects)) permissions to the `KUBIT` role to the schema(s) containing the views interfacing with Kubit.
+
+## 5. Share Connection Details (Optional)
+
+Share your Snowflake account locator, private key and key password and warehouse name with the Kubit team if you need help setting up your Kubit environment.
+
+## 7. Split Test and Production Workloads (Optional)
+
+<Check>
+  ### Best Practice
+
+  Create one more user role and warehouse for development purposes in order to isolate the impact on the production environment and avoid accidents.
+</Check>
+
+# Best Practices
+
+## Clustering Keys
+
+1. Kubit works with time-series data so clustering by date of the fact tables is essential for performance for tables bigger than 1TB.
+2. Since most Kubit reports also filter by event name it is beneficial to add the event name as a second cluster column.
+
+Here's Snowflake's reference for [Clustering Keys](https://docs.snowflake.com/en/user-guide/tables-clustering-keys).
+
+## Warehouse Configuration
+
+You have 4 major parameters to think of when creating a warehouse:
+
+* **Type** - [Gen2](https://docs.snowflake.com/en/user-guide/warehouses-gen2) is the recommended type for analytical workloads.
+* **Size** - start small and only improve based on evidence from [Query History](https://docs.snowflake.com/en/user-guide/ui-snowsight-activity). If the warehouse feels slow you should examine your queries with [Query Profile](https://docs.snowflake.com/en/user-guide/ui-snowsight-activity#query-profile-reference). Look for Bytes spilled to disk above 0, if the warehouse is spilling often you need to increase the size.
+* **Auto-resume** - you want this on so any activity wakes up the warehouse.
+* **Auto-suspend** - this setting controls for how long the warehouse should remain up and idling after all running queries have finished executing. The trade-off is between cost saving and a few additional seconds on some Kubit reports to account for the warehouse waking up. Our default recommendation is to set it to the minimum possible - 1 minutes.
+
+![](/images/docs/081c117a60f78227c503b58464a535d5d0360d76ba223ce25675cc41d59c8e2f-Screenshot_2026-02-05_at_16.33.32.png)
+
+***
+
+What’s Next
+
+* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)

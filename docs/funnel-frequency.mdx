@@ -1,0 +1,27 @@
+---
+title: "Frequency Mode in Funnel"
+description: "Analyze user behavior patterns by tracking how many times users perform each step before progressing through your funnel using Frequency Mode."
+---
+
+## Frequency Mode
+
+When you run a Funnel in `Frequency` mode, the chart displays:
+
+1. The number of times users trigger an event at a specific step before moving to the next.
+2. The percentage of users who trigger an event a certain number of times before advancing.
+
+![](/images/docs/4c9a74ef5bc647bc08f31285bd5f5111d76e5967ee2b8ce9b0b201bb87c9466f-frequency_mode.gif)
+
+### Constraints
+
+* You can view the frequency for only one step at a time.
+* The last step of the Funnel does not have a frequency, as there is no subsequent step.
+* The `Time Unit` is fixed to `All Time` to ensure clarity in the chart.
+* Frequency is calculated only for consecutive steps, so `Frequency` mode is unavailable for `Order: Any`.
+* Combining `Frequency` mode with `Partition: None` is not recommended, as it may produce excessive frequencies, reducing analytical value. This mode is most insightful with short conversion windows (up to a day).
+
+***
+
+[Funnel Tips and Tricks](/docs/funnel-tips-and-tricks)
+
+[Time to Convert (TTC) Mode in Funnels](/docs/time-to-convert-mode-in-funnel)

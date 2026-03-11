@@ -1,0 +1,42 @@
+---
+title: "Using the Date Picker"
+description: "Configure date ranges and time intervals for reports—understand Live Date settings, select daily to yearly intervals, and customize how data aggregates across Query, Funnel, and Retention analyses."
+---
+
+# Dates in Kubit
+
+Kubit enables you to customize and select key date elements within your instance.
+
+## Live Date
+
+The Live Date, or `Today` in Kubit represents the last day of data available for your analysis. This may vary for each customer due to factors such as:
+
+* Data Latency - Live Date is often set to lag by one or two days
+* Ingestion pipelines to your data warehouse
+* Business requirements to display data only after a certain period
+
+In our date picker the Live Date or `Today` is selected by default.
+
+## Intervals of Time to Select
+
+Kubit allows you to aggregate data across various time intervals. This means whatever time interval you select will be the number of data points you see on the chart for things like Query, Funnel and Retention.
+
+Intervals of time are not available for Data Tables, Flow, Cohorts or Significance. Tip: To see a Data Table broken down by `Month`/`Week`/`Day`, add the value as a breakdown. Look for `Event Month` or `Event Day` Fields.
+
+Available time interval options for Query, Funnel, and Retention include:
+
+* `Daily`
+* `Weekly`
+* `4-Weeks` - groups based on each bucket of 4 weeks, regardless of what Months those weeks occur.
+* `Monthly`
+* `Yearly`
+* `All Time` - aggregates all data into a single point over the entire Start and End Date range.
+
+***
+
+What’s Next
+
+* [Schedule Refreshes](/docs/schedule-refreshes)
+* [Retention](/docs/retention-1)
+* [Integration Guide](/docs/integration-guide)
+* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)

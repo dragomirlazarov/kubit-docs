@@ -1,0 +1,186 @@
+---
+title: "Advanced Query Features"
+description: "Explore advanced Query features like Histograms and Impact Analysis to deepen your data insights."
+---
+
+In all Kubit reports, use the "Additional Settings" dropdown at the top to access advanced features, usually found in the Mode setting.
+
+In Query there are 2 Modes:
+
+* **Query** - The standard report type that is explained in this help [article](doc:query#query-use-cases).
+* **Impact Analysis** - A valuable report method that let's you see the impact of a particular metric before and after a user performs an event for the first time.
+
+# Impact Analysis
+
+Within Impact Analysis the main use case is: "What is the impact to Metric A after a user engages with Event A?" More practically, here are a few examples from your favorite digital products:
+
+* What is the impact to Total Time Watched after a user is shown a Content Recommendation?
+* What is the impact of Total Sessions after a user signs up?
+* What is the impact of Customer lifetime value (LTV) after they purchase their first premium item?
+
+## Steps to build your Impact Analysis
+
+1. Change the Mode in Query to Impact Analysis.
+2. Choose the Metric you want to measure that is going to be impacted. Typically these are Sum, Count Event, or a [Compound Measure](doc:query#compound-measures), showing percent per User.
+3. Apply any necessary filters or breakdowns.
+4. Define the date range.
+5. Select the Event that is the Impact or "trigger" event. This will be the thing that you believe will Impact your metric you built in Step 1.
+   1. Examples include Campaign Impression, Content Recommended, Signed In, etc.
+6. Execute the analysis!
+
+Let's see an example of "What is the Impact of Total Watch Time after a user Enables Notifications?"
+
+![](/images/docs/ab57906105f255eebd34c59c7f38b42d5536a85af08d25468f5d52889af0b7ed-steps_to_build_your_impact_analysis.gif)
+
+## Interpreting Results of Impact Analysis
+
+When you see the results what you see is the following:
+
+* A Day 0 indicator in the center of the chart showing that is was the first time in the period you selected that these users performed the "Enable Notifications" event.
+* A negative and positive Day counter on either side.
+  * This shows the days less than or after the Day 0 event date. It could be different for each user as you're selecting a date range so we normalize them for you.
+* A line indicating the Metric (or Measure) you defined in Step 1.
+  * This will show IF the metric was impacted by the event you selected.
+
+![](/images/docs/a6bbf4a7040cb60e9c2f779dba1d8072190477cfdcb94c67d686702aeaeb6ba1-interpreting_results_of_impact_analysis.png)
+
+What we can see in our example is that in general "Enable Notifications" had a positive impact on Total Watch Time for our users during that time period.
+
+# Histogram
+
+* Oftentimes, understanding the number of users with a particular occurrence of an event or compound measure is helpful to understand distribution of engagement.
+* In Kubit you can build Histograms on any Sum/Avg/Min/Max Functions
+
+## Steps to build your Histogram Analysis
+
+1. Change the Mode in Query to Histogram.
+
+2. Select the Metric you want to measure that is going to be impacted. Typically these are Sum, Count Event, or a [Compound Measure](doc:query#compound-measures) , showing % per User.
+
+3. Select the Subject you want to analyze, this will be the "thing we are counting" that would perform the measure you create in Step 2.
+
+4. Choose your 'Count Subject' by in the y-axis
+
+5. Choose your 'Group By' in the x-axis (Binning)
+
+   1. You are able to use a pre-built Range if it's applicable or create a custom one.
+   2. These Bins will be related to the expected values from your Measure in Step 2.
+      1. Ex. If you are counting events performed and a user typically only can do that action 10 times in a day then the max number of your Range would likely be 10.
+
+6. Apply any necessary filters
+   1. You cannot perform Breakdowns in Histogram Mode
+
+7. Select the date range
+
+8. Execute!
+
+This example shows a histogram of Users based on the SUM of Minutes Watched on a Streaming Application. The Range of 100 means each Bin size is equally distributed up to 100 minutes.
+
+## Interpreting Histogram Results
+
+Once the histogram computes you'll see the results grouped by the Range bins you created in Step 4. This means that each color group is all Subjects that fell into that Range for the day/week/month/all time.
+
+![](/images/docs/28f48e373baac89f157bb37e4600d5ebdedd3199ffecafda25c3961f5f950a34-interpreting_histogram_results.png)
+
+Using our example from above we can see that for 6/2/22 we are looking at Overall 444 users. Of those users **117** of them watched between **0-20 min of content**.
+
+If we wanted to make a Cohort of users who fell in this Range we could left click on one of the bars and click `Create Cohort` from that data point.
+
+# Custom Alert Monitors in Query
+
+When a Query is monitoring critical KPIs it's important to be alerted when a measure or compound measure dips below or above a certain threshold. Previously Kubit detected these anomalies using our own model but now you are able to set thresholds yourself!
+
+![](/images/docs/a1ecc4447f1f47d8917b93dd339042d25d3c420e0570efab74aa910228ffd89e-custom_alert_monitors_in_query.gif)
+
+When creating a schedule for the Query report, follow the same flow of:
+
+* Naming the Schedule.
+* Setting the refresh timeframe.
+* Adding recipients to the emails of that Report and any Alerts.
+
+The newly added functionality allows you to set thresholds of when an alert will fire on a given day.
+
+* Click "Custom Threshold Met".
+* Input the parameters, meaning if any value on the chart is Above/Below a specific number.
+* You can also set Alerts based on percent change from the previous day by adding a [Comparison Analysis](doc:query#compare-mode-in-query) to your Query.
+
+# Rolling Measures
+
+Want to know what's your weekly/monthly active users on a daily basis? Or what's the moving average for any given day? Rolling Measures is a new feature designed to help you get those answers.
+
+## Rolling Options
+
+There are three options. For each, you are able to select from the pre-filled numbers or type in your own and select it.
+
+### Rolling Average
+
+For every day of the date range, do an average of the measure values for the last X days (including the current day).
+
+### Rolling Sum
+
+For every day of the date range apply, the Measure Function and do a sum of the Measure values for the last X days (including the current day).
+
+### Rolling Window
+
+For every day of the date range, apply the Measure Function over the date range window.
+
+## How to Build a Rolling Measure
+
+Build your Measure in Query and when selecting your Measure By option (under your selected event) you will see a Rolling option in the top right of the dropdown.
+
+* Select your Rolling option
+* Select the pre-defined days or enter your own custom days and click the checkmark
+* Execute your Query
+
+![](/images/docs/84a482dbf699abbc7c92d49c1a83a3b640f42644847ce4ef50da3b7b0ac3fc85-how_to_build_a_rolling_measure.gif)
+
+<Warning>
+  ### Constraints with rolling measures
+
+  Rolling Measures can span a maximum of 90 days.
+</Warning>
+
+## Compound Rolling Measures
+
+You're also able to create multiple Rolling Measures and build formulas from their results. Here are a few examples:
+
+* Rolling DAU/WAU %
+  * Rolling 7 day Average of Unique Users divided by Rolling Window of 7 days of Unique Users
+* Rolling DAU/MAU %
+  * Rolling 7 day Average of Unique Users divided by Rolling Window of 30 days of Unique Users
+
+![](/images/docs/f9e8bc08d12009395ba28edaa9c576d7d8ebcd1045d1a7fbe46a61554835c43a-compound_rolling_measures.gif)
+
+# Measure Filters
+
+Measure Filters allow you to easily exclude outliers, especially when breaking down ratios. Let's consider the following example:
+
+![](/images/docs/c3157ca73cb77e1abff6452469ade01079c59f5d3ad76cce2b6009fba8383e51-measure_filters.gif)
+
+It's a simple ratio broken down by Country and interestingly there are some very high ratios:
+
+![](/images/docs/efc5310c55eb3bdc1bbf2315c8e173958a8d4b53becc7b700459fda6d27b54b6-its_a_simple_ratio.png)
+
+Taking a closer look we can see the reason for the high ratios are the very low denominators. And this is the whole problem we are trying to solve here, very often when analyzing huge volumes of data there will be these outliers which creep up the order and prevent us from seeing the actual patterns clearly.
+
+![](/images/docs/806d18513ab45eddf4dc1757c12ff62e8f540f6b21cdf3aff5476629813fed10-taking_a_closer_look.png)
+
+Let's apply a Measure Filter to find all ratios where B > 100, so we can get a more representative order.
+
+![](/images/docs/edb946618386e0540348f50ad02b316be863d75d5fc070dccf783f5166471fad-b-100.gif)
+
+And sure enough, we get a very different top ratios from a different set of countries.
+
+![](/images/docs/61673418c43f53b0764a9843bcdf736b3fc4c73f5066895168d45959243217de-image.png)
+
+Note how all the B measure values are > 100:
+
+![](/images/docs/0e5887ca0bd9b3bd61bb145d97c4de6239fc03de5065cc575748d37e6e5879d4-b-100.gif)
+
+***
+
+What’s Next
+
+* [Query](/docs/query)
+* [Sampling Options](/docs/sampling-options)
+* [Significance Report](/docs/significance-report)

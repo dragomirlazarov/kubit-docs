@@ -1,0 +1,73 @@
+---
+title: "Databricks"
+description: "Integrate via Direct Connect"
+---
+
+# Steps
+
+## 1. Create a Warehouse
+
+Create a [Serverless SQL Warehouse](https://docs.databricks.com/en/sql/admin/serverless.html#create-a-serverless-sql-warehouse) (size depends on your data volume)
+
+## 2. Create a Service Principal
+
+Create a [Service Principal](https://docs.databricks.com/en/administration-guide/users-groups/service-principals.html) with the following permissions:
+
+1. Grant SELECT on the Schema which will contain the views interfacing with Kubit
+2. Permission to access the warehouse (to execute the analyses)
+3. Access to the [Query History](https://docs.databricks.com/en/sql/admin/query-history.html) of the user (for troubleshooting purposes)
+
+## 3. Split Test and Production Workloads
+
+<Check>
+  ### Best Practice
+
+  Create one more warehouse and service principal for development purposes in order to isolate the impact on the production environment and avoid accidents.
+</Check>
+
+# Best Practices
+
+## Partitioning
+
+Like other warehouses, Databricks supports table partitions which can be used to speed up queries and optimize costs at the same time. The main consideration when selecting partition columns in order to get the most performance out of your Kubit environment is to have an (event) date column as partition key on your fact table(s). Alternatively, a common pattern on Databricks is to use 3 partition keys - year, month and day - we can still leverage those and there is no need to create a separate date column in that case.
+
+## Warehouse Configuration
+
+You have 4 major parameters to think about when configuring your warehouse:
+
+* **Cluster Size** - start small and only improve based on evidence from [Query History](https://docs.databricks.com/en/sql/user/queries/query-history.html). If the warehouse feels slow you should examine your queries with [Query Profile](https://docs.databricks.com/en/sql/user/queries/query-profile.html). Look for **Bytes spilled to disk** above 1, if the warehouse is spilling often you need to increase the size.
+* **Auto Stop** - this setting controls for how long the warehouse should remain up and idling after all running queries have finished executing. The trade-off is between cost saving and a few additional seconds on some Kubit reports to account for the warehouse waking up. Our recommendation is to set it to the minimum possible - `5 minutes` from the UI or `1 minute` (you will need to use the [warehouse SQL API](https://docs.databricks.com/en/compute/sql-warehouse/warehouse-behavior.html) to do that).
+* **Scaling** - always start with a minimum and maximum of `1`. You only need to scale your warehouse once you reach the point of running [10 queries concurrently](https://docs.databricks.com/en/compute/sql-warehouse/warehouse-behavior.html#:~:text=Databricks%20recommends%20a%20cluster%20for,in%20the%20next%20two%20minutes.) multiple times a day.
+* **Type** - as a rule of thumb go with Serverless. But the answer is - it depends on how much load you are going to put on the warehouse. You should be aware that Serverless becomes more expensive than Pro if it's running 24/7.
+
+![](/images/docs/136d4543bc3fe26375af1156a2551012b1e0c37e7206cbeddf1044481014be31-sql-warehouse-config.png)
+
+### References
+
+* [SQL warehouse sizing, scaling, and queuing behavior](https://docs.databricks.com/en/compute/sql-warehouse/warehouse-behavior.html)
+
+## Usage Monitoring and Optimization
+
+Keep your costs in check by leveraging the monitoring tools that Databricks provides:
+
+* [Monitor a SQL warehouse](https://docs.databricks.com/en/compute/sql-warehouse/monitor.html)
+* [Monitor usage in the account console](https://docs.databricks.com/en/admin/account-settings/usage.html#import-a-usage-dashboard)
+* [Queries for Cost Attribution using System Tables](https://community.databricks.com/t5/technical-blog/queries-for-cost-attribution-using-system-tables/ba-p/76558)
+* [Query history system table reference](https://docs.databricks.com/en/admin/system-tables/query-history.html)
+
+<Warning>
+  ### Be careful
+
+  A stopped Serverless Warehouse can start even if there is no query for it to execute in the following cases:
+
+  * A connection is established to a stopped warehouse from a JDBC/ODBC interface.
+  * A dashboard associated with a dashboard-level warehouse is opened.
+
+  The article [Start a SQL Warehouse](https://docs.databricks.com/en/compute/sql-warehouse/index.html#start-a-sql-warehouse) contains a full list of conditions which will wake a stopped warehouse.
+</Warning>
+
+***
+
+[BigQuery](/docs/bigquery-direct)
+
+[ClickHouse](/docs/clickhouse-direct)

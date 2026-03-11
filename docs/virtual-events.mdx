@@ -1,0 +1,69 @@
+---
+title: "Virtual Events"
+description: "Combine multiple events or apply custom filters to create reusable virtual events, save complex event logic for consistent analysis, and streamline reporting across your organization."
+---
+
+# Virtual Events
+
+Often events are enough, but if an event filtered by specific fields or a combination of multiple events means another event you can create those in Kubit via Virtual Events.
+
+<Warning>
+  ### Enable permissions to delete a Virtual Event
+
+  You must have permissions enabled for all Virtual Event functionality. Check your permissions in Personal Settings. If you're unable to do any of these actions, request these permissions via your Kubit Admin.
+</Warning>
+
+## How to Create Virtual Events
+
+1. Build the new event you want to reuse by creating it inside any Kubit Report.
+
+   1. Be sure to include any applicable filters in your definition.
+   2. Adding multiple events within a Virtual Event behaves like an "OR" operator.
+
+2. Click the vertical three dots that appear to the right of the event block and select "Save Virtual Event".
+
+3. Once the save modal appears add a meaningful name, description, and any Tags you'd like to associate with this new Virtual Event.
+
+4. Click Save and now it's available as an event you can select in your event list dropdown or quick access dictionary.
+
+![](/images/docs/7890b91bec44a5114419847955f0af92c41516db40bc11dd5c4a0e5d046cad06-how_to_create_virtual_events.gif)
+
+<Warning>
+  ### Virtual Event filters
+
+  Virtual events don't actually allow additional filters once you've created them. So, please be sure to include all required filters before you save them.
+</Warning>
+
+<Info>
+  ### Limitation of use of aggregation for Virtual Events
+
+  You will not be able to create a Virtual Event in Query and use an aggregation Measure By function. These include `sum`, `avg`,`min`, `max`, etc.
+</Info>
+
+## How to Edit Virtual Events
+
+Once a Virtual Event has been created you may find that new logic or conditions should be applied to it. Modifying a Virtual event follows a similar path as creating one.
+
+1. Add a Virtual Event to your report and click the "i" icon once it's been added.
+2. Once the Virtual Event "i" icon has been clicked select the "Expand" option in the lower right corner.
+3. Once you've expanded the Virtual Event you should see all parts of it populate the report builder. Now you're able to make any adjustments you need.
+4. After all changes have been made click the vertical three dots that appear to the right of the event block and select "Save Virtual Event".
+5. Once the save modal appears click the "Update Existing" radial button.
+6. Select the Virtual Event you want to edit from the "Name" section dropdown list.
+7. Click Save and now it's updated with your new logic!
+
+![](/images/docs/daab79d0d0b4031bd793669b43c94019499bd6d011bed99693b862acc9767b67-how_to_edit_virtual_events.gif)
+
+## How to Rename Virtual Events
+
+Any Virtual Event can be renamed from the Dictionary section of Kubit. Navigate to the Dictionary section from the database icon in the upper right-hand navigation.
+
+Locate the Virtual Event section within Dictionary and click the name of the Virtual Event to rename it.
+
+![](/images/docs/fe4afb03817a28bf7b6d680158b5068d104c5b1ac155208550f8097448a0fbd6-how_to_rename_virtual_events.gif)
+
+***
+
+[Dictionary](/docs/dictionary)
+
+[Incidents](/docs/incidents)

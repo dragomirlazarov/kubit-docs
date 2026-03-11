@@ -1,0 +1,65 @@
+---
+title: "AI Prompting Best Practices"
+description: "YouTube embed"
+---
+
+This quick tutorial will give you tips and examples of the best ways to prompt Lumos to give you the best answer every time. We will walk through prompt engineering fundamentals then get into Kubit and see it action with Lumos.
+
+<Warning>
+  Lumos is available to Enterprise tier customers. If you'd like to enable our NLP Report Builder please reach out to your Kubit CSM.
+</Warning>
+
+# What is a prompt?
+
+A prompt is the message or question you type to tell the AI what you want. It’s how you communicate with the AI. It’s like giving instructions to a super-smart assistant. But the response is only as good as the question you ask.
+
+If you just ask your friend if they want to see a movie…how can they say “yes”?
+
+* Which movie?
+* What theater?
+* At what time?
+* When?
+
+This context is necessary to get the proper response and enjoy the show. The same applies when speaking with AI Agents, like Lumos.
+
+# How should I structure my prompt?
+
+The best way is to ensure you have the context necessary included in your prompt. Avoid vauge superlatives like "best" or "popular" and be super clear about the Metric you want to measure.
+
+A good template is:
+
+I want to see **\{metric}** for **\{segment of users/sessions/events}** but only looking at **\{some limit you want on the data}** for **\{time period}**.
+
+In action it could look like:
+
+> I want to see **total number of purchases** for **active users** but only looking at **US customers** for t**he last month**.
+
+# Prompt Best Practices
+
+* ### Be specific and clear
+
+  * Instead of “What is our traffic?”, try “How many active users do we have? ”
+
+* ### Include time and filter context in your prompt
+
+  * If you’re looking at a specific period of time and only want to see results for a single platform or experiment explain that in your prompt.
+  * “How many users clicked on the subscribe button last month for Roku devices. Did that change from the prior month?”
+
+* ### Invest in your Data Model Definitions
+
+  * Lumos inspects event/field definitions to interpret prompts better
+  * Enrich you most important event and field descriptions in the [Dictionary](https://docs.kubit.ai/docs/dictionary) and [Data Modeler](https://docs.kubit.ai/docs/introduction-to-data-modeler#change-field-name-and-description) for clearer context.
+
+* ### Iterate with follow‑ups
+
+  * Ask next-step questions like “Can you break that down by country?” or “Show me related cohorts.”
+
+* ### Cohort creation via natural language
+
+  * Simply define cohorts like: “users who purchased ≥4 items last month and also subscribed to our newsletter”
+
+***
+
+[Lumos AI Settings](/docs/lumos-ai-settings)
+
+[Ask Lumos](/docs/ask-lumos)

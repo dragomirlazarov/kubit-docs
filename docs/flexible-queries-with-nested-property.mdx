@@ -1,0 +1,65 @@
+---
+title: "Flexible Queries with Nested Fields"
+description: "Working with semi-structured data types using nested fields in Kubit."
+---
+
+## Introduction
+
+When working with JSON or BigQuery Struct types, such as [user\_properties and event\_params for Firebase data](https://medium.com/firebase-developers/using-the-unnest-function-in-bigquery-to-analyze-event-parameters-in-analytics-fb828f890b42), the `Nested Property` feature allows you to access internal properties for use in Filter, Breakdown, or Function. This is particularly useful for experimenting with new data captured dynamically.
+
+Keep in mind that using `Nested Property` requires technical knowledge, and analyses may not perform as quickly as when properties are exposed as first-class fields.
+
+## Requirements to Use Nested Fields
+
+* Available exclusively to Kubit Enterprise customers.
+* Requires understanding of the internal data structure of JSON or Struct fields.
+* Advanced users should be familiar with JSON Path for JSON fields.
+
+## How to Use a Nested Field
+
+1. Select a **Nested Field** in Filter, Breakdown, or Function Property. Kubit denotes a Nested Field with **\[:]** before the field name.
+
+2. Click the field to expand available JSON top-level keys.
+
+   * Most fields are auto-cast to `STRING` data types.
+   * To change the data type, hover over the JSON top-level key and select the desired type from the dropdown.
+
+![](/images/docs/c5e5c2292641d0a5b455f3a3cc82add04569dda74f92d721455d82b20b9dbbd1-How_to_use_a_nested_field.png)
+
+3. After selecting the JSON Key, choose your operator (if using as a filter) or continue building and execute your report.
+
+## Using Nested Fields as Filters
+
+Kubit populates each top-level Key value with the most popular values for easier filtering.
+
+![](/images/docs/7243d03f3539705674aa9e5bc5844bd37f4ce4af43e35f976101f65506a15c73-using_nested_fields_as_filters.gif)
+
+If the list of values is outdated, use the [Event Field Value](https://docs.kubit.ai/docs/introduction-to-data-modeler#minimum-refresh-interval) refresh button at the bottom of the field value dropdown in the filter widget.
+
+![](/images/docs/edb56a84bfca929b65b28c1ad98d6314f0207218849b5bdd482b64f86616e60a-using_nested_fields_as_filters_2.png)
+
+## Advanced Use Cases for Nested Fields
+
+If you need to step through multiple levels of a JSON field you're able to type in the path you want Kubit to traverse in your field.
+
+Depending on your Cloud Data Warehouse this syntax may be different but here is an example in BigQuery:
+
+I have a JSON field called 'Device Properties' but I need to retrieve the value from the second level of the JSON called 'state' which is inside the 'locale' key. I will type *locale.state\[1]* to retrieve the value in the 2nd position of the state array within this object.
+
+Here are more generic steps you can follow:
+
+1. Navigate to your JSON field
+2. Hover over the Field name and you will see the option to select a Custom JSON Path in the right hand panel.
+3. Type in your JSON path and, if necessary, specify the location within an Array you'd like to retrieve.
+4. Our JSON Nested Field feature will only retrieve one value from the field.
+5. Select the data type
+6. If using as a filter, select your filter operator and hardcode the value.
+7. Because these aren't categorized using our Event Field Value refresh you will have to manually enter the value you want to filter by.
+
+![](/images/docs/fdc0366955bfa678b4aa371e7697e11628725261041f275be9f3ae6171d89c6a-advanced_use_cases_for_nested.gif)
+
+***
+
+[Sampling Options](/docs/sampling-options)
+
+[Dashboards](/docs/creating-dashboards)

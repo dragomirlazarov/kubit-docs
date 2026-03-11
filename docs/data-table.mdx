@@ -1,0 +1,90 @@
+---
+title: "Data Table"
+description: "Build pivot-style reports with saved measures and up to five breakdowns to view aggregated metrics side-by-side and compare data across multiple dimensions."
+---
+
+Data Table provides a pivot table visualization for tabular reporting. Simply add your Measures and [Compound Measures](doc:query#compound-measures) to provide the calculation values, then pivot based on Breakdowns and Segments.
+
+Watch our [Data Table Training Video](https://help.kubit.ai/en/articles/8678066-data-tables-training)
+
+Use Cases for Data Table:
+
+* Only interested in measures aggregated and side by side, no lines/bars.
+* Allows for multiple breakdowns (up to 5) similar to a Pivot Table in Excel or Tableau.
+* See ALL the data.
+
+# Building a Data Table
+
+Data Table is similar to [Query](doc:query) in that it's made of Measures, Compound Measures and the standard filters/breakdown/segments.
+
+* Build the Measures you want to see aggregated directly within the data table.
+* If you want to create a separate measure similar to the one you have, you can easily duplicate and then change the parts you want.
+
+![](/images/docs/40b5f496c9b5ac27f752cce6bf6594b1d7fd69b3afbe239ca4750b75af690393-building_a_data_table.png)
+
+* Select [Saved Measures](doc:components-of-a-report#saving-and-updating-measures) by clicking "Measure Options" and then "Add Named Measure" and select the one you want to use.
+
+<Warning>
+  ### Use Query to build Compound Measures
+
+  Note that you are only able to build Compound Measures in Query. Once you Save them you'll be able to select them in Data Table.
+</Warning>
+
+![](/images/docs/2620715c3e4c5ba11616b34e1b9df8401e6ae789edda4325642bd398c86d9097-building_a_data_table_2.gif)
+
+# Data Table Results
+
+Once executed the result will be a pivoted view of:
+
+* Rows for each breakdown group you've applied.
+* Columns for each Measure you've selected.
+* Additional columns for any Segments you've applied.
+
+![](/images/docs/50fced9a7ca199c1c9e860dc38f3378349cbcb887617fc125ae2b99e0c883106-data_table_results.gif)
+
+You are able to search, sort, and format the items within the Data Table. You can also Rename the columns to make sure it's clear what the Measure represents.
+
+# Compare in Data Table
+
+In the Data Table report, you can compare a measure against its previous day, week, month, quarter, year, or another custom date range.
+
+When constructing your Data Table:
+
+1. Select a Compare range next to your report date picker.
+2. Execute your report.
+3. You'll see a 'Previous' column containing the Compare date range data and a 'Current' column containing the report date picker data.
+4. You can also toggle on "Show % Change" above the table to visualize the change over time as a % with color formatting.
+
+![](/images/docs/070ec39f0e00244e366b0e91c12246af3fc2e4dfa31b62302737f5e8592169fa-compare_in_data_table.gif)
+
+## Additional Options
+
+You are also able to:
+
+* Add the Data Table to a Dashboard.
+* Export the Table to a CSV.
+* Reset any sort or search filters applied.
+
+![](/images/docs/ec05f25a6a9b412c77f6dff4ae2ac1e54409ee5862d09893cfcb3f34f00461ad-additional_options.png)
+
+# Data Table FAQs
+
+**When should I use a Data Table?**
+
+* Data Tables are great ways to aggregate data over periods of time, and compare metrics across various breakdown groups.
+* If you want to see the aggregated metrics side by side for breakdown groups use a Data Table.
+* If you want to see multiple Compound Measures you are able to add multiple Compound Measures on a Data Table.
+
+**When should I NOT use a Data Table?**
+
+* If you're goal is to view information trended over time it's better to use a Query report as that will show you data plotted over days, weeks, months etc.
+* If you want to see data in a line, bar, pie chart, or stacked column you should use a Query report.
+
+If you've build a Data Table and realized it's not what you need, click Next Steps which can be found right under the table results, and click on a Query report to transition your selections into a Query builder. This will speed up your workflow and avoid you having to rebuild everything and flexibly move from report types.
+
+***
+
+What’s Next
+
+* [Components of a Report](/docs/components-of-a-report)
+* [🎥 Data Tables Training](/docs/data-tables-training-video)

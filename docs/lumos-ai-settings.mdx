@@ -1,0 +1,71 @@
+---
+title: "Lumos AI Settings"
+description: "Learn how to configure Lumos AI settings in Kubit, including enabling features, setting API keys, and customizing natural language capabilities."
+---
+
+Kubit has centrailized all Lumos AI settings, available to all Admins of a Kubit organization. You can find the Lumos AI settings by clicking into the upper right logo, select `Admin Settings`, and navigate to `Lumos AI`
+
+<Warning>
+  These settings are only visible to users with role `Admin`.
+</Warning>
+
+![](/images/docs/e2cb41a63be05336d88352f9a878088810206070ec1af200275521a5a1acf556-lumos-ai-settings.jpg)
+
+# AI Configuration
+
+This setting allows an admin to enable and disable all Lumos related features in Kubit. If this is disabled no end users will be able to see or use any Lumos features including Explain with Lumos, Report and Cohort Creation, and Ask Lumos.
+
+If you want to update the configuration of Lumos follow these steps:
+
+1. Enable or disable the toggle
+2. Scroll to the bottom of the page and click 'Save'
+3. You will see a notification that AI settings have been updated
+
+## API Key
+
+If Kubit has enabled Lumos for you and you've chosen to use our OpenAI API key you are not required to update information here. If your organization would like to use their own OpenAI API key you can input that here and click 'Save'.
+
+# Natural Language Capabilities
+
+Lumos allows you to configure the AI model used to power natural language features, including asking questions in plain English and generating readable explanations of reports and insights.
+
+## Model
+
+Use the available dropdown to select the appropriate OpenAI model you want to use. If you've created a specific model in your own OpenAI account you can direct Lumos to use that here if you are using your own OpenAI API Key.
+
+If you update this API Key you must scroll to the bottom of the page and click 'Save'.
+
+## Auto Execute Prompts
+
+You can decide if reports are executed immediately after Lumos builds them or if they require a user to manually execute each time. Lumos has this setting disabled as the default.
+
+If you update this setting you must scroll to the bottom of the page and click 'Save'.
+
+Enabling will cause every Lumos response to execute a report and may cause an increase in query volume.
+
+## Schema Instructions
+
+To allow additional customization and context, Lumos allows you to enter additional prompts about your data, core metrics, business, and direction on how to create reports.
+
+If you update this setting you must scroll to the bottom of the page and click 'Save'.
+
+### Prompt tips
+
+* Write one instruction per line, using quotes to specify exact names or phrases (e.g. Use "completed\_purchase" event for any revenue analysis).
+* Format instructions as direct statements of the desired behavior, be specific!
+* Define key metrics using your event and field names to ensure accuracy. (e.g. an active user is defined as subject = “User” and event name = “login” or “sign up”).
+* Please check our [Prompting Best Practices](https://docs.kubit.ai/docs/prompt-best-practices) for more details.
+
+Example Prompt:
+
+```
+## Core Metrics Instructions
+- When a user asks for active users always use subject = 'users' and event name = 'stream started'
+- When a user asks for total streams always count events for 'stream completed'
+```
+
+***
+
+[Lumos AI](/docs/lumos-ai)
+
+[AI Prompting Best Practices](/docs/prompt-best-practices)

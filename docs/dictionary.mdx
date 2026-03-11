@@ -1,0 +1,180 @@
+---
+title: "Dictionary"
+description: "View and manage all warehouse data, events, fields, and catalog items—add descriptions, apply tags, create managed views, and organize your analytics data for easy discovery across reports."
+---
+
+# What is Dictionary?
+
+In Kubit, you can analyze data shared from your warehouse, and the Dictionary is where you can view all available data.
+
+In the Dictionary, you can manage:
+
+* **Warehouse Data**: Directly from your warehouse tables, including all Events and corresponding Fields shared with Kubit.
+* **Catalog**: Saved items like [Virtual Events](doc:components-of-a-report#virtual-events), [Saved Filters](doc:components-of-a-report#saving-filters), [Saved Measures](doc:components-of-a-report#saving-and-updating-measures), and [Binning](doc:components-of-a-report#custom-binning).
+
+Items in the Dictionary are organized by Schemas within Kubit. A Schema is a collection of data you can analyze together, similar to projects within your warehouse.
+
+![](/images/docs/4b35c940589b73624982fe7b8ce5b87d198e64462f5288da480ac4abc8c3c258-what_is_dictionary.gif)
+
+# Quick Access Dictionary
+
+The [Quick Access Dictionary](doc:quick-access-dictionary#quick-access-dictionary) is a workflow feature that organizes your data within the report builder. Click the 📚 icon to open it. This feature reduces the need to switch between screens. You can search for items using keywords in their name or description. Start typing in the search box, and items will be filtered accordingly.
+
+![](/images/docs/bdc96ef182dfc7c621678cc01353ebff8f725062761c502264916fbed5c940c2-quick_access_dictionary.png)
+
+# Event and Field Descriptions
+
+You can modify Event, Field, Measure, Virtual Event and Saved Filter descriptions directly in the Dictionary UI. Click the Description field to update the information.
+
+## Updating Event and Field Descriptions in Kubit
+
+Kubit allows manual entry of this information via our UI. You can also sync these values from your cloud data warehouse by contacting your Customer Success Manager to set this up.
+
+1. From the side navigation select **Dictionary**.
+
+   ![](/images/docs/f82f79aa728b5a155abd190363c7cd4fedd352838fc056244befbc36212f14e8-Screenshot_2026-01-14_at_14.48.35.png)
+
+2. Select the Schema for the Events/Fields you want to update.
+
+   ![](/images/docs/02cb4eb16ac9f09b9c6150f99b8083112647ab66f8d4d504d80f98bf8c7e67fd-Screenshot_2026-01-14_at_14.49.56.png)
+
+3. Find the entity you want to update by scrolling through the list or using the Search in the upper right corner.
+
+4. Click into the Description column for the event you want to update and enter your description.
+
+5. Continue updating as needed.
+
+## Updating Event and Field Descriptions through CDW
+
+To manage descriptions from your Cloud Data Warehouse (CDW) contact your Customer Success Manager for setup assistance. Kubit will use a mapping table to populate Event descriptions directly from your Cloud Data Warehouse and it will use the column metadata from `INFORMATION_SCHEMA` to collect the Field descriptions.
+
+<Warning>
+  If you've allowed Event or Field descriptions to be updated via your Cloud Data Warehouse, you will not be able to manually update them in the Kubit UI to preserve the source of truth.
+</Warning>
+
+Sample schema for a mapping table for the Event descriptions:
+
+| Table               | Event/Field Column    | Tag Column            |
+| ------------------- | --------------------- | --------------------- |
+| EVENT\_DESCRIPTIONS | event\_name (VARCHAR) | description (VARCHAR) |
+
+## See Descriptions in the Report Builder
+
+Newly added descriptions appear in the Report Builder when you hover over items, adding context and confidence for end users.
+
+![](/images/docs/a4e7e6bb682ace1affe40c3cf3e5e2bf0ef3d7dc22451787d6a84c3a49f90c14-see_descriptions_in_the_report_builder.gif)
+
+> **Edit permission required to Rename** To modify descriptions, you must have `Edit` permissions on the object. Without permission, you cannot make changes.
+
+# Rename Events in Dictionary
+
+You can rename events directly from the Dictionary. Fields cannot be renamed as their mapping is integral to Kubit's functionality.
+
+If syncing Event descriptions from your Cloud Data Warehouse, you cannot update Event names in Dictionary to preserve the source of truth.
+
+Click the Name of the Event you want to change and type in the new text.
+
+![](/images/docs/a5eb790805cc86c51332a3532a16db0a453879b7614cdeb26d33d79b832bd40a-rename_events_in_dictionary.gif)
+
+> **Sequence of actions** After renaming, remove the old named item from your report and re-add the renamed one before executing.
+
+# Rename Virtual Events, Measures, and Filters in Dictionary
+
+You can rename virtual events, measures, or filters directly from the Dictionary. Fields cannot be renamed as their mapping is integral to Kubit's functionality.
+
+Click on the Name of the item you want to change and type in the new name.
+
+![](/images/docs/3a2a2bc60c2496a89156b3b1d40d11707d01528bf40b9f241ad821e5d5f45a3b-rename_virtual_events_measures_and_filters_in_dictionary.gif)
+
+> **Sequence of actions to follow** After renaming, remove the old named item from your report and re-add the renamed one before executing.
+
+# Tags
+
+You can categorize your data by adding tags directly from the Kubit UI. Tags help group items into similar categories, like hashtags on social media.
+
+> **Tag permission required** Only users with Tag permissions can create or modify Tags. Admin and Governor roles have this permission.
+
+## Create a Tag
+
+1. Navigate to **Dictionary > Item** you want to Tag.
+2. Click into the Tag column of the Item you want to add a Tag to.
+3. Type in the name of the Tag you want to create.
+4. Click **Create New Tag**.
+   * If a Tag with that name already exists, click the existing Tag.
+5. Click **Apply Tags**.
+
+> **Bulk Edit** You can bulk edit by selecting items to tag and then selecting **Add Tags** at the top of the list.
+
+![](/images/docs/133dea648512d128817a5818d251bb6a4be45eabadf261c07a12ff60c67a5a48-create_a_tag.gif)
+
+## Add and Remove a Tag
+
+1. Navigate to **Dictionary > Item**.
+2. Click into the Tag column of the Item you want to add or remove a Tag on.
+3. Select the Tag you want to apply and click **Apply Tag**.
+4. To remove, deselect the Tag from the pop-up menu and click **Apply Tag**.
+
+> **Bulk Edit** You can bulk edit by selecting items to tag and then selecting **Add Tags** at the top of the list.
+
+![](/images/docs/185da65af974ef4ab7228eccb2a7de52d02d7d1dafd2b9cbc91e6c3ed1a32c66-add_and_remove_a_tag.gif)
+
+## Edit/Delete Tags
+
+1. Navigate to **Dictionary > Tags**.
+2. Edit/Delete individual Tags from the context menu.
+
+![](/images/docs/dbf7e77698e7d7c7376d341ce2c36bfc14ba7e134da6b71e70884b69bbc4223a-Screenshot_2026-01-14_at_14.24.52.png)
+
+## Where Do I See Tags in Kubit?
+
+Once applied, Tags group Events, Fields, Measures, etc., in the selection widget, helping users see data grouped into logical tags.
+
+![](/images/docs/80a63ef4fcb52b026029769648eaf75b08bd9880b3655627240beb75737db7c0-where_do_I_see_tags_in_kubit.gif)
+
+## Load Tags from a Mapping Table
+
+To manage tags outside of Kubit, we can load `Event` and `Field` tags from a table. Contact support for setup assistance. We need:
+
+* Table name(s)
+* Read access to table(s)
+* Column for event or field name
+* Column for tag
+
+For example:
+
+| Table                   | Event/Field Column    | Tag Column    |
+| ----------------------- | --------------------- | ------------- |
+| KUBIT.TAGS\_FOR\_EVENTS | event\_name (VARCHAR) | tag (VARCHAR) |
+| KUBIT.TAGS\_FOR\_FIELDS | field\_name (VARCHAR) | tag (VARCHAR) |
+
+<Info>
+  ### Note
+
+  The tables should contain one tag per row.
+</Info>
+
+# Dictionary Import/Export
+
+On all Dictionary sub-pages you will see either an `Export/Import` or just `Export` button in the top right corner. This is useful for managing Descriptions in Kubit or moving them to your warehouse or just exporting lists of Events and Fields. Tags are exported as comma-separated lists.
+
+![](/images/docs/38c0c971c31bf17690aef86c207ec2aed269f23fd38060619472a46be92bd315-Screenshot_2026-01-14_at_15.16.08.png)
+
+# Build a Managed View
+
+Managed Views streamline user experience by allowing new users to see only tagged data. To add to your Managed View, tag it with the provided "\* Managed" tag. Open the Quick Access Dictionary while building a report, click the dropdown, and select Managed View.
+
+![](/images/docs/fbccb38a9f7788f92174f076de2f51f024105ca680dea3e8c1e1e3cc2559def4-build_a_managed_view.gif)
+
+# Searching
+
+Items are searchable by name or description. Start typing in the text box, and items will be filtered accordingly.
+
+![](/images/docs/f7a72948993576ed6858fcbb6bc275884690c09a0ff7462afcc112ec189b3d11-searching.gif)
+
+***
+
+What’s Next
+
+* [🎥 Introduction to Dictionary](/docs/introduction-to-dictionary-video)
+* [Quick Access Dictionary](/docs/quick-access-dictionary)
+* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)

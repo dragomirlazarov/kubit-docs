@@ -1,0 +1,78 @@
+---
+title: "Roles"
+description: "Manage user permissions with built-in Admin, Governor, Creator, and Viewer roles, create custom roles with granular permissions, and assign schema-specific access to control what users can view and build."
+---
+
+# Roles Page
+
+To manage Users first find the `Settings` page in left navigation bar by clicking on the ⚙️ icon and then select `Users`.
+
+![](/images/docs/5db4724f428e965ce6ed8b1bbe7b80d5f6097c23453778cc098005db40fd7656-roles_page.png)
+
+When you view the Roles page you'll see a list of all available Roles in Kubit. These Roles provide access to specific features in Kubit as well as Schemas (if your organization has more than one).
+
+By default Kubit will include Admin, Creator, Governor and Viewer Roles. You are also able to create your own custom ones as needed.
+
+# Out-of-the-Box Roles in Kubit
+
+* **Admin** - A user that can add/remove users, reassign roles of users, create and manage groups within Kubit. Including all items listed in the following Roles.
+* **Governor** - A user that can create reusable items like Virtual Events, Saved Filters, Cohorts and Measures. Including all items listed in the following Roles.
+* **Creator** - A user that can build content in Kubit and add that content to Dashboards. This can be customized to include items that Governors are able to perform.
+* **Viewer** - A user that can log into Kubit and view content, but is unable to build Reports and Dashboards.
+* **Explorer** - A user that can log into Kubit and build Reports, but is unable to create Dashboards or Schedules.
+
+## Default Role
+
+When a New User joins Kubit they will automatically be assigned the Default Role selected on this page. Kubit has this set to Creator by default but you are able to change it as needed by using the drop down at the top of the Roles page.
+
+![](/images/docs/953a662f4dbd353b2e91af206d51de31545628331ea9448a1bbba45fa7123c8c-default_role.gif)
+
+<Info>
+  ### Recommendation for role to use
+
+  We recommend a Creator Role as the Default as it allows new users to build reports, dashboards, and cohorts, but not Virtual Events, etc.
+</Info>
+
+# View, Edit, and Disable, Existing Roles
+
+As an Admin you are able to View all permissions available to a Role as well as made edits to them as needed.
+
+This can be great if you want to fine tune permissions like "Move Dashboard" but still allow users who are Creators to create them. Simply check or uncheck permissions as needed and click "Save".
+
+To see a full list of Permissions available to each Role click [here](kubit-user-roles-and-permissions).
+
+![](/images/docs/e94ff5170a54eb97e6417ab0b9b2148b68a54f46538c63f246475aad419c681e-view_edit_and_disable_existing_roles.gif)
+
+# Schema Assignment Within Roles
+
+If you have more than 1 Schema in Kubit you may want to restrict user access to them based on their Role. For example, a Product Manager may not need to see financial information available in a Schema.
+
+To restrict this access you will select the Schema as you assign Permissions within Kubit.
+
+![](/images/docs/18b08826262363702c4dbc69c252a7a6024f43169b15a44e1bcf64a20c100839-image.png)
+
+# Create Role
+
+Depending on the complexity within your teams it may be useful to create custom Roles and assign those instead of the ones we provide out-of-the-box. To Create a new Role in Kubit you'll follow these steps:
+
+1. Select `Create Role` in the top right corner of the Roles page.
+2. Give your new Role a name and description
+3. (Optional) `Select a User Role as a starting point` (this is great if you want to slightly modify an existing role for example or copy it limit user permissions to an individual schema).
+4. Select the Schema that this Role has access to if it applies to just one. If not simply keep it on `All Schemas`.
+5. If you're building a custom role - select the desired permissions for each area of Kubit.
+
+The following video shows someone creating a new "Creator + Saved Measure" role for the "Streaming" schema.
+
+![](/images/docs/c6997302ba8bd5228ae8e4004aaadd76d1708ac0f07a47185422e2217e5b2bc3-create_role.gif)
+
+# Assigning Roles to Users
+
+Once completed you will select the Users you want to assign this Role to in the Users page. Then [edit their permissions](doc:admin-panel-users#edit-user-permissions).
+
+***
+
+What’s Next
+
+* [Admin Panel - Groups](/docs/admin-panel-groups)
+* [Dictionary](/docs/dictionary)
+* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)

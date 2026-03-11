@@ -1,0 +1,40 @@
+---
+title: "Presto"
+description: "Integrate via Data Share"
+---
+
+# Introduction
+
+Kubit can access your Presto cluster with restricted access, or through [S3 storage sharing](doc:s3). Configure your Presto cluster to be publicly accessible (with access control). The firewall associated with the Presto cluster should whitelist port 8080 (or other custom port) to [Kubit IP ranges](doc:#kubit-ip-addresses).
+
+# Steps
+
+## 1. Create a Principal
+
+Create a principal, named **kubit** in your Presto's authentication provider (e.g. LDAP, Kerberos, etc).
+
+## 2. Grant Access
+
+Add the following rule to your System Access Control file to grant read-only access to certain catalogs where `<data_catalog>` is the name of the catalog you would like to share with Kubit. You can share multiple catalogs by listing them all, delimited by `|`. For example: `(data_1|data_2|data_3)`.
+
+<CodeGroup>
+  ```bash bash
+  {
+    "catalogs": [
+       ...
+       {
+         "user": "kubit",
+         "catalog": "<data_catalog>",
+         "allow": "read-only"
+       }
+       ...
+    ]
+  }
+  ```
+</CodeGroup>
+
+***
+
+[BigQuery](/docs/bigquery)
+
+[Direct Connect to Your Cloud Data Warehouse](/docs/data-warehouse)

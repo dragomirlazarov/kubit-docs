@@ -1,0 +1,116 @@
+---
+title: "Sampling Options"
+description: "Optimize query performance by sampling event or subject-level data, enabling faster analysis of large datasets while maintaining statistical accuracy across your reports."
+---
+
+# What is Sampling?
+
+When a report result is Sampled it refers to taking a random sampling of data from the total result set. In Kubit we allow you to Sample two ways:
+
+## Sample based on Events
+
+* This means the random sample will be taken from the events with no regard for User, Session, Device ID, etc.
+* **Only available for customers using Snowflake** due to restrictions on other cloud warehouses. It's either not supported or would result in severe performance penalties.
+* This is best used when you want to sample based on number of times an Event has been performed.
+
+## Sample based on Subjects
+
+* These [Subject](doc:funnel#funnel-use-cases)s (User ID, Session ID, etc.) are custom to your Kubit environment.
+* Sampling based on Subjects will mean that all events performed by that Sampled user will be returned in the results.
+* **Available for all customers on all warehouses**
+* .This ensures the results are complete and users aren't missing events they performed in every step of the analysis, e.g., Funnel, Retention, etc.
+* Subject Sampling is typically used in Funnel, Retention, Flow and Cohort reports.
+
+![](/images/docs/2ee30a09648a120421ab83df2035db45270b57c2a0247cb01205f4e1981ce683-image.png)
+
+# Why should I Sample?
+
+Most of the time Sampling isn't necessary and only required when the number of rows returned exceeds our query timeout window (15 min). This means the query took too long to return results because it's too large.
+
+If you know you're looking back over a very long period of time (i.e. years) and/or the number of events or users is going to be exceedingly large (i.e. 100M+) it's best practice to Sample so you're able to see the results in the Sampled report.
+
+Also Sampling is valuable when you are ok with not 100% accurate results and the Sampled results of 20% is valid.
+
+# How to Sample in Kubit
+
+In all reports you will find Sampling Rate controls when you click on "Additional Settings" at the top of the report builder.
+
+Enable the Sampling Rate settings and select the appropriate rate. You can choose from the drop down list or input your own value.
+
+![](/images/docs/cc25dea3f9ab59d95b08c1eb466abdfebb02dfb74c3a191a6c893bbdaebf5b69-how_to_sample_in_kubit.gif)
+
+## Sampling in Query and Data Table
+
+In our Query or Data Table report you are able to sample the results of your query by setting a Sample Rate.
+
+* All Measure functions will result in Event level Sampling and is **only available for Snowflake Customers**.
+* Your results will only represent the sampled % of the complete Events (100%). If your events are evenly distributed, the metric from the sample may be very close to the metric from the full data set.
+
+Example:
+
+| Query Measure            | 100% Results             | 25% Sampled Results                                                        |
+| ------------------------ | ------------------------ | -------------------------------------------------------------------------- |
+| Count Events : Any Event | 100,000 Events performed | 25,000 Events performed                                                    |
+| Unique Users : Any Event | 3,500 Users              | Approximately 875 Users (depending on user distribution across the events) |
+
+In use cases of [Histogram](doc:advanced-query-features#histogram) or [Impact Analysis](doc:advanced-query-features#impact-analysis) mode in Query, where a subject will be targeted, Subject level sampling will be applied. In this case, the sample % of the unique subjects (e.g. users) will be selected from the event data for analysis.
+
+![](/images/docs/8ef0f94e66b681de64dab29f9f125b151690fb39f6b2b68caa4ccde8e4e58a42-Screenshot_2026-02-11_at_21.10.34.png)
+
+## Sampling in Funnel, Retention, and Flow
+
+In our Funnel, Retention and Flow reports you are able to sample the results of your query by setting a Sample Rate based on the Subject you've selected.
+
+* Select your Subject and that is the item that will be Sampled against.
+* Kubit uses consistent hashing of subject\_id (e.g., `user_id`) in order to guarantee that the same users will be analyzed across the steps. For example, in Funnel, Retention, Flow, and Query in Histogram/Impact mode.
+* Your results only represent the sampled % of the subjects from the complete event data (100%). If your events are evenly distributed, the metric from the sample may be very close to the metric from the full data set.
+
+Example Funnel:
+
+We will build a Funnel based on User ID and Sample at 50%:
+
+| Step Event  | 100% Results & Conversion Rate | 50% Results & Conversion Rate |             |      |
+| ----------- | ------------------------------ | ----------------------------- | ----------- | ---- |
+| Login       | 100,000 \\                     | 100%                          | \~50,000 \\ | 100% |
+| View Home   | 30,000 \\                      | 30%                           | \~15,000 \\ | 30%  |
+| Add to Cart | 10,000 \\                      | 33%                           | \~5,000 \\  | 33%  |
+| Purchase    | 5,000 \\                       | 50%                           | \~2,500 \\  | 50%  |
+
+<Info>
+  ### Difference between sampling users and not events
+
+  You'll notice that the conversion rates remain the same since we are sampling users and not the Step Event values.
+</Info>
+
+## Sampling in Cohorts
+
+When building a Cohort in the Segment, [Cohort Filter](doc:query#cohort-measure-filter), or [Cohort Builder](doc:cohorts#what-is-a-cohort), features Kubit requires a subject, the method of consistent hashing of `subject_id` (e.g. user\_id) is used.
+
+### Segment
+
+When a segment is referenced in a report, a sampling rate can be specified to reduce the amount of subjects in the segment. This may significantly reduce query time.
+
+![](/images/docs/de8e2936f5cbcf036e3ca5fa7b72d1ce28d9eb62216894bbf8c7eb499188c30d-segment.png)
+
+### Inspect
+
+When [inspecting a cohort](doc:cohorts#inspect-user), sampling rate can also be applied to reduce returned data volume.
+
+![](/images/docs/eed0a7721be6995554c1379b33f6ada0eb415376a7412e4a5d5d65061017b747-inspect.png)
+
+# Custom Sampling Strategy
+
+The default sampling mechanism is a universal solution which completely relies on the data warehouse's random functions and requires no data model changes. For customers who wants full control and/or fastest performance, Kubit offers flexible custom sampling strategies which can be tailored to their specific use cases:
+
+* Sample by a specific property. e.g. user\_id hash or substring.
+* Best performance can be achieved when this property is part of the cluster key (index).
+* Control sampling using a separate dimension table. e.g. assign certain users into a holdout group who will always be included in the sampling.
+* Apply different sampling strategies for each schema or data model
+
+***
+
+What’s Next
+
+* [Funnel](/docs/funnel)
+* [Cohorts](/docs/cohorts)
+* [Significance Report](/docs/significance-report)

@@ -1,0 +1,42 @@
+---
+title: "Snowplow"
+description: "Receive events from Snowplow"
+---
+
+## Introduction
+
+Snowplow is a popular choice for event instrumentation. If you are using Snowplow, you can share your event data with Kubit in a couple of ways:
+
+1. If you are already storing the Snowplow event tables in Snowflake/BigQuery/Databricks the recommended integration approach is to share them with Kubit by following the corresponding [Direct Connect](doc:direct-connect) guide.
+2. In case you haven't built your data warehouse yet, you can configure a Snowplow destination, targeting the Kubit Snowflake account.
+
+## Snowflake Destination Integration Steps
+
+1. The Kubit team will provide you with the Snowflake credentials for the destination.
+
+2. Follow the *Snowflake destination guide* depending on your Snowplow plan:
+
+   1. [Cloud](https://docs.snowplow.io/docs/getting-started-with-snowplow-bdp/cloud/configuring-destinations/snowflake/)
+
+   2. Enterprise/Open source:
+
+      1. [AWS](https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/setup-snowplow-on-aws/setup-destinations/snowflake/)
+      2. [GCP](https://docs.snowplow.io/docs/getting-started-on-snowplow-open-source/setup-snowplow-on-gcp/setup-destinations/snowflake/)
+
+<Check>
+  ### Tip
+
+  We recommend picking the Spark transformer as it supports [deduplication](https://docs.snowplow.io/docs/destinations/warehouses-and-lakes/rdb/transforming-enriched-data/deduplication/) prior to loading the data into the data warehouse.
+</Check>
+
+### Handling historical data
+
+Snowplow does not store any data and thus there are no built-in features to replay historical data. Events start streaming from the moment the Destination is configured.
+
+In case you need some historical tail data, and are already storing the event stream in a data warehouse, we suggest sharing your data through a [Direct Connect](doc:direct-connect) instead of using a Destination.
+
+***
+
+[Segment](/docs/segment)
+
+[mParticle](/docs/mparticle)

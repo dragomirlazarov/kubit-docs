@@ -1,0 +1,84 @@
+---
+title: "Lumos Report Creation"
+description: "Build reports in Kubit using natural language and our Lumos AI feature"
+---
+
+Leveraging AI, Kubit's builder can be populated using natural language, accelerating all users' abilities to create their own reporting.
+
+# How to build a Report using Lumos
+
+## In the Report Builder
+
+At the top of all Kubit reports you'll see a new text box, this is where you can type in your question, use case, or report definition and have Lumos build it for you.
+
+![](/images/docs/a25e3a273ec4255ed081870c4b0b90b8f195b28e6a66498a5a987efd7e93ff90-Screenshot_2025-07-08_at_2.46.49_PM.png)
+
+## In the Fullscreen Experience
+
+In the Main Navigation bar you can find the Fullscreen Lumos icon to the left of the Data Management Icon. You can type in your question, use case, or report definition in the "Ask anything" box at the bottom,
+
+![](/images/docs/7b10de6136abc2273ccbb63c45ab072c6f2cd62be3781d7a9551329a3addbd9f-image.png)
+
+In the Fullscreen experience, you can see your question history in the left sidebar, open new chats with the purple "+ New Chat" button, and change the schema using the selector in the top left.
+
+# Tips and Tricks
+
+Here are easy steps to follow when creating your reports with natural language.
+
+1. Select the type of report you want to create from our left hand navigation (i.e. Query, Funnel, Retention) and click into the report type.
+
+2. Enter your question or use case into the Lumos text box. Be as specific as you can and include things like:
+
+   1. What events you want to analyze
+   2. What users should be included/excluded
+   3. What timeframe you want to look at
+   4. Any restrictions or filters you'd want to apply
+
+3. Click **Build Report** and our AI Agent will populate the report builder with what you've asked to see.
+
+4. Make any modifications you'd like with additional prompts and click **Update Report** to update the builder.
+
+5. Once you're happy, click **Execute** to create your report and final visualization
+
+6. Continue refining your prompts as you'd like or save your report to a Dashboard or Scratchpad.
+
+![](/images/docs/0af582ef934748f66f4d5453d96f092df0c97f9119977fbab920228cf2a708e5-Lumos_Create_REport.gif)
+
+# What are some good questions to ask Lumos?
+
+It can be anything you want to learn from your data, just follow some the guidelines above and ask it questions like:
+
+* How many users watched comedy content last month?
+* How does it compare to the previous month?
+* What percentage of all users enabled notifications?
+* What is the total watch time for the cohort of users who enabled notifications last week?
+* What paths do users take after they start a trial?
+* How long does it take for a user to convert from trial to paid subscription for each app?
+
+# How do I make sure Lumos is pulling the right data?
+
+Lumos works by reading the event names, field names, descriptions of each, and the indexed value of these items. This means we will try and match your request with the meta data of your schema.
+
+## Update Event Descriptions
+
+* Navigate to the Dictionary and add meaningful descriptions on critical events in your data model. These are events used most frequently or are core to the business.
+  * Adding descriptions like "this event should be used when understanding checkout or purchase metrics" as an example.
+* These descriptions can also be managed in the data warehouse and connected with Kubit
+
+## Update Field Descriptions
+
+* Navigate to the Data Modeler and to the Fields tab to add informative descriptions for key fields within Kubit. These are one that are often used for breakdowns and filters.
+  * Adding descriptions like "this field should be used to filter by country" as an example. These descriptions can also be managed in the data warehouse and connected with Kubit
+
+## Saved Entity Descriptions
+
+* Update or add descriptions to any critical [Cohorts](https://docs.kubit.ai/docs/cohorts#saving-cohorts) or [Saved Measures](https://docs.kubit.ai/docs/components-of-a-report#saving-and-updating-measures)
+* Make sure critical data elements have fresh indexes using our [Manual Event Field Value refresh](https://docs.kubit.ai/docs/introduction-to-data-modeler#minimum-refresh-interval)
+
+The more you and your team's use Lumos the better at understanding your data and use cases. The agent isn't shared with other companies or data sets, it's unique to your organization.
+
+***
+
+[Ask Lumos](/docs/ask-lumos)
+
+[Lumos Cohort Creation](/docs/natural-language-cohort-creation)

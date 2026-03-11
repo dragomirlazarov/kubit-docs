@@ -1,0 +1,56 @@
+---
+title: "Groups"
+description: "Create and manage user groups to assign role-based permissions at scale, sync with SSO LDAP groups, and organize teams by department or responsibility for streamlined access control."
+---
+
+# Groups Page
+
+To manage Users first find the `Settings` page in left navigation bar by clicking on the ⚙️ icon and then select `Users`.
+
+![](/images/docs/6f1aa4e6e078aefd7dbd1b5e80f96f9e65fd47afaf0176bcd554f01c179a9384-groups_management.png)
+
+Within Groups you can assign `Roles` based on your business structure, team responsibilities or various departments leveraging Kubit.
+
+<Check>
+  Groups allow for scaled permission assignment.
+</Check>
+
+These Groups can be created either in Kubit or from an SSO LDAP group. To learn more about passing the groups from your SSO provider check out our [Single Sign-On (SSO)](doc:single-sign-on-sso) and look for the optional `Group(s) Atrribute` under the `Attributes Mapping` section of individual provider guides.
+
+# Create Groups
+
+If you decide to create Groups in Kubit simply:
+
+1. Click `Create Group` at the top right corner and provision your new group as needed.
+2. Add an [Assigned Role](doc:admin-panel-roles#roles-page) to the group. These permissions will be set for all users assigned to that Group.
+3. Organize Users into `Groups` via the [Users](doc:admin-panel-users)page
+
+# Edit Groups
+
+On the `Groups` page:
+
+1. Select `View Group` from the context menu of the Group you want to edit
+2. Click on `Edit Group Permissions`( ✎ icon)
+3. Modify the Group Name, Description or Assigned Roles. For `External` Groups you can only edit the assigned Roles.
+
+![](/images/docs/557ceff733c8788cd0f57d46eb6b80d707e924201069dc52f5d0dd542979ba84-editing_groups_1.png) ![](/images/docs/735347f66197575902f3f20329814247e544d01fc332799019abd589ea16dd55-editing_groups_2.png)
+
+# Disable a Group
+
+If you've created a Group and no longer need it you'll follow these two steps:
+
+1. Remove all Users from the Group so their access is not disrupted.
+2. Disable the Group by clicking the 3 vertical dots to the right of the Group Name.
+
+<Info>
+  You can't disable `External` groups.
+</Info>
+
+***
+
+What’s Next
+
+* [Kubit User Roles and Permissions](/docs/kubit-user-roles-and-permissions)
+* [Dictionary](/docs/dictionary)
+* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)
+* [Okta](/docs/okta)

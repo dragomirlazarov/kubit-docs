@@ -1,0 +1,67 @@
+---
+title: "Redshift"
+description: "Integrate via Direct Connect with Amazon Redshift"
+---
+
+# Steps
+
+## 1. Grant Access to VPCs
+
+1. Share the AWS region for your Redshift cluster with the Kubit team
+2. We will provide you with AWS account and VPC IDs
+3. Follow AWS's [Granting access to a VPC guide](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc-console-grantor.html) to allow access from Kubit VPCs to Redshift
+
+## 2. Create a New User
+
+In your sharing database, create a user for Kubit. Ensure compliance with [password requirements](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html):
+
+<CodeGroup>
+  ```bash bash
+  CREATE USER kubit WITH PASSWORD '<password>';
+  ```
+</CodeGroup>
+
+## 3. Grant Permissions
+
+Allow the Kubit user to read your analytical data. You can either:
+
+<CodeGroup>
+  ```bash bash
+  GRANT SELECT ON ALL TABLES IN SCHEMA public TO kubit;
+  ```
+</CodeGroup>
+
+Or restrict access to a limited set of tables or views:
+
+<CodeGroup>
+  ```bash bash
+  GRANT USAGE ON SCHEMA public TO kubit;
+  GRANT SELECT ON TABLE public.table_1 TO kubit;
+  GRANT SELECT ON TABLE public.table_2 TO kubit;
+  ```
+</CodeGroup>
+
+# Best Practices
+
+## Warehouse Considerations
+
+[Amazon Redshift Serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-serverless.html) and [Classic (Provisioned)](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) represent two different approaches to data warehousing which are optimized for different workloads and cost structures. Redshift Serverless is best for unpredictable, intermittent, or ad-hoc workloads and offers a pay-as-you-go pricing (RPU-hours). Redshift Classic is ideal for consistent, high-throughput, predictable workloads where reserving capacity (Reserved Instances) provides better long-term cost efficiency.
+
+<Check>
+  Since analytical workloads are by nature unpredictable and ad-hoc our default recommendation would be to use **Amazon Redshift Serverless** with Kubit.
+</Check>
+
+## Distribution and Sort Keys
+
+Kubit helps you analyze time-series event data, so for maximum performance you should read AWS's [Choose the best sort keys guide](https://docs.aws.amazon.com/redshift/latest/dg/c_best-practices-sort-key.html). For fact tables these are:
+
+1. an **event date** column in your fact table
+2. **event name** since this would be the most common filter
+
+In a dimensional model you should also use consider Distribution Keys and Styles. Since a Fact table can have only one and it can join to multiple dimension tables using different keys it's best to consult AWS's [Choose the best distribution style guide](https://docs.aws.amazon.com/redshift/latest/dg/c_best-practices-best-dist-key.html) .
+
+***
+
+What’s Next
+
+* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)

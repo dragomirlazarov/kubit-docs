@@ -1,0 +1,74 @@
+---
+title: "BigQuery"
+description: "Integrate via Direct Connect"
+---
+
+# Steps
+
+## 1. Enable BigQuery API
+
+<Info>
+  If BigQuery API is already enabled, you can skip this step.
+</Info>
+
+1. Please go to [Google Cloud API & Services - Dashboard](https://console.cloud.google.com/apis/dashboard). Click “+ `ENABLE APIS AND SERVICES`”
+
+   ![](/images/docs/59de7f2-624a0f240e1abeffdac10d69_9KDfjmOSqCSvcPCF6B0a3SrICtpBzjIUL14FzCMBFz52KgplGj06OJdJQ95Fu8vY60QJizWo-Sxl-8Q64z8U_iZPrlcZa0ej5FKqELQeHsTpXvFhHn6tp7Rk-3OLS2qTKQDfOKWk-png.png "624a0f240e1abeffdac10d69_9KDfjmOSqCSvcPCF6B0a3SrICtpBzjIUL14FzCMBFz52KgplGj06OJdJQ95Fu8vY60QJizWo-Sxl-8Q64z8U_iZPrlcZa0ej5FKqELQeHsTpXvFhHn6tp7Rk-3OLS2qTKQDfOKWk-png.png")
+
+2. Search for “**BigQuery API**”
+
+   ![](/images/docs/e700081-624a0f24e77f424fd4e69e57_Unknown-png.png "624a0f24e77f424fd4e69e57_Unknown-png.png")
+
+3. Select it and click `ENABLE`
+
+   ![](/images/docs/9f670ac-624a0f243d381126910c3487_Unknown-2-png-1.png "624a0f243d381126910c3487_Unknown-2-png-1.png")
+
+## 2. Create Service Account
+
+1. Open the Credentials page in [Google Cloud Platform API Manager](https://console.cloud.google.com/apis/credentials) (if needed, select your target project from the dropdown list on the top).‍
+
+   ![](/images/docs/22784d1-624a0f2423e2fe8a7cba8bbe_Unknown-3-png.png "624a0f2423e2fe8a7cba8bbe_Unknown-3-png.png")
+
+2. Click `CREATE CREDENTIALS` and choose `Service account`
+
+   ![](/images/docs/dc56b14-624a0f254993c16f82f990d0_Unknown-4-png.png "624a0f254993c16f82f990d0_Unknown-4-png.png")
+
+3. Enter “**Kubit**” as the name for the service account. Then click `CREATE`.
+
+4. Note: `Service account email` shown on the screen is the "**Kubit Service Account Email**"
+
+   ![](/images/docs/98fb109-1f689b3-624a0f2523e2fe3745ba8bbf_Unknown-5-png.png)
+
+5. Assign the following BigQuery roles to the Kubit service account:
+
+* [BigQuery User](https://cloud.google.com/bigquery/docs/access-control#bigquery.user)
+* [BigQuery Job User](https://cloud.google.com/bigquery/docs/access-control#bigquery.jobUser)
+* [BigQuery Data Viewer](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataViewer)
+
+6. Select the newly created Service account. Click Keys - **ADD KEY** - Create a new key.
+
+   ![](/images/docs/b9f0dc6-624a0f7ba51dfb364f736625_Unknown-7-png.png "624a0f7ba51dfb364f736625_Unknown-7-png.png")
+
+7. Select JSON in the popup window. Click **CREATE**.
+
+   ![](/images/docs/bfd228e-624a0f7bd7e3b97122a352c7_Unknown-8-png-1.png "624a0f7bd7e3b97122a352c7_Unknown-8-png-1.png")
+
+8. A JSON private key file will be downloaded to your computer. Please store the key in a secure and private location.
+
+## 3. Share Connection Details
+
+<Info>
+  ### Important
+
+  Please, share the following information with the Kubit team:
+
+  1. The JSON private key you've generated following this guide. Use a secure media such as a password manager.
+  2. Your dataset id.
+  3. Your dataset [region and zone](https://cloud.google.com/compute/docs/regions-zones).
+</Info>
+
+***
+
+[Snowflake](/docs/snowflake-direct)
+
+[Databricks](/docs/databricks-direct)

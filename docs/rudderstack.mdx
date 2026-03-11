@@ -1,0 +1,38 @@
+---
+title: "RudderStack"
+description: "Receive events from RudderStack"
+---
+
+## Introduction
+
+Rudderstack is a popular open source option for event instrumentation. If you are using Rudderstack, you can share your event data with Kubit in a couple of ways:
+
+1. By using Rudderstack's Snowflake destination to start forwarding all events to a Kubit Snowflake account.
+2. If you are already storing the mParticle event tables in Snowflake/BigQuery/Databricks you can also share them with Kubit following the corresponding [Direct Connect](doc:direct-connect) guide.
+
+## Snowflake destination steps
+
+1. Kubit will provide you with the Snowflake credentials for the destination.
+2. Follow the [Rudderstack setup steps](https://www.rudderstack.com/docs/destinations/warehouse-destinations/snowflake/#configuring-snowflake-destination-in-rudderstack) to add the destination.
+3. By default, Rudderstack begins loading current data into Snowflake from the time the destination is enabled and uses [this schema](https://www.rudderstack.com/docs/destinations/warehouse-destinations/warehouse-schema/).
+
+### Handling historical data
+
+If you are storing historical data you can use Rudderstack's [Event Replay feature](https://www.rudderstack.com/docs/user-guides/administrators-guide/event-replay/). To do that you will need to contact their Customer Success team.
+
+## Share already persisted tables using Secure Data Sharing
+
+If you already have modelled your events data into a data warehouse you can directly share that through [Direct Connect](doc:direct-connect). There're a couple of benefits of this approach:
+
+1. Your data warehouse destination is the single source of truth and you can always reconcile your metrics.
+2. You won't have to coordinate the event replay with Rudderstack.
+
+***
+
+What’s Next
+
+* [Integration Guide](/docs/integration-guide)
+* [Snowflake](/docs/snowflake-direct)
+* [Segment](/docs/segment)
+* [Snowplow](/docs/snowplow)
+* [mParticle](/docs/mparticle)

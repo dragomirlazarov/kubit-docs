@@ -1,0 +1,52 @@
+---
+title: "Time to Convert (TTC) Mode in Funnels"
+description: "Learn how to use the Time to Convert mode in Kubit Funnels to analyze user conversion times between steps."
+---
+
+## Understanding `Time to Convert` Mode in Funnels
+
+To determine how long it takes users to move between steps in a Funnel, you can use the `Time to Convert` mode in Kubit. Here's how it works:
+
+![](/images/docs/6960342fb373a310a16a16074c599622b4c4b5826b0ca91411f25efdceba201c-time_to_convert_mode_1.png)
+
+When you execute a Funnel in `Time to Convert` mode, the resulting chart provides insights into:
+
+1. The average time users spend on a specific step before moving to the next.
+2. The percentage of users who take a certain amount of time to convert to the next step.
+
+By default, the chart displays the time to convert between the first two steps. You can choose any two consecutive steps or select all steps to see the conversion time across the entire Funnel.
+
+![](/images/docs/d0fdfa0a176323a2f07e7e7ddc1c61efb25cf8d29821cb4f77d701296472b569-time_to_convert_mode_2.gif)
+
+### Bucketing
+
+Kubit generates up to 60 buckets on the chart based on the `Conversion Window` length. The possible bucket lengths are:
+
+* **Seconds**: 1, 2, 3, 5, 10, 15, 20, 30, 45
+* **Minutes**: 1, 2, 3, 5, 10, 15, 20, 30, 45
+* **Hours**: 1, 2, 3, 6, 12, 18
+
+For example:
+
+* A 1-hour `Conversion Window` is divided into 60 buckets of 1-minute each.
+* A 2-hour `Conversion Window` is divided into 60 buckets of 2-minutes each.
+* A 6-hour `Conversion Window` is divided into 60 buckets of 10-minutes each.
+
+In the example below, a `Conversion Window` of 600 seconds results in 60 buckets, each 10 seconds long:
+
+![](/images/docs/e92089296967ef2e075f2e0f14cc9a8ae1c20a0d202f4e4d221ae2072745a2b1-bucketing.png)
+
+> **Tip**: You may need to adjust the `Conversion Window` to find the right granularity. Start with a larger window and narrow it down based on where most conversions occur.
+
+### Constraints
+
+There are a few limitations to keep in mind:
+
+* Only the `Partition: Conversion Window` is available to ensure timely analysis. It's limited to 1 day or its equivalent in seconds, minutes, or hours.
+* You can only view `Time to Convert` between two consecutive steps or across all steps in the Funnel. Selecting anything else will result in an empty chart.
+
+***
+
+[Frequency Mode in Funnel](/docs/funnel-frequency)
+
+[Flow](/docs/flow)

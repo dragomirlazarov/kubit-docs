@@ -1,0 +1,341 @@
+---
+title: "Overview"
+description: "Configure data warehouse connections, map tables and fields, create derived columns, and manage schemas to enable self-service analytics and empower data-driven teams across your Kubit environment."
+---
+
+The Data Modeler intends to support self-service data model changes in your Kubit environment. Want to add handling for a new column in your fact table? Create a derived property, add a new dimension table, or even a whole new schema? This article will provide an introduction to the Data Modeler and will help you understand the main concepts behind it and what you can do in it.
+
+## Prerequisites
+
+* Full access to the Data Modeler feature is exclusively available to [Direct Connect](doc:data-warehouse) customers. Customers utilizing [Data Share](doc:secure-data-sharing) and Managed Service have read-only access to the Connection and Tables tabs.
+* You have to be a Kubit Admin to access Data Modeler.
+
+# Getting Started
+
+You can find the Data Modeler icon in the "Data Management" icon on the bottom left of your screen.
+
+![](/images/docs/b9b53e2dbaa3cfac5ea770b34a0d4fc1e83887828a1ea9ab6479203b9b90a16f-data_management_nav.gif)
+
+Once you click on it you will see:
+
+* A `New Schema` button you can use to create a new schema.
+
+* A list of existing Kubit Schemas on the left.
+
+* The default Schema configuration which you can observe or edit by navigating through the tabs:
+
+  * `Configuration` - The primary configuration for this Schema and area where you can update Schema names and add Schema descriptions.
+  * `Connection` - The connection parameters for the schema to your cloud data warehouse.
+  * `Tables` - The list of all tables/views being used in your Kubit schema. This is also the area where you can add more tables, expose more fields, and add derived columns.
+  * `Fields` - The "semantic" layer for Kubit and area you can rename Fields, add Field descriptions, create derived fields, and control if a field is available for breakdown and filtering. You can also disable Fields here so they no longer appear in Kubit.
+  * `Optimization` - An area where you can set query timeout parameters, look back windows, and Sampling rates for on-demand sampling in Kubit.
+  * `View Model` - View your entire data model.
+  * `Version History` - Review past versions of the Schema and restore old versions if necessary.
+
+  ![](/images/docs/8a04435b31fdea3fb4c7cfc1ea7c6e11be07a267b7f634fb7328e6bd6c6ab2cd-Screenshot_2025-10-24_at_8.37.47.png)
+
+# Configuration
+
+In this view, you can see:
+
+## General schema settings
+
+* The `Schema Name` (editable).
+  * Users with permissions in both Direct Connect and Data Share setups can update the Schema Name
+* `Schema Description`
+  * Users with permissions in both Direct Connect and Data Share setups can update the Schema Description
+* What `Timezone` is being used for this Schema.
+* When doing reports with a `Time Unit: Weekly` reports - what day of the week is the Week Start set to.
+
+This is where you will see all of these parameters in action when you are building reports:
+
+![](/images/docs/27c056128fc1f6821815d057d67e0db90de3fa1bed4184addb6ab1e8483e009a-general_schema_settings_1.png)
+
+## Subjects
+
+In Kubit, the Subject of your data is what is analyzed. A read-only list of all [Subjects](doc:components-of-a-report#subject) can be configured for the schema.
+
+## Sampling
+
+Sampling can be used to speed up reports and to save costs, especially when dealing with very large datasets. To understand more about Sampling in Kubit you can read this [detailed article](doc:sampling-options#how-to-sample-in-kubit). What you can control from here is the default sampling rates for:
+
+* **Default**: applies to all Query/Funnel/Flow/Retention reports.
+* **Cohort**: applies to all Cohort Filters and Segments.
+
+![](/images/docs/6eb4ea9a990646315d61c4c5a6a9c0ccd2ae82bf4fe681e68d6600465796f9f1-Sampling_cohort.png)
+
+## Minimum Refresh Interval
+
+The Minimum Refresh Interval (MRI) dictates how often Events and Fields can be refreshed. Users with a Creator, Governor, or Admin role can refresh these Events or Fields. For example, if the MRI is set to one day, only one user can refresh it per day. Other users who try to refresh it within that time frame will not be able to until the MRI is up.
+
+All Events can be refreshed from the Event drop down.
+
+![](/images/docs/ecc6ea848fbb8e8704369459dbae6656c4ceeeb85358744cabae88defd2f8418-minimal_refresh_interval.png)
+
+Field values can be refreshed by selecting a specific measure filter or report filter, and then refreshing the values at the bottom.
+
+![](/images/docs/174b082e33178d1fdb0e85c154e942bd965eb18975bfce15ed86c7762741a0af-minimum_refresh_iterval_2.png)
+
+Since the values are only updated when a user initiates a refresh, this reduces the computational burden on your warehouse.
+
+## Additional Funnel and Flow Partition Fields
+
+The default `Partition` options in Kubit are:
+
+* None.
+* Day.
+* Conversion Window.
+
+More about Partitions is located [here](doc:funnel#partition-conversion-window).
+
+In a nutshell, the `Partition` options control the time window within a conversion that happened within a Funnel or a Flow. But in some cases, you might be interested in using a non-temporal field for the partitioning such as Session. This then allows you to configure the Funnel report to measure only the conversions that happened within a single session.
+
+![](/images/docs/3a3208032c9b79b59a72c4dfb887aa6d4bd51bcbde36961fb3ac8957a943e31d-Additional_funnel_and_path_partition_fields.png)
+
+## Status
+
+The Enabled toggle controls whether a Schema is visible for the Kubit users who build Reports or not. Once disabled, users can no longer select this schema from any Schema dropdown.
+
+<Info>
+  ### Disable a schema while still working on it
+
+  Set the status to `Disabled` when you're working on a new Schema and don't want your teammates to start using it just yet.
+</Info>
+
+# Connection
+
+In order to consume data from your data warehouse you need to set up the connection to it. Kubit relies on a JDBC connection to execute [Reports](doc:introduction-to-the-main-navigation-items#reports).
+
+<Warning>
+  ### Limited Access
+
+  This functionality is only available to Direct Connect customers and for users with role `Admin`.
+</Warning>
+
+The first step is to choose the warehouse type from a list of supported warehouses:
+
+* Snowflake
+* BigQuery
+* Databricks
+* ClickHouse
+* MySQL
+* Presto
+
+Then, you have to fill out the rest of the parameters which are as follows (with the exception of BigQuery):
+
+* **Username**: which should be used to login to your warehouse (we recommend creating a dedicated user for Kubit).
+* **Password**: for the username (we recommend a length of 60 characters, a randomly generated mix of uppercase, lowercase, numbers, and special characters).
+* **Timeout**: on the JDBC connection, make sure to check what the timeout configured on your warehouse and set it to the same value or less.
+* **JDBC URL**: to establish the JDBC connection.
+* **End Date Type**: what should the date picker default to as the end date - today, yesterday, a static date, or something else? The recommendation is to keep the default (`CURRENT`).
+
+# Tables
+
+There are 3 things you can do in this view:
+
+* Add more facts or tables.
+* Edit table (mapping).
+* Create Derived Columns.
+
+<Warning>
+  ### Limited Access
+
+  This functionality is only available to Direct Connect customers and for users with role `Admin`.
+</Warning>
+
+![](/images/docs/255e3c318695191a3cafde29f6267736025b31c734a3c23efa174e9d21d43694-tables.gif)
+
+## Add Table
+
+To add a table you start by clicking on the Add Table button:
+
+![](/images/docs/cdaf3aca683e761a74ff891cad5501f8df57c4b188023a0343a9e1c798717a21-add_table.png)
+
+Then you see what we call the `Schema Browser` where you can navigate between schemas in the database configured in the `Connection` tab. In each schema you will see a full list of:
+
+* Tables
+* Views
+* Materialized views
+
+Once you find the table you want to add you select it, choose whether it's a fact or a dimension table and then hit `Confirm`:
+
+![](/images/docs/8731c938d4baa1ca6a7c272b1bf1d32f0785f02f001237e8f35a8e4309c414b8-add_table_confirm.png)
+
+When you add a new table you need to set some required fields before you can save the changes to your Schema. You will see a table view of all the columns and their types which you can map to Kubit Fields:
+
+![](/images/docs/43cf5fb295f61165889e05cbd36e4a0909fdfdc3a121024c6e64a83d3e98667a-add_table_required_fields.png)
+
+And, below that you will find the required fields:
+
+* **Event**: This is the event name.
+* **Timestamp**: The event timestamp is used for finding the sequence of events in the Funnel or Flow.
+* **Date**: The event date is used for all the date ranges in Kubit.
+* **Subjects**: One ore more subjects. You'll need at least one per fact table. A [Subject](doc:components-of-a-report#subject) in Kubit is an unique identifier that is used to analyze or count in within your report.
+
+![](/images/docs/519035a1862ddcea5d4c8eeee97a5746d441dcd9343918dc32b6a03ad94e6207-add_table_required_fields.png)
+
+<Check>
+  ### Derive event date from timestamp
+
+  In case you don't have an event date column in your table, you can create a Derived Column and use it!
+</Check>
+
+## Add a Custom Join Condition
+
+In Dimension tables, there is an extra field called Custom SQL Condition. This allows you to add extra join conditions to the Dimension.
+
+![](/images/docs/397770e8b8f4b2679610f5b18161aaecf036c5d1ee809fed7b76a4be6adcb545-Add_a_custom_join_condition.png)
+
+## Edit Table (Mapping)
+
+Which columns from a table should be used in Kubit? Here's a short demo of how you select the required fields and map a couple of columns:
+
+![](/images/docs/04ba6575cca0d55a8473824e428c14e96bcd7f81159852d13a88614c1aff5fe4-edit_table_mapping.gif)
+
+<Warning>
+  ### Two important callouts
+
+  * **Once you set the Required Fields for a Table you cannot change them**.
+  * You can apply type overrides only when you are adding a new table, e.g. a `numeric` value is stored as a `string` but you want to do sums with it in Kubit.
+</Warning>
+
+In this view, you can also set the Field name a column should map to and its description.
+
+## Create a Derived Column
+
+Derived Columns come to the rescue when you don't have all of the required columns already in place or you want to slightly modify the values in a column. A Derived Column, in a nutshell, allows you to create a new logical column based on other columns that already exist in the table. To start, click on `Add Derived Column`:
+
+Then you have 2 ways to define the column:
+
+1. **Raw SQL**: most common use cases are when you need to cast a type, concatenate strings, or pick a property from an object, e.g., JSON or Struct.
+2. **Mapped String**: useful when you need to map an enum, sometimes the database would utilize a numeric type to store some data and you need the human-readable names in your analytics tool - this is when you will use Mapped String.
+
+<Warning>
+  ### Only row operations in SQL are supported
+
+  The SQL option supports only single-row operations. If you'd like to use Window Functions, please check out Derived Fields.
+</Warning>
+
+Here are a couple of examples, one is using SQL to create a date column from a timestamp column:
+
+![](/images/docs/22995cb7ab50715140b65e4763e38821db7e28e8ee285916c3e8ea8dc82d879f-create_a_derived_colum_1.png)
+
+And the other is mapping integers to human-readable names:
+
+![](/images/docs/eca1c17e2a53b8183214e90559dbf3fa4eac6d20e06d28c5022dd80cf2f0514a-create_a_derived_column_2.png)
+
+## Update Derived Columns
+
+Derived Column logic can be updated by clicking on the column and editing its definition. This makes it simple to fix definition mistakes and make definition updates to match changing organization requirements.
+
+![](/images/docs/4f9ca9d852a1356cadba9783647be00d45759deebf8ede21dc05fedc42463b39-update_derived_columns.gif)
+
+# Fields
+
+This is where you can:
+
+* Enable Fields for `Filter` and `Breakdown`.
+* Disable a Field (make it unavailable for selection in any new Reports).
+* Change the `Field Name` and `Description`.
+* Create`Derived Fields`.
+
+<Warning>
+  ### Limited Access
+
+  All the operations listed above are available only for users with role `Admin`.
+
+  Creating `Derived Fields` is only available to Direct Connect customers.
+</Warning>
+
+## Enable Fields for Filter and Breakdown
+
+This is as simple as it gets if you want to tweak whether a Field is eligible for Filter or Breakdown or not all you have to do is (un)check a checkbox and hit Confirm.
+
+![](/images/docs/240e0c3c886824f0923140cfef4b5c1a3bc68772a03bb3dfdd560ddab413fe16-enable_fields_for_filter_and_breakdown.gif)
+
+## Disable a Field
+
+In some cases, you might want to Disable a Field. Maybe you're no longer populating a column with data or you don't trust it - whatever the reason, it's again just a click on top of a checkbox and then Confirm:
+
+![](/images/docs/7b48dcaa10f653e866e4f1837743ff7ff49fc32ee0ea7c2ce28a1d2fa324fca3-diable_a_field.gif)
+
+## Change Field Name and Description
+
+Maybe a Field Name is a bit confusing or ambiguous - nothing to worry about, you can always change it or add a description to make it easier to understand.
+
+Click into the Field Name column or Field Description column to make edits. You should see an edit pencil when you hover over these fields.
+
+<Warning>
+  ### Limitation
+
+  If you are syncing Field Names or Descriptions from your data warehouse you will not be able to edit these via Kubit's UI.
+</Warning>
+
+![](/images/docs/90fd17b04760eeb235647c848b8decc4c0896ea3f3e1f58ca23baac6a7b6f4b5-change_a_field_name_and_description.gif)
+
+## Derived Fields
+
+There are 2 main scenarios in which you should use `Derived Field` instead of a `Derived Column`:
+
+1. You want to apply SQL Window Functions, e.g. to find out the duration of a session by calculating the time difference between the first and last event in a session.
+2. You have multiple fact tables which contain the same`Field` so instead of defining `Derived Column` in each table, you can define it as a `Derived Field` only once.
+
+To go back to our session duration example, let's check the `Window Functions` checkbox and input this sample SQL:
+
+```
+timestampdiff(second, min(@event_timestamp) over (partition by @session_id), max(@event_timestamp) over (partition by @session_id))
+```
+
+<Warning>
+  ### Referencing a column
+
+  Remember to use @ when referencing a column!
+</Warning>
+
+![](/images/docs/80c20eb961dc552cb3ca8be937dafa94469c0546a50e14eb48eba2018b92d158-derived_fields.png)
+
+When `Window Functions` aren't being used the behavior is equivalent to `Derived Column`, it just may be applied over more than 1 column in case you have multiple fact tables in a union.
+
+# View Model
+
+This is where you can see all the tables and how they are related to each other and which columns are mapped to which Fields.
+
+![](/images/docs/ef2e6c66d88917f1e7b015f17183bcdea653a48daecae8029c78a8b460144d02-view_model.png)
+
+# Version History
+
+Direct Connect customers are able to see all previous versions of your Kubit Data Model, what changes were made, and who made them. Additionally when a new version of a schema is published you will be prompted to provide a description of the changes for better lineage.
+
+## See Previous Data Model Versions
+
+* Navigate to the Data Modeler section of Kubit and select the Schema you want to review.
+* Click the new "Version History" in the top navigation of the Data Modeler
+* You will now see a list of all previous versions and changes made.
+
+![](/images/docs/5a9f08865dbacc092291c187006aab21d90fb58a731d7260d960d2c06cb44577-see_previous_data_model_versions.gif)
+
+## Restore Previous Data Model Version
+
+If you make a change to a data model and need to restore to a previous version you're able to do this in the "Version History" section of the data modeler.
+
+* Identify the version you want to restore to
+* Click the 🔄 icon next to "Archived" on the row of the data model you want to restore.
+* Type "confirm" in the text box and click the Confirm button
+* The previous version will be enabled and replace the existing data model
+
+![](/images/docs/819d0ac15f5aaf09fa941c90550700ffccfd20e471480713e266a569a541b082-restore_previous_data_model_version.gif)
+
+## Things to be mindful of when restoring a previous data model version
+
+Existing reporting using any Subjects or data from a table that is removed when a data model version is restored will still load but cannot be re-executed.
+
+Restoring a data model version that eliminates Subjects could create instances of reports showing an "Unknown" subject. This is how Kubit will represent disabled subjects for already executed reports.
+
+Changes are instantaneous so if a user is executing a report while the version is being restored and that report contains data that is being removed could cause an error.
+
+***
+
+What’s Next
+
+* [Dictionary](/docs/dictionary)
+* [Databricks](/docs/databricks-direct)

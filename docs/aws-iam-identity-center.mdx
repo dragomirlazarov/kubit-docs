@@ -1,0 +1,49 @@
+---
+title: "AWS IAM Identity Center"
+description: "Setup SSO AWS"
+---
+
+## Requirements
+
+* Your organization uses AWS IAM Identity Center for authentication.
+* You are account Admininistrator
+
+## Configure SAML app
+
+### 1. Create a SAML app
+
+1. Navigate to the **IAM Identity Center** on your **AWS Management Console**.
+2. Select **Applications** under **Applications assignments**.
+3. Click on the **Add application** button.![](/images/docs/ff5d345-Screenshot_2024-03-15_at_0.00.42.png)
+4. On the **Select application type** screen, select **I have an application I want to set up** and **SAML 2.0**.
+
+### 2. Configure app details and share metadata
+
+1. In the display name type `Kubit`.
+
+2. Select 8-hour session duration.
+
+3. Fill up the **Application ACS URL**, **Application SAML audience**, and **Application start URL** with the values provided by the Kubit Team.
+
+4. Download the SAML metadata file and share it securely with the Kubit Team.
+
+   ![](/images/docs/62cdc40-image.png)
+
+### 3. Attributes mapping
+
+1. Under the Kubit application screen click on **Edit attribute mappings** under **Actions**.![](/images/docs/62b5bef-Screenshot_2024-03-15_at_0.04.59.png)
+2. Add the attributes mappings for email, name, given\_name, family\_name, and picture. Make sure to provide user attribute values that match your IAM Identity Center attribute names.![](/images/docs/b2e6e4d-Screenshot_2024-04-02_at_18.41.45.png)
+
+### 4. Test
+
+Once configured properly on both sides, please work with the Kubit Team to test the integration. You will be provided a test URL.
+
+### 5. Open Access
+
+On the **Assign users to Kubit** screen select the groups you would like to use with the Kubit platform.![](/images/docs/0ff6e79-Screenshot_2024-03-15_at_0.09.27.png)
+
+***
+
+[Azure Microsoft Entra ID (Active Directory)](/docs/azure-active-directory-ad)
+
+[Supported Browsers](/docs/supported-browsers)

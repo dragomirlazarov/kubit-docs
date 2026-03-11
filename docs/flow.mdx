@@ -1,0 +1,186 @@
+---
+title: "Flow"
+description: "Flow maps the sequential journey users take through a product, identifying exactly where they drop off, loop back, or successfully progress toward a specific goal."
+---
+
+# What is a Flow Report?
+
+Flow looks at the most common paths towards a conversion, including the drop off at each step where users do not continue on to the final conversion event(s).
+
+![](/images/docs/451d2de0450bf6c36f29eb9e51c610934db91db1a1406daa290d58824562eee4-Screenshot_2025-09-16_at_3.30.17_PM.png)
+
+# Flow Settings
+
+Similar to Path, you will set up your Flow with the same basic inputs.
+
+## Direction
+
+When looking at a Flow you can decide wether you want to 'Start' from a specific event or look backwards from an 'Ending" event.
+
+In some cases a user journey is too long and you cannot see a path between the Starting and Ending Event(s) within the maximum amount of allowed steps (10). This is when it is useful to flip the direction and approach the problem from the other end.
+
+## Calculation Method
+
+Calculation Method let's you determine if you want to count Uniques or Totals through each step. Uniques will show a single Subject within the Flow, where Totals can be higher as a Unique User could perform the events multiple times in the Flow.
+
+You can set your [Subject](https://docs.kubit.ai/null/null#subject) by using the Subject selector at the top of the Flow settings.
+
+## Number of Steps
+
+When building your Flow you can determine how many steps Forward or Backwards you will see in your final Flow report. If you want to see more detail, increase the step count using the dropdown. We allow up to 10 steps to be shown.
+
+## Starting & Ending Event
+
+As you build your Flow it's important to identify the critical Starting and Ending events you want to analyze. These can be Virtual Events or standard ones. Be sure to select a starting and ending event that make logical sense, meaning they typically happen in sequence.
+
+We also may have the option to choose 'Any' which allows you to Start from a specific event and end doing 'Any' event for even more openness.
+
+## Subject
+
+Provides the option to analyze by an entity that has a unique id; typical subjects are User, Visitor, Device, and Session.
+
+## Group by
+
+This is only applicable when there is a Breakdown in your Flow report.
+
+* **Starting**: breakdown applied over the Starting Event(s), subsequent steps do not have to fall within the same breakdown group.
+* **Global**: Starting, Ending Event(s) and all events in between have to happen within the same breakdown group.
+
+## Partition
+
+* **Day**: by default Partition the events by Day (all events have to happen within the same calendar day). Session (OPTIONAL): for customers interested in Session analysis we can supply an additional option to tell Path that all events have to happen within the same session.
+* **None**: this is useful when analyzing longer-term customer behavioral patterns. For example, any Subscription business would be interested in conversions from Trial to Subscription to Renewal and try to understand what makes users subscribe and then stay.
+* **Conversion Window**: all the steps in the Path have to happen within the same time period defined by the Conversion Window. Supported time units are Seconds/Minutes/Hours/Days/Weeks/Months/Years. Conversion Window can be used in combination with partitions Day or None so make sure not to use it with Partition: Day whenever the time unit is set tDays or longer.
+
+## Filters in Flow
+
+Applying filters in a Flow report can happen in several different places. Each place will change the impact of the Filter so review the options to best suit your needs.
+
+### Filter on the Starting/Ending Events
+
+If you're only concerned with users viewing a specific Page then clicking a specific button you can apply filters to the Starting and/or Ending events to restrict your Flow.
+
+This filter will only impact the users included in the Starting or Ending step.
+
+![](/images/docs/e4bd52280b0a56ffd264d0077252a3e8683b5b271a16453f3c6a9b4b0fb10deb-424)
+
+### Filter Entire Flow Report
+
+If you want to exclude data from the entire Flow report you can apply a Report Filter. This will limit all data returned. It's a great option if you only want to view a Flow for a specific App Version, Platform, or Feature.
+
+<Check>
+  ### Pro Tip
+
+  If you have noisy events that you don't want to appear on your Flow you can Filter by Event Name as well. Adding a filter like `Event Name != "noisy event"` will eliminate it from your Flow.
+</Check>
+
+![](/images/docs/59b23556347951d95614253287d3cccdd6894d42e120fe122c372c2139b9b510-Feb-09-2026_18-04-15.gif)
+
+## Flow Adjustments
+
+Often you need to expose or transform some information to get a more meaningful Flow. Kubit allows you to do this with the Merge, Expand and Fold arrows at the bottom of the controls.
+
+### Merge Events
+
+Allows you to specify a list of events to be displayed as one event on the chart. Useful when you want to consider multiple events as one for the purposes of the analysis.
+
+You can use Merge Events to collapse multiple events into one event group to be shown on the chart.
+
+### Expand Events
+
+Allows you to breakdown an event based on a property inside the Flow.
+
+Sometimes when using Flow you would encounter user journeys where on some of the steps there are events which seen alone do not provide enough information. This is very typical for Page View or Action events.
+
+To help understand what is actually going on, you can include a Field to be shown alongside the event like this: Page View\[page\_name], Action\[target].
+
+<Info>
+  You can configure up to **3 Expanded Events**.
+</Info>
+
+### Fold Events
+
+Allows you to get rid of successive duplicate steps along the Flow by folding them into one step.
+
+Sometimes when you are exploring user journeys with Flow there are multiple consecutive steps where the same event appears over and over (e.g. Page View, Screen, Click). Now you can get rid of successive duplicate steps along the path by folding them into one step.
+
+### Virtual Events
+
+Visualize Virtual Events within the Flow by using this Adjustment.
+
+Sometimes Expand Events doesn't cut it and you want to see your very specific and well-named Virtual Events inside the Flow chart. The order in which you specify your Virtual Event Adjustments matters, since they may have partially overlapping definitions. If you need to re-order, simply use drag-and-drop to move them around.
+
+<Info>
+  You can configure up to **10 Virtual Events**.
+</Info>
+
+![](/images/docs/2097c172c1d28db1c7e3c528d28f14d1608b01ea220622a43be09baa6c492135-Screenshot_2025-12-17_at_17.10.16.png)
+
+# Top Paths Mode
+
+Top Paths as Funnels is a great way to see discreet paths without the potential noise of others on the same visualization.
+
+Change the Mode of your Path to "Top Paths" which will show you the Top 10 Paths as Funnel charts.
+
+![](/images/docs/bc508831e5426ad2232b6429434ff694d906a725932d2e84f81be4606a2600de-Feb-27-2026_17-50-10.gif)
+
+For these Top Path Funnels you are able to:
+
+* Click the "i" icon to open as a Formula and create a Funnel directly from the Top Path.
+* Hide/Show Steps in the Funnel.
+
+# Adding Breakdowns to Top Paths
+
+If you apply a Breakdown or Segment to this Path in Top Paths mode you'll see the Top 10 Paths but sorted from the discreet groups you've created. This sort is based on # of subjects (Users/Sessions/Accounts etc.) who took the Path.
+
+Each Breakdown/Segment will have their own Funnel and the name will denote what group it's comprised of.
+
+![](/images/docs/9dce3fbb4d9f2d36e34cf85e6a3b34f051513bc1982e977484e2db0fb26ff4da-Screenshot_2026-02-27_at_18.02.17.png)
+
+# Interpreting Flow Results
+
+There are several data points when your Flow report is rendered. We show you to the Top 25 occurrences which captures the large majority of paths that users take. This means if a user doesn't perform one of the Top 25 occurrence steps they will not be visible or counted in the results.
+
+## Main Node Numbers
+
+The primary nodes are the deep blue boxes at each step of a Flow. We will display the % of users who performed that event as their nth step in the flow. We will also display the absolute value of the selected Calculation Method (Uniques or Totals).
+
+![](/images/docs/9fec95f696ace08ff352dde4de6cfb52e11fa3247e715c49f8c0c9e71a3f317b-Screenshot_2025-10-08_at_3.53.19_PM.png)
+
+**Example**: 66.8% of users go from Mainlanding to Search Content as their 2nd step. This equates to 23,939 unique users.
+
+**Example**: 22.7% of users go from their 2nd step to Mainlanding as their 3rd step. This equates to 8,134 unique users.
+
+## See Specific Numbers from One Step to Another
+
+As mentioned above the % and absolute values are an aggregate from all previous steps into that specific event. Let's say you want to see the % of users going from Search Content to Mainlanding.
+
+In Flow you will hover over the specific path connecting those two steps and Kubit will display the % and absolute values for that specific journey.
+
+![](/images/docs/7a48fc1ff8aa071ec352440aa167b70da55a139a0236b89e2f3e9d0160b8a5d1-Feb-09-2026_18-17-09.gif)
+
+## Others Node
+
+By default we show Main Nodes with a significant number of users, we bucket the next group into an 'Other' node. This has less popular events and can be expanded if you need more details.
+
+Left click on the `Other` Node and either "Add Row of events" or select the specific event you want to take out of 'Other'.
+
+![](/images/docs/d2e81cd77032878aa647ae46c8b68ef0d8757f37486dff70543d1d937398e649-Feb-09-2026_18-23-46.gif)
+
+## Drop Off Node
+
+This node communicates the % and absolute number of users who did not perform any more events after the previous step. This can be interpreted as they bounced from the experience entirely.
+
+Drop Off will be the solid black node and visible at the bottom of each step of the Flow. We also display a final Drop Off node beneath the final conversion event. The number in the final Drop Off node represents users who never achieved the Ending Event in the timeframe of the Flow.
+
+### What if the step has no Drop Off node?
+
+This means that no users were lost on this step. It's not uncommon but shouldn't occur often as users can exist experiences at anytime most often.
+
+![](/images/docs/2ecb56f0e28c544994dadcb0fb26743929b3b96ff0c1f5fa218e34c479fab2b2-Screenshot_2025-10-08_at_4.03.20_PM.png)
+
+***
+
+[Time to Convert (TTC) Mode in Funnels](/docs/time-to-convert-mode-in-funnel)
+
+[Retention](/docs/retention)
