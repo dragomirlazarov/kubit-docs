@@ -358,6 +358,7 @@
           },
           {
             "group": "Administration",
+            "hidden": true,
             "pages": [
               "docs/admin-panel-users",
               "docs/admin-panel-roles",
