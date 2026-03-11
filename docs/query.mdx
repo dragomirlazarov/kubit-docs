@@ -1,5 +1,5 @@
 ---
-title: "Overview"
+title: "Query"
 description: "A comprehensive guide to using the Query chart type in Kubit."
 ---
 
@@ -11,10 +11,10 @@ Watch our [Query Training Video](https://help.kubit.ai/en/articles/8672065-query
 
 The Query report is beneficial for various scenarios:
 
-* Determine many users performed an event on my product over the last 7 days.
-* Calculate the percentage of paying users who performed our critical event last month.
-* Track and understand what our monthly active user count is for the past 6 months.
-* Find many users do we have on average over the past 7 days performing any event.
+- Determine many users performed an event on my product over the last 7 days.
+- Calculate the percentage of paying users who performed our critical event last month.
+- Track and understand what our monthly active user count is for the past 6 months.
+- Find many users do we have on average over the past 7 days performing any event.
 
 ![](/images/docs/21f9d96922dc23dcbc5e235afa429f8ac5d20b6765284e7a0250e90f542102fb-query_use_cases_1.png)
 
@@ -30,28 +30,25 @@ A measure consists of three components: the event to analyze, the function to co
 
 Select the event(s) you want to analyze inside of your chart by selecting them through the dropdown.
 
-* You can select multiple events to perform an OR logic, which means all members of the measure had to perform Event 1 or Event 2.
-* You can also select any [Virtual Events](doc:components-of-a-report#virtual-events) you may have created. You will see those available at the top of your Event dropdown list.
+- You can select multiple events to perform an OR logic, which means all members of the measure had to perform Event 1 or Event 2.
+- You can also select any [Virtual Events](doc:components-of-a-report#virtual-events) you may have created. You will see those available at the top of your Event dropdown list.
 
 ## Functions
 
-* **Count Events**: This function will count the total number of times the event you've selected has been performed. If a user does an event multiple times, each occurrence of that event will be counted.
-
-* **Uniques**: Counts unique identifiers (e.g., User ID, Session ID) for the selected event.
-
-  * These can be customized to your data model, if you'd like to configure additional functions please reach out to us!
-  * Examples include User ID, Anonymous Visitor ID, Session ID, Account ID
-
-* **Math Functions**: This includes Sum, Avg, Min, Max functions that can be applied to numeric event fields.
-  * These are only available for field values that are numeric (i.e. 1,2,3)
+- **Count Events**: This function will count the total number of times the event you've selected has been performed. If a user does an event multiple times, each occurrence of that event will be counted.
+- **Uniques**: Counts unique identifiers (e.g., User ID, Session ID) for the selected event.
+  - These can be customized to your data model, if you'd like to configure additional functions please reach out to us!
+  - Examples include User ID, Anonymous Visitor ID, Session ID, Account ID
+- **Math Functions**: This includes Sum, Avg, Min, Max functions that can be applied to numeric event fields.
+  - These are only available for field values that are numeric (i.e. 1,2,3)
 
 ### Add Additional Events and Measures
 
 When building a Query multiple events within a single measure could be considered part of your metric. In Kubit you are able to achieve this in two ways:
 
-* Add additional events within the same Event module to perform an OR statement. All filters applied will be included for each event.
-* Add additional events with the "+ Add Measure".
-* Adding additional measures without using the [Formula](doc:query#compound-measures) will result in just the two measures shown on the report visualization.
+- Add additional events within the same Event module to perform an OR statement. All filters applied will be included for each event.
+- Add additional events with the "+ Add Measure".
+- Adding additional measures without using the [Formula](doc:query#compound-measures) will result in just the two measures shown on the report visualization.
 
 ![](/images/docs/554ac766cf07520d910d64ad03b2dfbc7ecf477e72256e155e98ef10cfdf9123-add_additional_events_and_measures.gif)
 
@@ -69,14 +66,14 @@ Kubit supports Compound Measures using the Formula bar below the Measure builder
 
 Supported operators will be +, -, /, \*
 
-* (+) addition
-  * `A + B`
-* (-) subtraction
-  * `A - B`
-* (/) division
-  * `A / B`
-* (\*) multiplication
-  * `A * B`
+- (+) addition
+  - `A + B`
+- (-) subtraction
+  - `A - B`
+- (/) division
+  - `A / B`
+- (\*) multiplication
+  - `A * B`
 
 In any mathematical expression, it is essential to understand the order of operations to get the desired result. In Kubit, there are 4 operators available. Whenever a division operator is present, Kubit will first evaluate the numerator followed by the denominator and then perform the division operation.
 
@@ -86,47 +83,34 @@ In any mathematical expression, it is essential to understand the order of opera
 
 Here are a few examples to illustrate how Kubit calculates a Compound Measure:
 
-* `(4 x 6) ÷ (2) = 12`
-
-* `(4 + 6) ÷ (2 + 3) = 2`
-
-* `(5) ÷ (4 - 1) = 1.6`
-
-* `5 + 1 + 2 = 8`
+- `(4 x 6) ÷ (2) = 12`
+- `(4 + 6) ÷ (2 + 3) = 2`
+- `(5) ÷ (4 - 1) = 1.6`
+- `5 + 1 + 2 = 8`
 
 ## Supported Functions
 
-* **min**(A, B) - returns the min value from both measures
-
-* **max**(A, B) - returns the max value from both measures
-
-* **ifnull**(A, \<default>) - returns A if not null, otherwise the default value
-
-* **sum**(A, B, C) - shortcut for sum of multiple measures
-
-* **ceil**(A, \<scale>) - returns values from A rounded to the nearest equal or larger integer, or to the nearest equal or larger value with the specified number of places after the decimal point
-
-* **round**(A, \<scale>) - Returns rounded values for A
-
-* **floor**(A, \<scale>) - returns values from A rounded to the nearest equal or smaller integer, or to the nearest equal or smaller value with the specified number of places after the decimal point
-
-* **pow**(A, x) - returns measure value raised to the specified power (x)
-
-* **sqrt**(A) - square root of A
-
-* **log**(\<base>, A) - returns the logarithm of a number given a base
-
-  * The base should be positive number and not equal to 1
-  * To solve for an error related to this be sure to set a [Measure Filter](doc:advanced-query-features#measure-filters) where the value must be > 0
+- **min**(A, B) - returns the min value from both measures
+- **max**(A, B) - returns the max value from both measures
+- **ifnull**(A, \<default\>) - returns A if not null, otherwise the default value
+- **sum**(A, B, C) - shortcut for sum of multiple measures
+- **ceil**(A, \<scale\>) - returns values from A rounded to the nearest equal or larger integer, or to the nearest equal or larger value with the specified number of places after the decimal point
+- **round**(A, \<scale\>) - Returns rounded values for A
+- **floor**(A, \<scale\>) - returns values from A rounded to the nearest equal or smaller integer, or to the nearest equal or smaller value with the specified number of places after the decimal point
+- **pow**(A, x) - returns measure value raised to the specified power (x)
+- **sqrt**(A) - square root of A
+- **log**(\<base\>, A) - returns the logarithm of a number given a base
+  - The base should be positive number and not equal to 1
+  - To solve for an error related to this be sure to set a [Measure Filter](doc:advanced-query-features#measure-filters) where the value must be \> 0
 
 ### Example Formulas
 
-* `min(A, B) / C` - is the minimum value between measure `A` and `B`, divided by measure `C`.
-* `pow(A, 2)` - `A` raised to the power of `2`.
-* `ifnull(A, 1.5)` - if `A` is `NULL`, then return value is `1.5`.
-* `ceil`, `round`, and `floor` are utilities for formatting the result measure. For example, `round(A, 3)` rounds the value of the `A` rounds to three decimal places.
-* `sum(A, B, C)` is a shortcut for `A + B + C`.
-* `ceil(min(A, ifnull(B, 3.1)), 5)` - functions can be nested; round the result to 5th number of decimal places, where the result is the minimum value between `A` and `B` (where if `B` is `NULL`, then it will be `3.1`).
+- `min(A, B) / C` - is the minimum value between measure `A` and `B`, divided by measure `C`.
+- `pow(A, 2)` - `A` raised to the power of `2`.
+- `ifnull(A, 1.5)` - if `A` is `NULL`, then return value is `1.5`.
+- `ceil`, `round`, and `floor` are utilities for formatting the result measure. For example, `round(A, 3)` rounds the value of the `A` rounds to three decimal places.
+- `sum(A, B, C)` is a shortcut for `A + B + C`.
+- `ceil(min(A, ifnull(B, 3.1)), 5)` - functions can be nested; round the result to 5th number of decimal places, where the result is the minimum value between `A` and `B` (where if `B` is `NULL`, then it will be `3.1`).
 
 <Info>
   ### Kubit will perform a syntax check
@@ -138,9 +122,9 @@ Here are a few examples to illustrate how Kubit calculates a Compound Measure:
 
 Once you've selected your event(s) you can filter them depending on the specific use case or analysis you're building.
 
-* Build your own filter through the available operators and utilizing the AND/OR logic if needed.
-* If you don't see a field available in the dropdown but may see it on other events that's alright. It means the field you're looking for may not be available within that event.
-* You can also select any [Saved Filters](doc:advanced-query-features#measure-filters) you may have created. You will see those available at the top of your field dropdown list.
+- Build your own filter through the available operators and utilizing the AND/OR logic if needed.
+- If you don't see a field available in the dropdown but may see it on other events that's alright. It means the field you're looking for may not be available within that event.
+- You can also select any [Saved Filters](doc:advanced-query-features#measure-filters) you may have created. You will see those available at the top of your field dropdown list.
 
 ## Cohort Measure Filter
 
@@ -158,16 +142,15 @@ Often it's important to filter an event within a compound measure by members in 
 
 When you're analyzing data it's important to be able to slice it by various attributes of the User or Event. Breakdowns allow you to group the results by these fields and even Bin them into more meaningful groups in Query.
 
-* Breakdown by a Field: Select the field you want to breakdown by to see results grouped based on that fields values. These can be things like "User Type" or "Subscription Mode".
+- Breakdown by a Field: Select the field you want to breakdown by to see results grouped based on that fields values. These can be things like "User Type" or "Subscription Mode".
 
 ## Additional Bin Options
 
-* **Breakdown with Binning**
-
-  * When you'd prefer to group values inside of the breakdown into groups or "bins" we've made that available in the Breakdown feature.
-  * Select the field you want to breakdown by and click the context menu to expose "Add Binning"
-    * You can bin items based on their values, Value Binning, or ranges of integers, Range Binning. Based on the data type you've selected you may see only one or both.
-  * Once you've created your bin you can save it for Reuse.
+- **Breakdown with Binning**
+  - When you'd prefer to group values inside of the breakdown into groups or "bins" we've made that available in the Breakdown feature.
+  - Select the field you want to breakdown by and click the context menu to expose "Add Binning"
+    - You can bin items based on their values, Value Binning, or ranges of integers, Range Binning. Based on the data type you've selected you may see only one or both.
+  - Once you've created your bin you can save it for Reuse.
 
   ![](/images/docs/1fcd47cd2f8c81be828a0242afe935d9e2c3ef5435ff8961b21908b5d96d48cf-breakdown_with_binning.gif)
 
@@ -179,8 +162,8 @@ Want to compare how a metric has changed over time? You can leverage the Compare
 
 There are multiple options you can leverage from the Compare dropdown:
 
-* Previous `Week/Month/Quarter/Year` - shortcuts to select a previous period based on the current report's date range.
-* `Custom` - which allows you to manipulate the end date for the previous period and the start date is adjusted based on the length of the current report's date range
+- Previous `Week/Month/Quarter/Year` - shortcuts to select a previous period based on the current report's date range.
+- `Custom` - which allows you to manipulate the end date for the previous period and the start date is adjusted based on the length of the current report's date range
 
 When using `Compare` any metrics for the previous period will be displayed as a dotted line on the chart, while the metrics for the current period will be displayed as a regular line, as shown here:
 
@@ -194,20 +177,20 @@ But even better, when you switch the Query result from Line Chart to Numeric you
 
 When you create a Query report you also get access to additional chart types:
 
-* Stacked Column
-* Percentage Area
-* Pie Chart
-* Combo Chart
-* Metric
+- Stacked Column
+- Percentage Area
+- Pie Chart
+- Combo Chart
+- Metric
 
 ![](/images/docs/4190aaf39faf1ca9917276da7406a22694ede666177d984c43ce8573bbc7e294-report_visualizations_in_query.gif)
 
 To access the Combo Chart (combination of a Line and Bar chart) you need to:
 
-* Select "Combo" from the chart list.
-* Click on the cog icon to adjust chart settings indicating which measure should be a line or bar chart.
-* Click "Save" in the upper right corner to save your changes.
-* If your report has many measures, by default the first measure is enabled.
+- Select "Combo" from the chart list.
+- Click on the cog icon to adjust chart settings indicating which measure should be a line or bar chart.
+- Click "Save" in the upper right corner to save your changes.
+- If your report has many measures, by default the first measure is enabled.
 
 ![](/images/docs/2112089a14a6ce49d14063274d3ae5931499edd24e2826990b8b889d56c5df8d-combo_chart.gif)
 
@@ -219,20 +202,20 @@ Query offers several customizations to how you can visualize your results. All r
 
 All measures on a Query report will be listed here. From this menu you're able to:
 
-* Show or hide these Measures by clicking the Measure name
-* Assign them to a Left or Right axis
-* When in Combo Chart mode you're able to determine which Measure is a Line or Bar visualization
+- Show or hide these Measures by clicking the Measure name
+- Assign them to a Left or Right axis
+- When in Combo Chart mode you're able to determine which Measure is a Line or Bar visualization
 
 ## Appearance
 
 The Appearance menu allows you to customize the look of your report and is primarily used in Line Chart mode. From the appearance menu you're able to:
 
-* Show or hide the rank of your breakdown values if you have a breakdown on your report
-* Set the Line Style as Straight or Smoothed
-* Set the Dot Style in your line chart as Hidden, Filled, or Outlined
-* Show or hide X grid lines
-* Show or hide Y grid lines
-* Set the grid lines as dashed or solid lines
+- Show or hide the rank of your breakdown values if you have a breakdown on your report
+- Set the Line Style as Straight or Smoothed
+- Set the Dot Style in your line chart as Hidden, Filled, or Outlined
+- Show or hide X grid lines
+- Show or hide Y grid lines
+- Set the grid lines as dashed or solid lines
 
 ![](/images/docs/259b21b7cd63231705bf1915c648b7e8c4722b39081dd845e995aaa2f24fdd17-appearance.gif)
 
@@ -240,11 +223,11 @@ The Appearance menu allows you to customize the look of your report and is prima
 
 The Left Y-Axis options allow you to format the value and appearance of your Y-Axis on your report. From the Left Y-Axis menu you're able to:
 
-* Show or Hide the Axis values
-* Add a custom Label to your Axis, so if you're measuring 'Sum of Revenue' you can rename it to 'Total Revenue' and better align with how your organization names those metrics.
-* Apply formatting to the Axis which allows you to display the Axis as a number (#), financial value ($), or percentage (%). You're also able to round decimals to the proper place value.
-* Truncate the Axis with our 'Bound' option that allows you to set an upper and lower limit on the Axis. This is useful if you don't want the Axis to start at 0 or you have an upper threshold that should be respected by the results.
-* Show Reference Line allows you to set a static line on your report. Reference lines are great for goals or benchmarks that you want to be visible at all times by all users. Adding a reference line let's you quickly see if a data point is above or below the threshold.
+- Show or Hide the Axis values
+- Add a custom Label to your Axis, so if you're measuring 'Sum of Revenue' you can rename it to 'Total Revenue' and better align with how your organization names those metrics.
+- Apply formatting to the Axis which allows you to display the Axis as a number (#), financial value (\$), or percentage (%). You're also able to round decimals to the proper place value.
+- Truncate the Axis with our 'Bound' option that allows you to set an upper and lower limit on the Axis. This is useful if you don't want the Axis to start at 0 or you have an upper threshold that should be respected by the results.
+- Show Reference Line allows you to set a static line on your report. Reference lines are great for goals or benchmarks that you want to be visible at all times by all users. Adding a reference line let's you quickly see if a data point is above or below the threshold.
 
 ![](/images/docs/f8c03fa49634cefa076bdb44fbc0186ad8ea7ad11fb371cbaa92f6bac1abb0a3-Feb-10-2026_18-03-24.gif)
 
@@ -252,8 +235,8 @@ The Left Y-Axis options allow you to format the value and appearance of your Y-A
 
 The X-Axis menu allows you to apply formatting on the X-Axis. From the X-Axis menu you're able to:
 
-* Show or Hide the Axis values
-* Add a custom Label to your Axis, so if you're measuring 'Countries in Europe' you can rename it and better align with how your organization names those groups.
+- Show or Hide the Axis values
+- Add a custom Label to your Axis, so if you're measuring 'Countries in Europe' you can rename it and better align with how your organization names those groups.
 
 ## Sorting
 
@@ -261,8 +244,8 @@ The Sorting menu allows you to control the sorting of measure and breakdown valu
 
 When creating a Query report with multiple measures or breakdowns and segments, it can be beneficial to sort these results based on various values. Kubit's sorting option allow you to:
 
-* Sort results Alphabetically, ascending and descending
-* Sort results by Average, ascending and descending
+- Sort results Alphabetically, ascending and descending
+- Sort results by Average, ascending and descending
 
 Sorting is currently only available in Query but we plan on expanding this to other report types soon. Kubit's sorting functionality will keep the sort within each breakdown group, with the first group being the "parent" and second group as the "child".
 
@@ -288,11 +271,11 @@ Once you've constructed your chart the naming in the Measures legend should be e
 
 You're able to:
 
-* Rename the Measure.
-* Format to a percentage` %`, a number `#`, or a currency `$`.
-* Convert to a different metric if the value displayed isn't ideal.
-  * An example could be you've got a Measure with a Sum of Seconds Watched and you want to convert it to Hours.
-* Create a [Cohort](doc:cohorts) of all users within the Measure result.
+- Rename the Measure.
+- Format to a percentage` %`, a number `#`, or a currency `$`.
+- Convert to a different metric if the value displayed isn't ideal.
+  - An example could be you've got a Measure with a Sum of Seconds Watched and you want to convert it to Hours.
+- Create a [Cohort](doc:cohorts) of all users within the Measure result.
 
 ![](/images/docs/339eec75c09a23b76483f4d649c26e6e7c0874caeb34cc009adf504db47265ca-rename_or_format_measures.gif)
 
@@ -318,9 +301,9 @@ You can choose to show either the chart, the table or both by selecting one of t
 
 ![](/images/docs/0440b74b961dd7a46bdca019f571cbd3bc81f6915a350dc9af686892ace04574-image.png)
 
-***
+---
 
 What’s Next
 
-* [Funnel](/docs/funnel)
-* [Advanced Query Features](/docs/advanced-query-features)
+- [Funnel](/docs/funnel)
+- [Advanced Query Features](/docs/advanced-query-features)

@@ -1,5 +1,5 @@
 ---
-title: "Overview"
+title: "Jupyter Notebook"
 description: "Install and use Jupyter Notebook"
 ---
 
@@ -14,17 +14,21 @@ While [Jupyter](https://jupyter.org/) runs code in many programming languages, P
 Install Jupyter using Python’s package manager, [pip](https://en.wikipedia.org/wiki/Pip_\(package_manager\)). First, make sure you have the latest pip installed:
 
 <CodeGroup>
-  ```bash bash
-  pip3 install --upgrade pip
-  ```
+
+```bash bash
+pip3 install --upgrade pip
+```
+
 </CodeGroup>
 
 Then, install Jupyter Notebook using:
 
 <CodeGroup>
-  ```bash bash
-  pip3 install jupyter
-  ```
+
+```bash bash
+pip3 install jupyter
+```
+
 </CodeGroup>
 
 # 2. Jupyter Notebook Extension How-To
@@ -38,9 +42,11 @@ Assume you have Jupyter server (version 7.0.6) installed and running with Python
 Run the following command in your terminal:
 
 <CodeGroup>
-  ```bash bash
-  pip3 install kubit
-  ```
+
+```bash bash
+pip3 install kubit
+```
+
 </CodeGroup>
 
 ## Enable the Extension
@@ -48,18 +54,22 @@ Run the following command in your terminal:
 If running `jupyter` in a system environment, use the following command in your terminal:
 
 <CodeGroup>
-  ```bash bash
-  jupyter server extension enable --py kubit
-  ```
+
+```bash bash
+jupyter server extension enable --py kubit
+```
+
 </CodeGroup>
 
 If running `jupyter` in a virtual environment, use the following command in your terminal:
 
 <CodeGroup>
-  ```bash bash
 
-  jupyter server extension enable --py kubit --sys-prefix
-  ```
+```bash bash
+
+jupyter server extension enable --py kubit --sys-prefix
+```
+
 </CodeGroup>
 
 ## Use the Extension In Chrome
@@ -67,9 +77,11 @@ If running `jupyter` in a virtual environment, use the following command in your
 1. Use the following command in your terminal to start Jupyter Server:
 
 <CodeGroup>
-  ```bash bash
-  jupyter notebook --browser=chrome
-  ```
+
+```bash bash
+jupyter notebook --browser=chrome
+```
+
 </CodeGroup>
 
 2. Click “...” above the top-right corner of a chart and click “Export to Jupyter”. Then the CSV file of interest will be opened up in a Jupyter notebook and loaded into a pandas data frame.
@@ -79,20 +91,24 @@ If running `jupyter` in a virtual environment, use the following command in your
 1. Run command to uninstall the extension:
 
 <CodeGroup>
-  ```bash bash
-  pip3 uninstall kubit
-  ```
+
+```bash bash
+pip3 uninstall kubit
+```
+
 </CodeGroup>
 
 2. Run command to disable the extension:
 
 <CodeGroup>
-  ```bash bash
-  jupyter server extension disable --py kubit
-  ```
+
+```bash bash
+jupyter server extension disable --py kubit
+```
+
 </CodeGroup>
 
-***
+---
 
 [Incidents](/docs/incidents)
 

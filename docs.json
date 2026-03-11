@@ -16,17 +16,9 @@
           {
             "group": "Introduction",
             "pages": [
-              "docs/getting-started",
               {
                 "group": "Quick Start Guide",
-                "pages": [
-                  "docs/getting-started",
-                  "docs/five-things-to-know-about-kubit",
-                  "docs/login-to-kubit",
-                  "docs/introduction-to-the-main-navigation-items",
-                  "docs/universal-search",
-                  "docs/which-report-should-i-use"
-                ]
+                "pages": []
               }
             ]
           },
@@ -72,7 +64,6 @@
           {
             "group": "Collaboration",
             "pages": [
-              "docs/creating-dashboards",
               {
                 "group": "Dashboards",
                 "pages": [
@@ -85,6 +76,7 @@
                   "docs/download-reports-to-onedrive"
                 ]
               },
+              "docs/creating-dashboards",
               "docs/dashboard-and-report-commenting",
               "docs/scratchpad",
               "docs/integrate-kubit-with-slack",
@@ -108,7 +100,8 @@
               "docs/natural-language-cohort-creation",
               "docs/kubit-explain-with-ai",
               "docs/mcp-server",
-              "docs/lumos-ai-readiness"
+              "docs/lumos-ai-readiness",
+              "docs/lumos-agentic-ai-chat-experience"
             ]
           },
           {
@@ -206,23 +199,6 @@
               "docs/admin-plan-summary",
               "docs/admin-notifications",
               "docs/dark-mode"
-            ]
-          },
-          {
-            "group": "Introduction",
-            "pages": [
-              "docs/getting-started",
-              {
-                "group": "Quick Start Guide",
-                "pages": [
-                  "docs/getting-started",
-                  "docs/five-things-to-know-about-kubit",
-                  "docs/login-to-kubit",
-                  "docs/introduction-to-the-main-navigation-items",
-                  "docs/universal-search",
-                  "docs/which-report-should-i-use"
-                ]
-              }
             ]
           },
           {

@@ -1,5 +1,5 @@
 ---
-title: "Overview"
+title: "Funnel"
 description: "Build powerful Funnel charts to measure conversion rates, identify drop-off points, and optimize multi-step user flows in your product."
 ---
 
@@ -11,10 +11,10 @@ Watch our [Funnel Training Video](https://help.kubit.ai/en/articles/8733683-funn
 
 Our Funnel chart can be very useful in the following use cases:
 
-* What percentage of my users converted on Step 3 of my onboarding funnel?
-* What is my drop off rate after users hit a specific page in my product?
-* How quickly do users convert from Steps 1-2 and 2-3 in my funnel?
-* How frequently does a user perform Step 2 before moving to Step 3 of my critical funnel?
+- What percentage of my users converted on Step 3 of my onboarding funnel?
+- What is my drop off rate after users hit a specific page in my product?
+- How quickly do users convert from Steps 1-2 and 2-3 in my funnel?
+- How frequently does a user perform Step 2 before moving to Step 3 of my critical funnel?
 
 This is not an exhaustive list. We encourage use of the funnel to meet unique use cases that you might have.
 
@@ -22,10 +22,10 @@ This is not an exhaustive list. We encourage use of the funnel to meet unique us
 
 Funnel is a Formula used to analyze the conversion rates between multiple steps in a flow. Kubit counts the unique users at each step and allows you to visualize conversion rates based on your use case.
 
-* Each step can have one or more Events with [Filters](doc:components-of-a-report#filters).
-* You can give a name to each step to make it easier to differentiate in the chart. If no name is provided, default step names such as the event name will be used.
-* You can add or remove steps using the controls on the left side.
-* You can also drag-n-drop steps to re-arrange their order.
+- Each step can have one or more Events with [Filters](doc:components-of-a-report#filters).
+- You can give a name to each step to make it easier to differentiate in the chart. If no name is provided, default step names such as the event name will be used.
+- You can add or remove steps using the controls on the left side.
+- You can also drag-n-drop steps to re-arrange their order.
 
 # Main Funnel Controls
 
@@ -56,11 +56,11 @@ Immediately below is a summary of each of the options for ordering of events.
 
 ### Sequence Order
 
-*Sequence order is the default order.*
+_Sequence order is the default order._
 
 Using this will show a conversion based on when they happen sequentially, though there could be other events in between.
 
-If we built our Funnel like this and asked *"What is the Conversion Rate from Log In to Check Out but they performed a Search in between?"*
+If we built our Funnel like this and asked _"What is the Conversion Rate from Log In to Check Out but they performed a Search in between?"_
 
 | A Funnel With Sequence Order | Event     | Event Timestamp  |
 | ---------------------------- | --------- | ---------------- |
@@ -134,7 +134,7 @@ When looking at Funnels there is more than just the conversion rates. The Mode h
 
 ### Conversion Mode
 
-"*What percentage of my users converted or dropped off*"?
+"_What percentage of my users converted or dropped off_"?
 
 This mode is best to understand your overall conversion and see all members of the Funnel.
 
@@ -142,7 +142,7 @@ This mode is best to understand your overall conversion and see all members of t
 
 ### Frequency Mode
 
-"*How many times users performed an event before they converted to the next step*"?
+"_How many times users performed an event before they converted to the next step_"?
 
 Best when you need to see the number of times something is performed before a user moves onto the next step.
 
@@ -156,7 +156,7 @@ Best when you need to see the number of times something is performed before a us
 
 ### Time to Convert Mode
 
-"*How long does it take users to convert from one step to the next step(s)*"?
+"_How long does it take users to convert from one step to the next step(s)_"?
 
 Best when you want to understand the time it took to convert from Step 1-N and through the entire funnel.
 
@@ -178,26 +178,21 @@ Best when you want to understand the time it took to convert from Step 1-N and t
 
 The length of time you're giving a user to convert through the funnel
 
-* **Day**: by default Partition the events by Day (all events have to happen within the same calendar day).
-
-* **Session(If applicable)**: for customers interested in `Session` analysis we can supply an additional option to tell Funnel that all steps have to happen within the same session.
-
-* **None**: this is useful when analyzing longer-term customer behavioral patterns.
-  * For example, any Subscription business would be interested in conversions from `Trial` to `Subscription` to `Renewal` and try to understand what makes users subscribe and then stay.
-
-* **Conversion Window**: all the funnel steps have to happen within the same time period defined by the Conversion Window.
-
-  * Supported Time Units for the window are:
-
-    * Seconds/Minutes/Hours/Days/Weeks/Months/Years.
-    * Conversion Window can be used in combination with partitions `Day` or `None`
+- **Day**: by default Partition the events by Day (all events have to happen within the same calendar day).
+- **Session(If applicable)**: for customers interested in `Session` analysis we can supply an additional option to tell Funnel that all steps have to happen within the same session.
+- **None**: this is useful when analyzing longer-term customer behavioral patterns.
+  - For example, any Subscription business would be interested in conversions from `Trial` to `Subscription` to `Renewal` and try to understand what makes users subscribe and then stay.
+- **Conversion Window**: all the funnel steps have to happen within the same time period defined by the Conversion Window.
+  - Supported Time Units for the window are:
+    - Seconds/Minutes/Hours/Days/Weeks/Months/Years.
+    - Conversion Window can be used in combination with partitions `Day` or `None`
 
 ## Group by
 
 When a Breakdown is used it can be important to understand attribution of conversion in a funnel. We offer two ways to analyze this in Funnels.
 
-* **Starting**: breakdown applied over the first step, subsequent steps do not have to fall within the same breakdown group.
-* **Global**: all the steps have to happen within the same breakdown group.
+- **Starting**: breakdown applied over the first step, subsequent steps do not have to fall within the same breakdown group.
+- **Global**: all the steps have to happen within the same breakdown group.
 
 An example use case would be "What Campaign is driving the highest conversion to paid?" You will create the funnel with a Breakdown by "UTM Campaign" and set the Group by to "Starting".
 
@@ -219,8 +214,8 @@ Between Step 1 and 2, or 2 and 3 etc. there may be instances where you only want
 
 Examples could include:
 
-* Show me conversion from Step 1 to Step 2 for all users who did not register.
-* Show me conversion from Step 3 to Step 4 for all users who did not end their session.
+- Show me conversion from Step 1 to Step 2 for all users who did not register.
+- Show me conversion from Step 3 to Step 4 for all users who did not end their session.
 
 ## Add Conversion Window Between Steps
 
@@ -234,11 +229,11 @@ Supported Time Units for the window are: Seconds/Minutes/Hours/Days/Weeks/Months
 
 When building a funnel multiple events within a single step could be considered a true Conversion. In Kubit you are able to achieve this in two ways:
 
-* Add additional events within the same Event module to perform an OR statement. All filters applied will be included for each event
+- Add additional events within the same Event module to perform an OR statement. All filters applied will be included for each event
 
 ![](/images/docs/17caa892e5c60a1e5afec9de81f582021b0cb57f917c33335abde7f0c972e72d-add_additional_events_1.png)
 
-* Add additional events with `More Actions` icon on the far right side of the Step. This allows for the same OR condition but you're able to apply filters to each event independently.
+- Add additional events with `More Actions` icon on the far right side of the Step. This allows for the same OR condition but you're able to apply filters to each event independently.
 
 ![](/images/docs/5fc477cd8ae6543b9c1dd3d342809aacb626d1c943fbf5653a74805c182010c9-add_additional_events_2.gif)
 
@@ -270,21 +265,21 @@ If you want to compare the conversion rate between multiple groups along a perio
 
 In Funnel you are also able to expose additional Conversion Metrics settings like Bounce Rate.
 
-* **Relative Conversion (Kubit Default)**: Calculate the conversion rate based on the % of Subjects that completed the previous Step and carried on to the next.
-  * This means the denominator will always be the converted population from the previous step.
-* **Absolution Conversion**: Calculate the conversion rate where the denominator does not change and is always the number of Subjects that began the funnel.
-* **Bounce Rate**: The inverse of Conversion, the % of Subjects that did NOT continue to the next step of the Funnel.
+- **Relative Conversion (Kubit Default)**: Calculate the conversion rate based on the % of Subjects that completed the previous Step and carried on to the next.
+  - This means the denominator will always be the converted population from the previous step.
+- **Absolution Conversion**: Calculate the conversion rate where the denominator does not change and is always the number of Subjects that began the funnel.
+- **Bounce Rate**: The inverse of Conversion, the % of Subjects that did NOT continue to the next step of the Funnel.
 
 ![](/images/docs/c1204f8627d83bc48587ec6b631133b39d8dee23c255ae3889497e211f9afed5-show_additional_conversion_metrics.gif)
 
-***
+---
 
 What’s Next
 
 See more tips about using the funnel on our Funnel Tips and Tricks page.
 
-* [Funnel Tips and Tricks](/docs/funnel-tips-and-tricks)
-* [Cohorts](/docs/cohorts)
-* [🎥 Funnel Training](/docs/funnel-training-video)
-* [Sampling Options](/docs/sampling-options)
-* [Query](/docs/query)
+- [Funnel Tips and Tricks](/docs/funnel-tips-and-tricks)
+- [Cohorts](/docs/cohorts)
+- [🎥 Funnel Training](/docs/funnel-training-video)
+- [Sampling Options](/docs/sampling-options)
+- [Query](/docs/query)

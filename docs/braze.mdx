@@ -11,20 +11,20 @@ Furthermore, all of your Braze data can be incorporated back into Kubit to give 
 
 ## Requirements
 
-* The Braze Integration feature is only available to Kubit Enterprise customers.
-* Your customer data in Kubit and Braze must have matching User IDs for this integration to match customers between the two platforms. This includes Anonymous UUIDs.
-* Please read about [how Braze set User IDs here](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids#setting-user-ids-for-ios).
-* This integration utilizes [Braze's Cohort Import API's](https://www.braze.com/docs/partners/isv_partners/cohort_import). The Partner Cohort Import integration feature allows our partners to integrate with Braze to send over cohorts of users that were generated within the partner’s application.
+- The Braze Integration feature is only available to Kubit Enterprise customers.
+- Your customer data in Kubit and Braze must have matching User IDs for this integration to match customers between the two platforms. This includes Anonymous UUIDs.
+- Please read about [how Braze set User IDs here](https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/setting_user_ids#setting-user-ids-for-ios).
+- This integration utilizes [Braze's Cohort Import API's](https://www.braze.com/docs/partners/isv_partners/cohort_import). The Partner Cohort Import integration feature allows our partners to integrate with Braze to send over cohorts of users that were generated within the partner’s application.
 
 ## Configure Braze Integration
 
-* **[Create a dedicated Braze API Key](https://www.braze.com/docs/partners/data_and_infrastructure_agility/analytics/kubit/)** for this integration. This step gives you full control of the permissions.
-* Visit your Braze Developer Console on your Braze Dashboard.
-* Navigate to "Technology Partners", find **Kubit**
-* Copy the **Data Import Key** and REST Endpoint information and send them to Kubit support securely.
-* We will config on Kubit side and let you know when the integration is live.
+- [**Create a dedicated Braze API Key**](https://www.braze.com/docs/partners/data_and_infrastructure_agility/analytics/kubit/) for this integration. This step gives you full control of the permissions.
+- Visit your Braze Developer Console on your Braze Dashboard.
+- Navigate to "Technology Partners", find **Kubit**
+- Copy the **Data Import Key** and REST Endpoint information and send them to Kubit support securely.
+- We will config on Kubit side and let you know when the integration is live.
 
-![](/images/docs/f3febce-624a12906fbc44a5f13ef749_braze-config-2.png "624a12906fbc44a5f13ef749_braze-config-2.png")
+![](/images/docs/f3febce-624a12906fbc44a5f13ef749_braze-config-2.png)
 
 ## Sync Kubit Cohorts to Braze
 
@@ -32,28 +32,28 @@ Furthermore, all of your Braze data can be incorporated back into Kubit to give 
 
 First use Cohort in Kubit to define the criteria to select your target customers to engage through Braze.
 
-![](/images/docs/5f829cf-624a12906fbc4477bc3ef74a_create_cohort-png.png "624a12906fbc4477bc3ef74a_create_cohort-png.png")
+![](/images/docs/5f829cf-624a12906fbc4477bc3ef74a_create_cohort-png.png)
 
 ### Import to Braze
 
 Once a cohort is saved, you import sync these users to Braze so they can be used in Braze Segments to send them email or push notifications (through Campaign or Canvas). There are two import schedule modes:
 
-* **One-Time Sync**: Import once now.
-* **Scheduled Sync**: Import daily, weekly or monthly at a specific time.
+- **One-Time Sync**: Import once now.
+- **Scheduled Sync**: Import daily, weekly or monthly at a specific time.
 
-![](/images/docs/59ccef4-624a12914644a2207f61c644_import_to_braze-png.png "624a12914644a2207f61c644_import_to_braze-png.png")
+![](/images/docs/59ccef4-624a12914644a2207f61c644_import_to_braze-png.png)
 
 ### Check Import Status
 
 You can check a cohort’s import status in Schedules. The schedule history will display every import's execution time, outcome and number of total users who were imported to Braze.
 
-![](/images/docs/ff44d36-624a1291a0949a5eb2b1882a_import_history-png-1.png "624a1291a0949a5eb2b1882a_import_history-png-1.png")
+![](/images/docs/ff44d36-624a1291a0949a5eb2b1882a_import_history-png-1.png)
 
 ## Create Braze Segments with Kubit Cohorts
 
 After cohorts are imported to Braze, you can use them as Filters to create Braze Segments and include them in Braze Campaigns or Canvas. [Here is a reference about how to create Segments on Braze](https://www.braze.com/docs/user_guide/engagement_tools/segments/creating_a_segment#step-4-add-filters-to-your-segment).
 
-![](/images/docs/5faa9fa-624a12913c091dadc4ab0c65_segment_with_kubit_cohorts-png.png "624a12913c091dadc4ab0c65_segment_with_kubit_cohorts-png.png")
+![](/images/docs/5faa9fa-624a12913c091dadc4ab0c65_segment_with_kubit_cohorts-png.png)
 
 ## Analyze Braze Data in Kubit
 
@@ -61,8 +61,4 @@ If you are using Snowflake, you can also take advantage of [Direct Connect](doc:
 
 For references, here are all the [Braze tables](https://www.braze.com/docs/assets/download_file/data-sharing-raw-table-schemas.txt?ed79384e6ac6a97fe3b3d9f76852b7c2) which are available to be incorporated into Kubit analytics. The details of this step are very customer specific and require special configurations.
 
-***
-
-[Integrate with your MarTech Platform](/docs/third-party-martech)
-
-[Data Replication via AWS S3](/docs/s3)
+---
