@@ -203,6 +203,7 @@
           },
           {
             "group": "ANALYSIS",
+            "hidden": true,
             "pages": [
               "docs/components-of-a-report",
               {
@@ -242,6 +243,7 @@
           },
           {
             "group": "Collaboration",
+            "hidden": true,
             "pages": [
               "docs/creating-dashboards",
               {
@@ -264,6 +266,7 @@
           },
           {
             "group": "Lumos AI",
+            "hidden": true,
             "pages": [
               "docs/lumos-ai",
               {
@@ -284,6 +287,7 @@
           },
           {
             "group": "DATA SOURCE",
+            "hidden": true,
             "pages": [
               "docs/integration-guide",
               {
@@ -330,6 +334,7 @@
           },
           {
             "group": "DATA MODELER",
+            "hidden": true,
             "pages": [
               "docs/introduction-to-data-modeler",
               "docs/ai-functions"
@@ -337,6 +342,7 @@
           },
           {
             "group": "DATA MANAGEMENT",
+            "hidden": true,
             "pages": [
               "docs/dictionary",
               {
@@ -351,6 +357,7 @@
           },
           {
             "group": "EXPORT AND SYNC",
+            "hidden": true,
             "pages": [
               "docs/jupyter-notebook",
               "docs/embedding-kubit-urls"
