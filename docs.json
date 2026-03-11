@@ -18,7 +18,14 @@
             "pages": [
               {
                 "group": "Quick Start Guide",
-                "pages": []
+                "pages": [
+                  "quick-start-guide",
+                  "untitled-page",
+                  "login-to-kubit",
+                  "main-navigation-items-overview",
+                  "universal-search",
+                  "which-report-should-i-use"
+                ]
               }
             ]
           },
