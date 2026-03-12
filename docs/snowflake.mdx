@@ -15,61 +15,66 @@ Snowflake allows you to share a databases, schemas, tables and views with Kubit 
 
 Note that both the Provider and Consumer accounts of the Secure Data Share need to be on the same cloud infrastructure and in the same region. In case your Snowflake account does not match any combination in the table below we can provision a new matching account in a matter of hours.
 
-| Region       | Cloud Vendor | Account Locator | Account Name                   |
-| ------------ | ------------ | --------------- | ------------------------------ |
-| US West 2    | AWS          | NK15162         | NK15162                        |
-| US East 1    | AWS          | KUBIT           | KUBIT                          |
-| US East 2    | AWS          | SL59270         | KUBIT\_US\_EAST\_2\_AWS        |
-| EU Central 1 | AWS          | PC52456         | KUBIT\_EUROPE\_CENTRAL\_1\_AWS |
-| EU West 1    | AWS          | TJ95313         | KUBIT\_EU\_WEST\_1\_AWS        |
-| EU West 4    | GCP          | KU21135         | KUBIT\_EUROPE\_WEST\_4\_GCP    |
-| EU North     | Azure        | GJ34763         | KUBIT\_NORTHEUROPE\_AZURE      |
-| AU East      | Azure        | FZ59063         | KUBIT\_AU\_EAST\_AZURE         |
+| Region       | Cloud Vendor | Account Locator | Account Name               |
+| ------------ | ------------ | --------------- | -------------------------- |
+| US West 2    | AWS          | NK15162         | NK15162                    |
+| US East 1    | AWS          | KUBIT           | KUBIT                      |
+| US East 2    | AWS          | SL59270         | KUBIT_US_EAST_2_AWS        |
+| EU Central 1 | AWS          | PC52456         | KUBIT_EUROPE_CENTRAL_1_AWS |
+| EU West 1    | AWS          | TJ95313         | KUBIT_EU_WEST_1_AWS        |
+| EU West 4    | GCP          | KU21135         | KUBIT_EUROPE_WEST_4_GCP    |
+| EU North     | Azure        | GJ34763         | KUBIT_NORTHEUROPE_AZURE    |
+| AU East      | Azure        | FZ59063         | KUBIT_AU_EAST_AZURE        |
 
 ## 1. Preparation
 
 Identify which resources will be shared with Kubit.
 
-* Databases and Schemas
-* Tables
-* (Secure) Views
+- Databases and Schemas
+- Tables
+- (Secure) Views
 
 ## 2. Create a Data Share
 
 Here is an example script (sharing to nk15162 on US West Coast)
 
 <CodeGroup>
-  ```bash bash
-  use role accountadmin;
-  create share <data_share>;
-  ```
 
-  ```bash bash
-  resource "snowflake_share" "kubit" {
-    name     = "kubit_share"
-    comment  = "Shared with Kubit"
-    accounts = ["KUBIT_EUROPE_CENTRAL_1_AWS"] // use Account Name
-  }
-  ```
+```bash sql
+use role accountadmin;
+create share <data_share>;
+```
+
+
+```bash terraform
+resource "snowflake_share" "kubit" {
+  name     = "kubit_share"
+  comment  = "Shared with Kubit"
+  accounts = ["KUBIT_EUROPE_CENTRAL_1_AWS"] // use Account Name
+}
+```
+
 </CodeGroup>
 
 ## 3. Grant Usage Permissions
 
 <CodeGroup>
-  ```bash bash
-  grant usage on database <DB> to share <data_share>;
-  grant usage on schema <SCHEMA> to share <data_share>;
-  grant select on all tables in schema <SCHEMA> to share <data_share>;
-  grant select on view <VIEW> to share <data_share>;
-  alter share <data share> set accounts = nk15162; -- use Account Locator
-  ```
+
+```bash sql
+grant usage on database <DB> to share <data_share>;
+grant usage on schema <SCHEMA> to share <data_share>;
+grant select on all tables in schema <SCHEMA> to share <data_share>;
+grant select on view <VIEW> to share <data_share>;
+alter share <data share> set accounts = nk15162; -- use Account Locator
+```
+
 </CodeGroup>
 
 <Info>
   Snowflake also offers a web interface to review and manage data shares. For details on this topic, please review [Snowflake’s documentation here](https://docs.snowflake.com/en/user-guide/data-share-providers.html). Please also note, the following cases which require additional configuration. Here is how to:
 
-  * [Mask sensitive data during sharing](https://docs.snowflake.com/en/user-guide/security-column-ddm-use.html)
-  * [Share data from multiple databases](https://docs.snowflake.com/en/user-guide/data-sharing-mutiple-db.html)
+  - [Mask sensitive data during sharing](https://docs.snowflake.com/en/user-guide/security-column-ddm-use.html)
+  - [Share data from multiple databases](https://docs.snowflake.com/en/user-guide/data-sharing-mutiple-db.html)
 </Info>
 
 # Best Practices
@@ -90,26 +95,32 @@ The error could be due:
 1. A missing privilege `REFERENCE_USAGE` on the database where the objects reside which is referenced in the view. Solution:
 
 <CodeGroup>
-  ```bash bash
-  grant reference_usage on database <database_name> to share <data_share>;
-  ```
+
+```bash sql
+grant reference_usage on database <database_name> to share <data_share>;
+```
+
 </CodeGroup>
 
 2. An object from a database on top of an INBOUND share can not be directly added or referenced to an object in the OUTBOUND share. There is no solution to this limitation - you can't share an INBOUND share directly. You have to copy the data into a table in order to use it in an OUTBOUND Share.
 3. If the referenced object or the shared object in the OUTBOUND share has a making policy applied, where the masking policy resides in a database other than the shared object. Solution:
 
 <CodeGroup>
-  ```bash bash
-  grant reference_usage on database <masking_policy_database> to share <data_share>;
-  ```
+
+```bash sql
+grant reference_usage on database <masking_policy_database> to share <data_share>;
+```
+
 </CodeGroup>
 
 4. You're referencing more than one database in your OUTBOUND share. You can review all the references with the following function:
 
 <CodeGroup>
-  ```bash bash
-  select * from table(get_object_references(database_name=>'DB', schema_name=>'SCHEMA', object_name=>'VIEW'));
-  ```
+
+```bash sql
+select * from table(get_object_references(database_name=>'DB', schema_name=>'SCHEMA', object_name=>'VIEW'));
+```
+
 </CodeGroup>
 
 Solution: Please verify the required USAGE privileges were granted. See step 3 of this guide.
@@ -119,20 +130,22 @@ Solution: Please verify the required USAGE privileges were granted. See step 3 o
 When you recreate a view, even with the `CREATE OR REPLACE` statement, existing grants might be lost. Please, make sure to include the `COPY GRANTS` parameter. Once the new view is created you can review its grants with the following command:
 
 <CodeGroup>
-  ```bash bash
-  SHOW GRANTS ON VIEW <view_name>;
-  ```
+
+```bash sql
+SHOW GRANTS ON VIEW <view_name>;
+```
+
 </CodeGroup>
 
 ## Avoid `select *` in shared view definitions
 
 Using `select *` in your view definitions may lead to query failures once the references table schema changes. Here's a typical error message:
 
-> View definition for 'Database.Schema.Resource\_Name' declared X column(s), but view query produces Y column(s).
+> View definition for 'Database.Schema.Resource_Name' declared X column(s), but view query produces Y column(s).
 
 Please do not use `select *` in shared view definition in order to prevent such errors.
 
-***
+---
 
 [Setup a Data Share](/docs/secure-data-sharing)
 

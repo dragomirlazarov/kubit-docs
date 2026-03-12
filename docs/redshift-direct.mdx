@@ -16,9 +16,11 @@ description: "Integrate via Direct Connect with Amazon Redshift"
 In your sharing database, create a user for Kubit. Ensure compliance with [password requirements](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_USER.html):
 
 <CodeGroup>
-  ```bash bash
-  CREATE USER kubit WITH PASSWORD '<password>';
-  ```
+
+```bash sql
+CREATE USER kubit WITH PASSWORD '<password>';
+```
+
 </CodeGroup>
 
 ## 3. Grant Permissions
@@ -26,19 +28,23 @@ In your sharing database, create a user for Kubit. Ensure compliance with [passw
 Allow the Kubit user to read your analytical data. You can either:
 
 <CodeGroup>
-  ```bash bash
-  GRANT SELECT ON ALL TABLES IN SCHEMA public TO kubit;
-  ```
+
+```bash sql
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO kubit;
+```
+
 </CodeGroup>
 
 Or restrict access to a limited set of tables or views:
 
 <CodeGroup>
-  ```bash bash
-  GRANT USAGE ON SCHEMA public TO kubit;
-  GRANT SELECT ON TABLE public.table_1 TO kubit;
-  GRANT SELECT ON TABLE public.table_2 TO kubit;
-  ```
+
+```bash sql
+GRANT USAGE ON SCHEMA public TO kubit;
+GRANT SELECT ON TABLE public.table_1 TO kubit;
+GRANT SELECT ON TABLE public.table_2 TO kubit;
+```
+
 </CodeGroup>
 
 # Best Practices
@@ -60,8 +66,8 @@ Kubit helps you analyze time-series event data, so for maximum performance you s
 
 In a dimensional model you should also use consider Distribution Keys and Styles. Since a Fact table can have only one and it can join to multiple dimension tables using different keys it's best to consult AWS's [Choose the best distribution style guide](https://docs.aws.amazon.com/redshift/latest/dg/c_best-practices-best-dist-key.html) .
 
-***
+---
 
 What’s Next
 
-* [Introduction to Data Modeler](/docs/introduction-to-data-modeler)
+- [Introduction to Data Modeler](/docs/introduction-to-data-modeler)
