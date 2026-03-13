@@ -272,27 +272,6 @@
             ]
           },
           {
-            "group": "Lumos AI",
-            "hidden": true,
-            "pages": [
-              "docs/lumos-ai",
-              {
-                "group": "Lumos AI",
-                "pages": [
-                  "docs/lumos-ai",
-                  "docs/lumos-ai-settings",
-                  "docs/prompt-best-practices"
-                ]
-              },
-              "docs/ask-lumos",
-              "docs/natural-language-report-creation",
-              "docs/natural-language-cohort-creation",
-              "docs/kubit-explain-with-ai",
-              "docs/mcp-server",
-              "docs/lumos-ai-readiness"
-            ]
-          },
-          {
             "group": "DATA SOURCE",
             "hidden": true,
             "pages": [
