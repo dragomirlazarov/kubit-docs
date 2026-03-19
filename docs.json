@@ -214,7 +214,10 @@
         "tab": "Help Center",
         "anchors": [
           {
-            "anchor": "Untitled Anchor"
+            "anchor": "Untitled Anchor",
+            "pages": [
+              "test"
+            ]
           }
         ]
       }
