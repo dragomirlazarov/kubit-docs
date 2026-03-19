@@ -1,5 +1,6 @@
 ---
-title: "Article 4"
+title: 'High-Level Schema: Identifying the "Trace ID"'
 ---
 
-Article 4
+- **The Goal:** To ensure Atlas can reconstruct a multi-step Agent journey from fragmented logs.
+- **The Content:** Unlike a single click, an Agent (like Co-pilot or a custom Claude implementation) performs many internal steps. This article teaches you how to map the `trace_id` (the overall objective) and `span_id` (the specific sub-task or tool call) in your warehouse. Without this mapping, your Agentic loops will appear as disconnected, random prompts.

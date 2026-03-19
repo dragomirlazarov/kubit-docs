@@ -1,4 +1,16 @@
 ---
-title: 'Top 10 Troubleshooting Cases'
+title: "Top 10 Troubleshooting Cases"
 ---
 
+_Quick fixes for common implementation hurdles._
+
+1. **"Warehouse Connection Timeout":** Usually a firewall/whitelisting issue. Ensure Atlas IPs are permitted in your warehouse.
+2. **"Unknown Event/Field":** The event exists in your DB but hasn't been "imported" into the **Atlas Dictionary**.
+3. **"Empty Result Set":** Verify your timestamp format. Atlas expects ISO-8601 for time-series analysis.
+4. **"Lumos Hallucination":** If the AI generates the wrong SQL, use the **"See SQL"** button to debug the join logic.
+5. **"MCP Auth Failure":** Check your SSO credentials or API keys within the MCP server configuration.
+6. **"Schedule Failed":** Ensure the service account has `SELECT` permissions on the underlying schema.
+7. **"Missing Cost Metrics":** Verify that token usage and cost-per-token are passed as numeric fields, not strings.
+8. **"SSO Login Loop":** Often caused by email mismatches between your IDP (Okta/Google) and Atlas user list.
+9. **"Cohort Sync Error":** Check that your destination (e.g., Braze/Segment) has a valid API key in Settings.
+10. **"Slow Report Loading":** Large unstructured JSON columns can lag; try extracting key AI properties into a flattened view.
