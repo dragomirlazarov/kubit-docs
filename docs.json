@@ -224,6 +224,58 @@
               "article-4",
               "article-5"
             ]
+          },
+          {
+            "anchor": "Core Features",
+            "groups": [
+              {
+                "group": "Analytics",
+                "pages": [
+                  "dashboard",
+                  {
+                    "group": "Explorer",
+                    "pages": [
+                      "query",
+                      "funnel",
+                      "flow",
+                      "retention",
+                      "data-table"
+                    ]
+                  },
+                  "cohorts",
+                  {
+                    "group": "Observability",
+                    "pages": [
+                      "traces",
+                      "sessions",
+                      "users"
+                    ]
+                  },
+                  "signals",
+                  {
+                    "group": "Data Management",
+                    "pages": [
+                      "connections",
+                      "enrichments"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "anchor": "Troubleshooting",
+            "pages": [
+              "top-10-troubleshooting-cases"
+            ]
+          },
+          {
+            "anchor": "Account & Billing",
+            "pages": [
+              "article-1",
+              "article-2-1",
+              "article-3-1"
+            ]
           }
         ]
       }
