@@ -23,6 +23,8 @@
                   "untitled-page",
                   "untitled-page",
                   "untitled-page",
+                  "untitled-page",
+                  "untitled-page",
                   "login-to-kubit",
                   "main-navigation-items-overview",
                   "universal-search",
@@ -280,7 +282,17 @@
         ]
       },
       {
-        "tab": "Product Walkthrough "
+        "tab": "Product Walkthrough ",
+        "pages": [
+          "connecting-your-first-data-source-the-foundation",
+          "mapping-the-semantic-dictionary-the-aha-moment",
+          "stitching-the-agentic-trace-the-loop-logic",
+          "building-your-first-cost-vs-performance-query",
+          "creating-the-ai-executive-dashboard",
+          "instrumenting-mcp-tool-monitoring",
+          "designing-a-behavioral-funnel-intent-to-action",
+          "setting-your-first-infinite-loop-alert"
+        ]
       }
     ]
   },
