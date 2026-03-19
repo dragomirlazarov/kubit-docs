@@ -21,6 +21,8 @@
                 "pages": [
                   "quick-start-guide",
                   "untitled-page",
+                  "untitled-page",
+                  "untitled-page",
                   "login-to-kubit",
                   "main-navigation-items-overview",
                   "universal-search",
@@ -214,9 +216,13 @@
         "tab": "Help Center",
         "anchors": [
           {
-            "anchor": "Untitled Anchor",
+            "anchor": "Getting Started",
             "pages": [
-              "test"
+              "test",
+              "article-2",
+              "article-3",
+              "article-4",
+              "article-5"
             ]
           }
         ]
