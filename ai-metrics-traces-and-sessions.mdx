@@ -1,0 +1,14 @@
+---
+title: "AI Metrics, Traces, and Sessions"
+---
+
+- **How do I reconstruct a multi-step Agentic "Trace"?** In Agentic AI, one user request can trigger 10 internal steps. By mapping your `trace_id`, Atlas automatically visualizes the "thinking" process, including internal model thoughts and external tool executions.
+  - **See more:** [Article 1: Core AI Features](https://kubit.mintlify.app/article-1)
+- **How is an "AI Session" defined in Atlas?** To measure user satisfaction, you need to see the whole picture. An AI Session groups all related traces and prompts into a single window, allowing you to measure "Time-to-Task-Completion" across a user's entire journey.
+  - **See more:** [Article 1: Core AI Features](https://kubit.mintlify.app/article-1)
+- **Can I track the latency of specific MCP (Model Context Protocol) tools?** Yes. If your Agent is slow, you need to know if the LLM is lagging or if your local data server is the bottleneck. By tagging `tool_name` and `duration`, you can isolate performance issues in your MCP stack.
+  - **See more:** [Article 1: Core AI Features](https://kubit.mintlify.app/article-1)
+- **How do I calculate "Profit per Prompt" or "Cost per Success"?** ROI is the ultimate goal. You can create custom Formulas that divide your warehouse's `Token Cost` data by your product's `Success` events (like an "Order Confirmed" event) to see your true AI margins.
+  - **See more:** [Article 1: Core AI Features](https://kubit.mintlify.app/article-1)
+- **What is the difference between TTFT and Total Latency?** In streaming AI, user experience depends on **TTFT** (Time to First Token). However, for Agents, **Total Latency** includes the "Tool Hops." Atlas allows you to monitor both to optimize for both speed and completion.
+  - **See more:** [Article 1: Core AI Features](https://kubit.mintlify.app/article-1)

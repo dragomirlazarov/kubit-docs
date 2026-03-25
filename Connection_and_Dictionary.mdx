@@ -1,0 +1,14 @@
+---
+title: "Connection & Dictionary"
+---
+
+- **Which IP addresses do I need to whitelist for Atlas?** Security is our priority. To allow Atlas to query your data without a VPN, you must authorize our static egress IPs. This ensures that only Atlas-verified requests can reach your LLM logs.
+  - **See more:** [Quick Start Guide](https://kubit.mintlify.app/quick-start-guide)
+- **Does Atlas require a specific schema for LLM logs?** No. We believe in "Schema-on-Read." Whether your Claude or Gemini logs are in a flat table or buried in a nested JSON `response_body`, you can map them directly in our Dictionary without a single ETL script.
+  - **See more:** [Quick Start Guide](https://kubit.mintlify.app/quick-start-guide)
+- **How do I "Import" a new AI event from my warehouse?** The Dictionary is the "Brain" of Atlas. Importing an event tells Atlas to start monitoring a specific table. You can then label these events as `Prompt`, `Response`, or `Tool Call` for standardized reporting.
+  - **See more:** [Top 10 Troubleshooting Cases](https://kubit.mintlify.app/top-10-troubleshooting-cases)
+- **Can I map 'Virtual Properties' for different AI Engines?** Yes. Since different models use different naming conventions (e.g., `prompt_tokens` vs `input_tokens`), Virtual Properties allow you to create a "Unified Cost" metric that works across your entire multi-model stack.
+  - **See more:** [Quick Start Guide](https://kubit.mintlify.app/quick-start-guide)
+- **Why am I seeing a "Permission Denied" error during setup?** Atlas requires a read-only Service Account. If you see this error, it usually means the account lacks the `SELECT` or `USAGE` permissions for the specific schema where your AI logs reside.
+  - **See more:** [Top 10 Troubleshooting Cases](https://kubit.mintlify.app/top-10-troubleshooting-cases)

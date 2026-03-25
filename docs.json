@@ -274,12 +274,6 @@
               "article-2-1",
               "article-3-1"
             ]
-          },
-          {
-            "anchor": "FAQ",
-            "pages": [
-              "atlas-product-faqs"
-            ]
           }
         ]
       },
@@ -294,6 +288,35 @@
           "instrumenting-mcp-tool-monitoring",
           "designing-a-behavioral-funnel-intent-to-action",
           "setting-your-first-infinite-loop-alert"
+        ]
+      },
+      {
+        "tab": "FAQs",
+        "anchors": [
+          {
+            "anchor": "Connection & Dictionary",
+            "pages": [
+              "Connection_and_Dictionary"
+            ]
+          },
+          {
+            "anchor": "AI Metrics, Traces, and Sessions",
+            "pages": [
+              "ai-metrics-traces-and-sessions"
+            ]
+          },
+          {
+            "anchor": "Dashboards, Sharing & Lumos AI",
+            "pages": [
+              "dashboards-sharing-and-lumos-ai"
+            ]
+          },
+          {
+            "anchor": "Alerts, Roles, and Packages",
+            "pages": [
+              "Alerts_Roles_Packages"
+            ]
+          }
         ]
       }
     ]
