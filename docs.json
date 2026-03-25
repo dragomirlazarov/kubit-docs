@@ -276,7 +276,10 @@
             ]
           },
           {
-            "anchor": "FAQ"
+            "anchor": "FAQ",
+            "pages": [
+              "atlas-product-faqs"
+            ]
           }
         ]
       },

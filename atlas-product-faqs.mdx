@@ -1,0 +1,63 @@
+---
+title: "Atlas Product FAQs"
+---
+
+#### 1. How does Atlas connect to my LLM data without copying it?
+
+Atlas is **warehouse-native**, meaning it connects directly to your Snowflake, BigQuery, or Databricks instance. It generates optimized SQL to query your data where it lives, ensuring your sensitive prompt and response data never leaves your environment.
+
+- **See more:** [Atlas Architecture & Quick Start](https://kubit.mintlify.app/quick-start-guide)
+
+#### 2. Can I track multi-step Agentic workflows (Traces)?
+
+Yes. By using a unique `trace_id` in your data schema, Atlas can stitch together multiple LLM calls, tool executions, and MCP server interactions into a single "Path Analysis" or "Funnel."
+
+- **See more:** [Building AI Reports](https://kubit.mintlify.app/article-1)
+
+#### 3. How do I differentiate between Claude, Gemini, and GPT-4o usage?
+
+You can use the **Breakdown** feature in any report. Simply select your "Model Provider" or "Model ID" property as the breakdown dimension to compare cost, latency, and success rates side-by-side.
+
+- **See more:** [Top 10 Troubleshooting Cases (Schema Drift)](https://kubit.mintlify.app/top-10-troubleshooting-cases)
+
+#### 4. What is "Lumos AI" and how does it help with LLM analytics?
+
+Lumos is your AI data analyst. Instead of writing SQL, you can ask Atlas questions in natural language, such as _"Show me the average token spend per user intent last week,"_ and it will build the report for you automatically.
+
+- **See more:** [Lumos AI Overview](https://kubit.mintlify.app/test)
+
+#### 5. How do we track "Hallucinations" or AI failures?
+
+Most Atlas users track "Negative User Feedback" (like a thumbs-down or "Regenerate" click) as a custom event. You can then build a **Funnel** to see which specific prompts or model versions lead to the most corrections.
+
+- **See more:** [Quick Start Guide](https://kubit.mintlify.app/quick-start-guide)
+
+#### 6. Why is my report returning "Zero Results" for my new MCP server?
+
+This usually happens if the new event hasn't been imported into the **Atlas Dictionary**. Ensure your warehouse table is refreshed and the new fields are mapped in the Semantic Layer.
+
+- **See more:** [Top 10 Troubleshooting Cases](https://kubit.mintlify.app/top-10-troubleshooting-cases)
+
+#### 7. Can I create alerts for LLM cost spikes?
+
+Yes. You can save any query as an **Anomaly Alert**. If your "Token Spend" or "Error Rate" exceeds a 3-standard-deviation threshold, Atlas will automatically notify you via Slack or Email.
+
+- **See more:** [Atlas Dashboards & Alerts](https://kubit.mintlify.app/dashboard)
+
+#### 8. How do I share AI performance dashboards with my team?
+
+Once you've built your reports, you can pin them to a **Dashboard**. Dashboards can be shared with your entire team, or scheduled to be sent as a weekly "Value Digest" via email.
+
+- **See more:** [Managing Dashboards](https://kubit.mintlify.app/dashboard)
+
+#### 9. Does Atlas support the Model Context Protocol (MCP)?
+
+Absolutely. Atlas treats MCP tool-calls as "Spans" within a trace. You can monitor the latency and success rates of your local and remote MCP servers just like any other AI event.
+
+- **See more:** [Article 1: Core AI Features](https://kubit.mintlify.app/article-1)
+
+#### 10. How do I get started if my data is currently in a "messy" JSON format?
+
+Atlas is designed for semi-structured data. You can use the **Data Dictionary** to map nested JSON properties to clean "Virtual Fields" without needing your data engineering team to flatten the tables first.
+
+- **See more:** [Quick Start Guide](https://kubit.mintlify.app/quick-start-guide)
