@@ -1,0 +1,87 @@
+---
+title: "FAQs"
+---
+
+# Frequently Asked Questions
+
+## What counts as a Trace?
+
+We follow the OpenTelemetry (OTel) standard. A Trace represents a single, complete execution path from one user request to the final agent resolution. Whether your agent makes one LLM call or loops through ten tool executions to solve the problem, it all rolls up into a single billable Trace.
+
+---
+
+## How does usage-based pricing work?
+
+Usage billing is based on the total number of processed Traces (including Replays to reprocess and enrich your data) across all your workspaces within a given month. The unit price is **\$0.001 per Trace**.
+
+---
+
+## What is the fastest way to try Kubit?
+
+We offer a free 30-day unlimited trial with no credit card required. You can explore our live Demo Workspace (an online store with an AI shopping agent) to analyze traces immediately, or install the Kubit plugin in Claude Code or Cursor to analyze your own AI project. Just run:
+
+- `/kubit:init` — authenticate
+
+- `/kubit:integrate` — connect your existing LLM observability frameworks via OTel fan-out, or have Kubit automatically instrument your project from scratch
+
+- `/kubit:inspect` — pull recent traces, sessions, and user data right into your IDE
+
+---
+
+## Do I need to install a specific SDK?
+
+No. Kubit does not force you into a proprietary SDK. We integrate seamlessly with frameworks like Langfuse, LangSmith, and Arize via OTel fan-out. If you haven't instrumented your agent yet, the `/kubit:integrate` skill will do the heavy lifting and instrument your project using standard OpenTelemetry best practices.
+
+---
+
+## Which coding agents does Kubit support?
+
+We officially support Claude Code and Cursor via plugin. Under the hood, Kubit can be configured to work with any coding agent that supports the Model Context Protocol (MCP).
+
+---
+
+## Where is my data stored?
+
+For the Developer and Growth plans, data is securely stored in our SOC2 Type 2 and GDPR-compliant cloud data warehouse (US-East). For Enterprise plans, Kubit offers a warehouse-native deployment, meaning your data never leaves your own cloud environment (Snowflake, Databricks, BigQuery, or ClickHouse).
+
+---
+
+## What about data privacy and security?
+
+Your data is safe. Kubit serves large enterprises and maintains strict SOC2 Type 2 and GDPR compliance. For full security details, please visit our \[Trust Center\](#).
+
+---
+
+## What data does Kubit have access to?
+
+Kubit stores the trace, session, and user data your application sends. Because our analytics work at the aggregate level, you should ensure that PII and sensitive secrets are masked or removed before transmission. Our `/kubit:integrate` skill can automatically guide you through configuring this masking.
+
+---
+
+## Can we redline the MSA and have a Data Processing Addendum (DPA)?
+
+Yes, custom contract redlining and a DPA are available exclusively on the Enterprise plan. Please \[contact sales\](#) for details.
+
+---
+
+## How is Kubit different from LLM observability tools like Langfuse, LangSmith, Arize, and Braintrust?
+
+Traditional LLM observability tools monitor system health and errors at the raw log level — they aren't built for product analytics. Kubit bridges this gap by mapping what the user is trying to do directly to how your agent reasons. Instead of drowning in raw JSON traces, we feed complete context straight into Claude Code or Cursor via MCP. Your coding agent instantly sees user intent, friction signals, tool call trajectories, and user actions before and after the interaction — giving you the exact context needed to debug and ship reliable AI, right where you code.
+
+---
+
+## What is the Product Analytics add-on?
+
+It is an optional module for tracking user behavior (funnels, flows, retention, and cohorts) in digital applications. It leverages existing clickstream data in your cloud warehouse, or acts as the destination for your CDPs like Segment and Snowplow. The true power is a unified context: you can finally compare the LTV and retention of users who were delighted by your AI agent versus those who were frustrated, and instantly pinpoint the root causes.
+
+---
+
+## What happened to Kubit's original warehouse-native product analytics platform?
+
+It became the foundation of our Agent Analytics solution. Our deep domain expertise in flexible data models and warehouse-native architecture is exactly what allows us to map massive volumes of user behavior directly to agent reasoning. We continue to support and scale our traditional product analytics customers.
+
+---
+
+## How is Kubit different from Mixpanel, Amplitude, and PostHog?
+
+Traditional product analytics tools track clicks and page views, but they weren't built to connect user behavior to LLM reasoning chains. Even if they offer simple charts for token costs or failure rates, they leave you guessing why an interaction failed. Kubit is the only warehouse-native platform built to bridge this gap, mapping exactly what your user is trying to achieve directly to how your AI agent reasons to solve it.
